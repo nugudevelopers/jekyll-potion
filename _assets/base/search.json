@@ -161,7 +161,7 @@
 },
   {
   "url": "/jekyll-potion/start/first",
-  "order": 1,
+  "order": 2,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -198,7 +198,7 @@
 },
   {
   "url": "/jekyll-potion/start/has-content",
-  "order": 2,
+  "order": 3,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -242,7 +242,7 @@
 },
   {
   "url": "/jekyll-potion/",
-  "order": 4,
+  "order": 0,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -259,11 +259,7 @@
     "기반의",
     "GitHub Pages",
     "를 컨텐츠의 훼손 없이 빠로게 적용하기 위한 도구입니다.",
-    "jekyll-potion",
-    "의 설치방법은 https://github.com/nugudevelopers/jekyll-potion 의",
-    "README.md",
-    "파일을 참고해주세요.",
-    "본 페이지는 설치를 무사히 마쳤다는 가정하에, 아래의 내용을 통해",
+    "아래의 내용을 통해",
     "jekyll-potion",
     "에 대한 보다 더 자세히 다룹니다.",
     "시작하기",
@@ -301,7 +297,7 @@
 },
   {
   "url": "/jekyll-potion/start/migration",
-  "order": 3,
+  "order": 4,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -436,7 +432,7 @@
 },
   {
   "url": "/jekyll-potion/start",
-  "order": 0,
+  "order": 1,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",

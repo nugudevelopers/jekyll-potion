@@ -1,5 +1,20 @@
 [
   {
+  "url": "/jekyll-potion/components/tag/alerts",
+  "order": 31,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "alerts",
+  "hash": "",
+  "sentences": [
+    "alerts",
+    "alerts"
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/anatomy-library",
   "order": 10,
   "indexes": [
@@ -37,6 +52,21 @@
   ]
 },
   {
+  "url": "/jekyll-potion/components/tag/api",
+  "order": 32,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "api",
+  "hash": "",
+  "sentences": [
+    "api",
+    "api"
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/apply-github",
   "order": 11,
   "indexes": [
@@ -47,6 +77,21 @@
   "sentences": [
     "GitHub Pages 적용하기",
     "GitHub Pages 적용하기"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/tag/code",
+  "order": 33,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "code",
+  "hash": "",
+  "sentences": [
+    "code",
+    "code"
   ]
 }
   ]
@@ -126,6 +171,21 @@
   ]
 },
   {
+  "url": "/jekyll-potion/components/tag/empty",
+  "order": 34,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "empty",
+  "hash": "",
+  "sentences": [
+    "empty",
+    "empty"
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/config/site/favicon",
   "order": 7,
   "indexes": [
@@ -136,6 +196,21 @@
   "sentences": [
     "favicon 설정",
     "favicon 설정"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/tag/file",
+  "order": 35,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "file",
+  "hash": "",
+  "sentences": [
+    "file",
+    "file"
   ]
 }
   ]
@@ -281,6 +356,36 @@
     "processor",
     "의 목록 및 설정을 다룹니다.",
     "구성요소"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/tag/link",
+  "order": 36,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "link",
+  "hash": "",
+  "sentences": [
+    "link",
+    "link"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/tag/logo",
+  "order": 37,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "logo",
+  "hash": "",
+  "sentences": [
+    "logo",
+    "logo"
   ]
 }
   ]
@@ -556,6 +661,36 @@
   ]
 },
   {
+  "url": "/jekyll-potion/components/tag/navigation",
+  "order": 38,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "navigation",
+  "hash": "",
+  "sentences": [
+    "navigation",
+    "navigation"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/tag/pagination",
+  "order": 39,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "pagination",
+  "hash": "",
+  "sentences": [
+    "pagination",
+    "pagination"
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/config/processor",
   "order": 9,
   "indexes": [
@@ -755,6 +890,21 @@
   ]
 },
   {
+  "url": "/jekyll-potion/components/tag/tabs",
+  "order": 40,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "tabs",
+  "hash": "",
+  "sentences": [
+    "tabs",
+    "tabs"
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/components/tag",
   "order": 30,
   "indexes": [
@@ -829,7 +979,7 @@
     "기본 설정",
     "theme 의 위치, 세부 속성들의 정보를 다룹니다. 세부 항목은 아래와 같습니다.",
     "기본 설정",
-    "theme:\n    - developers:\n        path: \"developers\"\n        layouts_dir: \"_layouts\"\n        includes_dir: \"_includes\"\n        assets:\n          priority_files:\n            - \"js/jsrender.min.js\"\n          scss_files:\n            - \"style.scss\"\n        templates_dir: \"_templates\"\n        content_x_path: \"#container > div.content\"\n        processors: ...\n        tags: ...",
+    "theme:\n    - developers:\n        path: \"your theme name\"\n        layouts_dir: \"_layouts\"\n        includes_dir: \"_includes\"\n        assets:\n          priority_files: []\n          scss_files: []\n        templates_dir: \"_templates\"\n        content_x_path: \"main\"\n        processors: ...\n        tags: ...",
     "theme | array of Hash | - | - | theme 설정 Root",
     "theme[].hash keyname | string | O | - | theme 이름",
     "theme[].path | string | O | - | 프로젝트의 Root path최상단 기준의 상대 경로",

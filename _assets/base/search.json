@@ -1,5 +1,77 @@
 [
   {
+  "url": "/jekyll-potion/anatomy-library",
+  "order": 1,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "Library 구조",
+  "hash": "",
+  "sentences": [
+    "Library 구조",
+    "Library 구조",
+    "jekyll-potion",
+    "은",
+    "_jekyll-potion",
+    "하위 디렉토리로 설치되며, 아래와 같은 구조를 갖습니다.",
+    "보다 자세한 내용은",
+    "구성요소",
+    "을 참고해 주세요.",
+    ".github | GitHub Pages 포팅을 위해 준비된 workflow 들을 보관",
+    "lib | jekyll-potion 을 구성하는 컴포넌트들이 보관",
+    "lib.tags | jekyll-potion 을 설치함으로서 사용할 수 있는 liquid 태그를 보관",
+    "lib.theme | jekyll-potion 을 설치함으로서 사용할 수 있는 기본 theme 정보를 보관",
+    "jekyll-potion",
+    "은",
+    "_jekyll-potion",
+    "내 요소를 구동하기 위해 반드시",
+    "_plugins",
+    "디렉토리에",
+    "jekyll-potion.rb",
+    "파일을 위치해야 합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/apply-github",
+  "order": 2,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "GitHub Pages 적용하기",
+  "hash": "",
+  "sentences": [
+    "GitHub Pages 적용하기",
+    "GitHub Pages 적용하기"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components",
+  "order": 3,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "구성요소",
+  "hash": "",
+  "sentences": [
+    "구성요소",
+    "구성요소",
+    "jekyll-potion",
+    "은 내부적으로",
+    "theme",
+    ",",
+    "processor",
+    ",",
+    "tag",
+    "를 통해 부가적인 기능과, customizing 을 수행합니다."
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/",
   "order": 0,
   "indexes": [
@@ -21,7 +93,13 @@
     "jekyll-potion",
     "의 설치방법은 https://github.com/nugudevelopers/jekyll-potion 의",
     "README.md",
-    "파일을 참고해주세요."
+    "파일을 참고해주세요.",
+    "본 페이지는 아래의 내용을 통해",
+    "jekyll-potion",
+    "에 대한 보다 더 자세히 다룹니다.",
+    "Library 구조",
+    "GitHub Pages 적용하기",
+    "구성요소"
   ]
 }
   ]

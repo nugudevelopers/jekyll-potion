@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Pragma" content="no-cache">
 
-<meta http-equiv="Last-Modified" content="2022-07-18 09:50:29 +0000">
+<meta http-equiv="Last-Modified" content="2022-07-18 10:29:30 +0000">
 <meta http-equiv="Title" content="Jekyll-Potion - Library 구조">
 <title>Jekyll-Potion - Library 구조</title>
 <meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/anatomy-library">
@@ -522,9 +522,10 @@
         <div class="description"></div>
     </div>
     <div class="content">
-        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <code class="language-plaintext highlighter-rouge">_jekyll-potion</code> 하위 디렉토리로 설치되며, 아래와 같은 구조를 갖습니다.</p>
+        <h2 id="기본-구조">기본 구조<a href="#%EA%B8%B0%EB%B3%B8-%EA%B5%AC%EC%A1%B0" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/anatomy-library#기본-구조"></div>
+</h2>
 
-<p>보다 자세한 내용은 <a href="/jekyll-potion/components" class="a-internal">구성요소</a> 을 참고해 주세요.</p>
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <code class="language-plaintext highlighter-rouge">_jekyll-potion</code> 을 프로젝트 root 에 위치함으로서 설치되며, 아래와 같은 구조를 갖습니다.</p>
 
 <table>
   <thead>
@@ -542,7 +543,7 @@
     <tr>
       <td><code class="language-plaintext highlighter-rouge">lib</code></td>
       <td>
-<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 구성하는 컴포넌트들이 보관</td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> Library Root</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">lib.tags</code></td>
@@ -554,6 +555,16 @@
       <td>
 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치함으로서 사용할 수 있는 기본 theme 정보를 보관</td>
     </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lib.processor</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치함으로서 사용할 수 있는 processor 정보를 보관</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lib.models</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서 사용할 model 을 보관</td>
+    </tr>
   </tbody>
 </table>
 
@@ -564,9 +575,63 @@
 </div>
 </div>
 
-<h2 id="설정">설정<a href="#%EC%84%A4%EC%A0%95" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/anatomy-library#설정"></div>
+<h2 id="life-cycle">Life-Cycle<a href="#life-cycle" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/anatomy-library#life-cycle"></div>
 </h2>
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은</p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <a href="https://jekyllrb.com/">Jekyll</a> 에서 제공하는 Life-Cycle 에 맞춰 Hook 을 통해 수신된 event 를 통해 구동됩니다. <a href="https://jekyllrb.com/">Jekyll</a> 이 제공하는 Hook 은 아래의 링크를 참고하세요.</p>
+
+<div class="block">
+    <a class="block-body" href="https://jekyllrb.com/docs/plugins/hooks/">
+        <div class="thumb link"></div>
+        <div class="content">
+            <div class="large">Jekyll Hook</div>
+            <div class="small">Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points.</div>
+        </div>
+    </a>
+</div>
+
+<p>주요 event 에 대한 처리는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>owner</th>
+      <th>event</th>
+      <th>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 이 하는 일</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">site</td>
+      <td style="text-align: left">after_init</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 이 구동되며, 각종 설정을 통해 processor를 로드합니다.<br>이 때 theme 에 대한 설정을 로드합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">site</td>
+      <td style="text-align: left">post_read</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 필요한 정적 파일, theme 에서 필요한 정적 파일을 detect 하거나, navigation 등에서 필요한 기초 데이터를 생성합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">page</td>
+      <td style="text-align: left">pre_render</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서 다룰 페이지 내용이 없는 경우 <code class="language-plaintext highlighter-rouge">{% empty %}</code> 태그를 생성합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">page</td>
+      <td style="text-align: left">post_render</td>
+      <td>rendering 이 마친 페이지의 본문을 분석하여, 경로를 조정하거나, 검색 index 를 생성합니다.<br>또한 이 시점에 HTML <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 에 포함되어야 하는 meta 정보를 추가합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">site</td>
+      <td style="text-align: left">post_render</td>
+      <td>(<code class="language-plaintext highlighter-rouge">:site</code>, <code class="language-plaintext highlighter-rouge">:post_read</code>) 에서 detect 된 정적 파일, <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 필요한 정적 파일들을 Site 에 포함시킵니다.</td>
+    </tr>
+  </tbody>
+</table>
 
         <div class="block-row pagination" data-skip-search-index>
     

@@ -7,11 +7,11 @@
 <meta http-equiv="Pragma" content="no-cache">
 
 <meta http-equiv="Last-Modified" content="2022-07-18 04:51:48 +0000">
-<meta http-equiv="Title" content="Jekyll-Potion - jekyll-potion">
-<title>Jekyll-Potion - jekyll-potion</title>
-<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/">
+<meta http-equiv="Title" content="Jekyll-Potion - 시작하기">
+<title>Jekyll-Potion - 시작하기</title>
+<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/start">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jekyll-Potion - jekyll-potion">
+<meta property="og:title" content="Jekyll-Potion - 시작하기">
 <meta property="og:image" content="https://nugudevelopers.github.io/jekyll-potion/assets/icon/icon.png">
 <script type="text/javascript" src="/jekyll-potion/_assets/base/jquery-3.6.0.min.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/navigation.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/tabs.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/code.js"></script><link rel="stylesheet" href="/jekyll-potion/_assets/css/syntax.css">
 <link rel="stylesheet" href="/jekyll-potion/_assets/css/main.css">
@@ -256,88 +256,127 @@
 <main>
     <div id="container" class="main-container">
     <div class="header">
-        <h1>jekyll-potion</h1>
+        <h1>시작하기</h1>
         <div class="description"></div>
     </div>
     <div class="content">
-        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 오신 것을 환영합니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <a href="https://jekyllrb.com/">Jekyll</a> 기반의 <a href="https://pages.github.com/">GitHub Pages</a> 를 컨텐츠의 훼손 없이 빠로게 적용하기 위한 도구입니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 설치방법은 https://github.com/nugudevelopers/jekyll-potion 의 <code class="language-plaintext highlighter-rouge">README.md</code> 파일을 참고해주세요.</p>
-
-<p>본 페이지는 설치를 무사히 마쳤다는 가정하에, 아래의 내용을 통해 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 대한 보다 더 자세히 다룹니다.</p>
-
-<h2 id="시작하기">시작하기<a href="#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#시작하기"></div>
+        <h2 id="사전-준비">사전 준비<a href="#%EC%82%AC%EC%A0%84-%EC%A4%80%EB%B9%84" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#사전-준비"></div>
 </h2>
 
-<p>아래의 문서는 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치하는 방법을 다룹니다.</p>
+<h3 id="참여-인원에-대한-준비">참여 인원에 대한 준비<a href="#%EC%B0%B8%EC%97%AC-%EC%9D%B8%EC%9B%90%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A4%80%EB%B9%84" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#참여-인원에-대한-준비"></div>
+</h3>
+
+<p>⁣1. 참여하는 인원은 사이트 관리자, 문서 작성자 로 구분되어 있음을 간주합니다.</p>
+
+<ul>
+  <li>사이트 관리자는 문서의 형상관리가 가능해야 하며, 이를 통해 문서의 배포 주기를 관리합니다.</li>
+  <li>문서 작성자는 markdown 문서를 제작하고, <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서 제공하는 다양한 기능을 사용할 수 있습니다.</li>
+</ul>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p>참여하는 모든 인원은 공동작업을 위해 GitHub 에 대한 기본 사용법을 숙지하고 있어야 합니다.</p>
+
+<p>또한 로컬 PC 에서 문서 작성을 한다면, 서버 구동을 위해 최소한 <a href="https://jekyllrb.com/docs/">Quickstart</a> 정도는 숙지해야 합니다.</p>
+</div>
+</div>
+
+<p>⁣2. 참여하는 인원은 <a href="https://jekyllrb.com/">Jekyll</a> 이 가능하면 설치되어야 합니다. <a href="https://jekyllrb.com/docs/installation/">설치 가이드</a> 를 참고하여 시스템 환경에 맞게 설치합니다.</p>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p>반드시 모든 인원이 반드시 <a href="https://jekyllrb.com/">Jekyll</a> 이 설치되어야 하는 것은 아닙니다. <a href="https://pages.github.com/">GitHub Pages</a> 로 개발환경을 갖추었다면, 설치하지 않고 GitHub 를 통해 간단한 편집이 가능합니다.</p>
+
+<p>하지만 어떤 이 경우도 최소한의 GitHub 의 사용법은 숙지하고 있어야 합니다.</p>
+</div>
+</div>
+
+<p>⁣3. 사이트 운영자는 반드시 <a href="https://jekyllrb.com/">Jekyll</a> 의 운영관리에 대한 사용법을 숙지해야 합니다.</p>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 개인 호스팅도 가능하지만, 기본 목표는 <a href="https://pages.github.com/">GitHub Pages</a> 의 적용입니다. 따라서 반드시 구성원은 GitHub 저장소에 대한 <code class="language-plaintext highlighter-rouge">commit</code>, <code class="language-plaintext highlighter-rouge">pull-request</code> 방법을 익혀야 하며, 사이트 관리자는 이를 통해 코드 형상을 관리해야 하기 때문에 Git 을 통한 형상관리가 가능해야 합니다.</p>
+</div>
+</div>
+
+<p>⁣4. Jekyll-Potion 은 기본적으로 세팅된 theme 를 통해 설치만으로도 충분히 사이트 요소를 표현할 수 있습니다. 하지만, 만일 사이트를 서비스에 맞도록 꾸미기 위해서는 반드시 마크업, 디자인이 필요하며 <code class="language-plaintext highlighter-rouge">마크업 개발자</code>, <code class="language-plaintext highlighter-rouge">디자이너</code> 인력에 대한 고려가 이뤄져야 합니다.</p>
+
+<h3 id="구성-환경-준비">구성 환경 준비<a href="#%EA%B5%AC%EC%84%B1-%ED%99%98%EA%B2%BD-%EC%A4%80%EB%B9%84" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#구성-환경-준비"></div>
+</h3>
+
+<p>jekyll-potion 은 아래의 버전을 기준으로 작업이 되었습니다. 이미 다른 버전을 사용한 경우라면 버전의 조정이나 호환성 검증이 필요합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>라이브러리</th>
+      <th>버전</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://jekyllrb.com/">Jekyll</a></td>
+      <td>4.2.2</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/jeffreytse/jekyll-spaceship">Jekyll Spaceship</a></td>
+      <td>0.10.2</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/sparklemotion/nokogiri">Nokogiri</a></td>
+      <td>1.13.6</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="설치">설치<a href="#%EC%84%A4%EC%B9%98" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#설치"></div>
+</h2>
+
+<p>위와 같은 환경이 구성이 준비되었다면, 이제 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치할 수 있습니다. 설치 방법은 상황에 맞게 아래와 같이 구분합니다.</p>
+
+<h3 id="처음-사용자">처음 사용자<a href="#%EC%B2%98%EC%9D%8C-%EC%82%AC%EC%9A%A9%EC%9E%90" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#처음-사용자"></div>
+</h3>
+
+<p>이미 작성한 컨텐츠가 없으며, <a href="https://jekyllrb.com/">Jekyll</a> 을 통해 문서 사이트를 최초 구축하는데 적합합니다.</p>
 
 <div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/start">
+    <a class="block-body a-internal" href="/jekyll-potion/start/first">
         <div class="thumb link"></div>
         <div class="content">
-            <div class="large">시작하기</div>
+            <div class="large"></div>
             <div class="small"></div>
         </div>
     </a>
 </div>
 
-<h2 id="config">config<a href="#config" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#config"></div>
-</h2>
+<h3 id="문서가-존재하는-경우">문서가 존재하는 경우<a href="#%EB%AC%B8%EC%84%9C%EA%B0%80-%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#문서가-존재하는-경우"></div>
+</h3>
 
-<p>아래의 문서는 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 설정에 대해 다룹니다.</p>
+<p>markdown 문서를 가지고 있고 <a href="https://jekyllrb.com/">Jekyll</a> 을 통해 문서 사이트를 새로 구축하는데 적합합니다.</p>
 
 <div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/config">
+    <a class="block-body a-internal" href="/jekyll-potion/start/has-content">
         <div class="thumb link"></div>
         <div class="content">
-            <div class="large">설정</div>
+            <div class="large"></div>
             <div class="small"></div>
         </div>
     </a>
 </div>
 
-<h2 id="라이브러리-구조">라이브러리 구조<a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B5%AC%EC%A1%B0" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#라이브러리-구조"></div>
-</h2>
+<h3 id="마이그레이션">마이그레이션<a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start#마이그레이션"></div>
+</h3>
 
-<p>아래의 문서는 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 내부 구조에 대해 다룹니다.</p>
-
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/anatomy-library">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">Library 구조</div>
-            <div class="small"></div>
-        </div>
-    </a>
-</div>
-
-<h2 id="github-pages-적용">GitHub Pages 적용<a href="#github-pages-%EC%A0%81%EC%9A%A9" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#github-pages-적용"></div>
-</h2>
-
-<p>아래의 문서는 <a href="https://pages.github.com/">GitHub Pages</a> 로 적용시 설정하는 방법에 대해 다룹니다.</p>
+<p><a href="https://jekyllrb.com/">Jekyll</a> 로 작성한 사이트를 개인 호스팅, <a href="https://pages.github.com/">GitHub Pages</a> 를 통해 운영하고 있고, <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 전체 적용하고자 할 경우 적합합니다.</p>
 
 <div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/apply-github">
+    <a class="block-body a-internal" href="/jekyll-potion/start/migration">
         <div class="thumb link"></div>
         <div class="content">
-            <div class="large">GitHub Pages 적용하기</div>
-            <div class="small"></div>
-        </div>
-    </a>
-</div>
-
-<h2 id="구성요소">구성요소<a href="#%EA%B5%AC%EC%84%B1%EC%9A%94%EC%86%8C" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#구성요소"></div>
-</h2>
-
-<p>아래의 문서는 각 구성요소를 설명하고, <code class="language-plaintext highlighter-rouge">theme</code> 의 구조, 생성 및 <code class="language-plaintext highlighter-rouge">tag</code> template 에 대한 변경, 사용 가능한 <code class="language-plaintext highlighter-rouge">processor</code> 의 목록 및 설정을 다룹니다.</p>
-
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/components">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">구성요소</div>
+            <div class="large"></div>
             <div class="small"></div>
         </div>
     </a>
@@ -345,26 +384,13 @@
 
         <div class="block-row pagination" data-skip-search-index>
     
-        <div>
-            <div class="block pagination">
-                <a class="block-body a-internal" href="/jekyll-potion/start/migration">
-                    <div class="thumb prev"></div>
-                    <div class="content right">
-                        <div class="x-small">이전</div>
-                        <div class="bold">마이그레이션</div>
-                        <div class="small"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    
     
         <div>
             <div class="block pagination">
-                <a class="block-body a-internal" href="/jekyll-potion/config">
+                <a class="block-body a-internal" href="/jekyll-potion/start/first">
                     <div class="content">
                         <div class="x-small">다음</div>
-                        <div class="bold">설정</div>
+                        <div class="bold">처음 사용자</div>
                         <div class="small"></div>
                     </div>
                     <div class="thumb next"></div>

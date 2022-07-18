@@ -1,7 +1,7 @@
 [
   {
   "url": "/jekyll-potion/anatomy-library",
-  "order": 1,
+  "order": 9,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -28,14 +28,17 @@
     "_plugins",
     "디렉토리에",
     "jekyll-potion.rb",
-    "파일을 위치해야 합니다."
+    "파일을 위치해야 합니다.",
+    "설정",
+    "jekyll-potion",
+    "은"
   ]
 }
   ]
 },
   {
   "url": "/jekyll-potion/apply-github",
-  "order": 2,
+  "order": 10,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -50,7 +53,7 @@
 },
   {
   "url": "/jekyll-potion/components",
-  "order": 3,
+  "order": 11,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -72,8 +75,174 @@
   ]
 },
   {
+  "url": "/jekyll-potion/config",
+  "order": 5,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "설정",
+  "hash": "",
+  "sentences": [
+    "설정",
+    "설정",
+    "jekyll-potion",
+    "은",
+    "Jekyll",
+    "의 기본 설정 파일인",
+    "_config.yml",
+    "을 override 하는",
+    "_config.jekyll_potion.yml",
+    "을 통해 설정값을 읽어들입니다.",
+    "jekyll-potion",
+    "이 설정 파일을 override 하는 이유",
+    "jekyll-potion",
+    "은 구동을 위해 다양한 기본 설정값을 구동시점(",
+    ":site",
+    ",",
+    ":after_init",
+    ") 에 변경합니다. 때문에 명시적으로 값을 override 한다는 의미로 기존 설정파일을 건드리지 않고, 추가하는 형태로 구현되었습니다.",
+    "좀 더 자세한 설정은 아래의 표를 참고해주세요.",
+    "jekyll_potion | O | jekyll_potion 설정 Root",
+    "jekyll_potion.site | O | jekyll_potion 설정 Site 설정 Root",
+    "jekyll_potion.site.index_page | - | 기본 index page의 상대 경로jekyll_potion에서 이 값을 세팅할 경우 기존의 index page 를 정의된 페이지로 변경합니다.만일 설정하지 않을 경우 이미 설정된 값을 따릅니다.",
+    "jekyll_potion.site.permalink | - | 기본 permalinkjekyll_potion에서 이 값을 세팅할 경우 Site 내 모든 페이지의 permalink 를 변경합니다.만일 설정하지 않을 경우 이미 설정된 값을 따릅니다.",
+    "jekyll_potion.site.title | - | Site 의 기본 title설정시 {% code %} 태그를 사용하면 내부 title 항목에 채워집니다.",
+    "jekyll_potion.site.icon | - | Site 의 기본 icon설정시 {% code %} 태그를 사용하면 내부 title 항목에 채워집니다.",
+    "jekyll_potion.site.theme | - | jekyll_potion 의 기본 theme이 theme 값은 Jekyll 의 기본 theme와 다르며, jekyll_potion scope 내 모든 컨텐츠 파일이 해당 theme 로 적용됩니다.만일 값이 없을 경우 jekyll_potion 의 기본 내장 theme 인 proto 로 동작합니다.",
+    "jekyll_potion.site.favicon | - | Site favicon 정보의 상대 경로favicon 파일은 단순한 이미지 파일이 아닌 각 브라우저 환경별 favicon 목록을 포함한 html 파일로서 자세한 설명은 favicon 설정 에서 다룹니다.",
+    "jekyll_potion.site.exclude | - | jekyll_potion 을 통해 생성한 Site 에서 특정한 컨텐츠 파일을 제외하고 싶은 경우 사용예를 들어 README.md 파일을 GitHub 에서만 사용하고 GitHub Pages 에서는 제외하고 싶을 경우, 해당 파일의 상대 경로를 추가",
+    "jekyll_potion.theme | - | jekyll_potion 에 추가적인 theme 를 생성할 경우 사용자세한 설명은 Theme 설정 에서 다룹니다.",
+    "jekyll-potion.site.index_page",
+    ",",
+    "jekyll-potion.site.permalink",
+    "를 설정시 구동형태",
+    "jekyll-potion",
+    "은 위 두 값을 세팅할 경우 기본 설정 파일의",
+    "defaults",
+    "항목을 아래의 값으로 대체합니다.",
+    "만일 아래의 항목이 이미 존재하고 부가적인 속성이 부여됐다면, 그 항목은 건드리지 않습니다.",
+    "jekyll-potion.site.index_page",
+    "defaults:\n  scope:\n    path: \"{{jekyll-potion.site.index_page}}\"\n  values:\n    permalink: \"\"",
+    "jekyll-potion.site.permalink",
+    "defaults:\n  scope:\n    path: \"\"\n  values:\n    layout: \"{{theme.default_layout}}\"\n    permalink: \"{{jekyll-potion.site.permalink}}\"",
+    "보다 자세한 내용은",
+    "구성요소",
+    "을 참고해 주세요.",
+    ".github | GitHub Pages 포팅을 위해 준비된 workflow 들을 보관",
+    "lib | jekyll-potion 을 구성하는 컴포넌트들이 보관",
+    "lib.tags | jekyll-potion 을 설치함으로서 사용할 수 있는 liquid 태그를 보관",
+    "lib.theme | jekyll-potion 을 설치함으로서 사용할 수 있는 기본 theme 정보를 보관",
+    "jekyll-potion",
+    "은",
+    "_jekyll-potion",
+    "내 요소를 구동하기 위해 반드시",
+    "_plugins",
+    "디렉토리에",
+    "jekyll-potion.rb",
+    "파일을 위치해야 합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config/site/favicon",
+  "order": 7,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "favicon 설정",
+  "hash": "",
+  "sentences": [
+    "favicon 설정",
+    "favicon 설정"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start/first",
+  "order": 1,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "처음 사용자",
+  "hash": "",
+  "sentences": [
+    "처음 사용자",
+    "처음 사용자",
+    "현재 jekyll-potion 은 Gem 으로서 동작하지 않는 Beta 버전입니다. 향후 Gem 으로 설치할 수 있는 작업이 준비가 될 때까지 불편하더라도 아래의 설치과정을 거쳐야 합니다.",
+    "Jekyll 사이트를 생성합니다.\n    \n\n1\n\njekyll new {site_name}",
+    "{site_name} 으로 이동한 후 아래의 작업을 진행합니다.\n    \n      __posts 폴더 삭제\n        \n          jekyll-potion 은 post 기반으로 동작하지 않습니다.\n        \n      \n      \nGemfile 삭제\n      \nabout.markdown 삭제\n      \nindex.markdown 삭제\n      \n_config.yml 삭제\n      \n404.html 삭제",
+    "__posts 폴더 삭제\n        \n          jekyll-potion 은 post 기반으로 동작하지 않습니다.",
+    "Gemfile 삭제",
+    "about.markdown 삭제",
+    "index.markdown 삭제",
+    "_config.yml 삭제",
+    "404.html 삭제",
+    "GitHub 저장소 본문 우측 상단에 Code 버튼을 누르고 Download ZIP 을 선택하여 zip 파일을 다운로드 합니다.",
+    "압축을 해제한 후, 다음의 작업을 진행합니다.\n    \n      \n_jekyll-potion 폴더 복사\n      \n_plugins 폴더 복사\n      \nassets 폴더 복사\n      \nGemfile 복사\n      \n_config.yml 복사\n      \n_config.jekyll_potion.yml 복사\n      \n404.html 복사\n      \n_index.md 복사 이후 index.md 파일로 이름 변경",
+    "_jekyll-potion 폴더 복사",
+    "_plugins 폴더 복사",
+    "assets 폴더 복사",
+    "Gemfile 복사",
+    "_config.yml 복사",
+    "_config.jekyll_potion.yml 복사",
+    "404.html 복사",
+    "_index.md 복사 이후 index.md 파일로 이름 변경",
+    "Bundle update\n    \n\n1\n\nbundle update",
+    "서버 실행\n    \n\n1\n\nbundle exec jekyll serve --config _config.yml,_config.jekyll_potion.yml --trace",
+    "웹브라우저로 http://127.0.0.1:4000 주소를 접속하여 아래의 화면 확인"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start/has-content",
+  "order": 2,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "문서가 존재하는 경우",
+  "hash": "",
+  "sentences": [
+    "문서가 존재하는 경우",
+    "문서가 존재하는 경우",
+    "구성된 문서 구조가",
+    "디렉토리 구조",
+    "에 적합한지 입니다. 만일 이 구조에 맞지 않는 문서라면",
+    "jekyll-potion",
+    "을 적용할 수 없습니다.",
+    "또한 준비된 markdown 문서는 반드시 markdown 문법 구조에 맞아야 합니다.",
+    "디렉토리 구조로 변경하기",
+    "jekyll-potion",
+    "의 반드시  하위 문서 디렉토리 명과 상위 문서의 파일명이 같아야 합니다. 따라서 이 구조에 맞지 않다면, 이를 일치시키는 작업이 필요합니다.",
+    "계층 구조 내 순서 정하기",
+    "jekyll-potion",
+    "은 기본적으로 동일 레벨의 파일간의 우선순위를 결정하고, 이 순서를 기반으로 navigation 영역을 구성합니다.",
+    "동일 레벨간의 우선순위는",
+    "Front Matter",
+    "를 사용하여, 아래와 같이",
+    "depth_order",
+    "를 추가해야 합니다.",
+    "depth_order Front Matter",
+    "---\ndepth_order: 1\n---",
+    "depth_order",
+    "는 작은 숫자를 가질수록 우선순위가 높습니다.",
+    "jekyll-potion",
+    "적용하기",
+    "처음 시작하기",
+    "과정을 진행합니다.",
+    "Site 구성하기",
+    "사이트 설정",
+    "를 통해 Site 의 기본 정보를 설정합니다.",
+    "이후, 서버를 구동하여 문서들이 정상적으로 노출되는 것을 확인합니다."
+  ]
+}
+  ]
+},
+  {
   "url": "/jekyll-potion/",
-  "order": 0,
+  "order": 4,
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
@@ -94,12 +263,304 @@
     "의 설치방법은 https://github.com/nugudevelopers/jekyll-potion 의",
     "README.md",
     "파일을 참고해주세요.",
-    "본 페이지는 아래의 내용을 통해",
+    "본 페이지는 설치를 무사히 마쳤다는 가정하에, 아래의 내용을 통해",
     "jekyll-potion",
     "에 대한 보다 더 자세히 다룹니다.",
+    "시작하기",
+    "아래의 문서는",
+    "jekyll-potion",
+    "을 설치하는 방법을 다룹니다.",
+    "시작하기",
+    "config",
+    "아래의 문서는",
+    "jekyll-potion",
+    "의 설정에 대해 다룹니다.",
+    "설정",
+    "라이브러리 구조",
+    "아래의 문서는",
+    "jekyll-potion",
+    "의 내부 구조에 대해 다룹니다.",
     "Library 구조",
+    "GitHub Pages 적용",
+    "아래의 문서는",
+    "GitHub Pages",
+    "로 적용시 설정하는 방법에 대해 다룹니다.",
     "GitHub Pages 적용하기",
+    "구성요소",
+    "아래의 문서는 각 구성요소를 설명하고,",
+    "theme",
+    "의 구조, 생성 및",
+    "tag",
+    "template 에 대한 변경, 사용 가능한",
+    "processor",
+    "의 목록 및 설정을 다룹니다.",
     "구성요소"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start/migration",
+  "order": 3,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "마이그레이션",
+  "hash": "",
+  "sentences": [
+    "마이그레이션",
+    "마이그레이션",
+    "해당 사용자는",
+    "Jekyll",
+    "에 대한 충분한 지식을 가지고 있음을 간주합니다.",
+    "구성된 문서 구조가",
+    "디렉토리 구조",
+    "에 적합한지 입니다. 만일 이 구조에 맞지 않는 문서라면",
+    "jekyll-potion",
+    "을 적용할 수 없습니다.",
+    "또한 준비된 markdown 문서는 반드시 markdown 문법 구조에 맞아야 합니다.",
+    "컨텐츠 마이그레이션 하기",
+    "기본적으로",
+    "Jekyll",
+    ",",
+    "Liquid tag",
+    "에서 지원하는 태그를 사용할 경우 문제는 없으나, 특정 서비스에 종속적인 태그를 사용할 경우 이를 제거합니다.",
+    "사용중인 태그중에",
+    "jekyll-potion",
+    "에서 제공하고 있는 기본 태그와 이름이 겹칠 경우 이를 변경합니다.",
+    "jekyll-potion",
+    "에서 제공하고 있는 기본 태그는",
+    "tag",
+    "에서 확인할 수 있습니다.",
+    "markdown 문서내 이미지, 링크중 배포환경에 맞도록 세팅된 URL 정보가 존재한다면, 이를 상대 경로화 합니다.",
+    "jekyll-potion",
+    "은 rendering 결과 HTML 의 모든",
+    "<a[href]>",
+    ",",
+    "<img[src]>",
+    "의 상대 경로를",
+    "Jekyll",
+    "설정파일의",
+    "url",
+    ",",
+    "baseurl",
+    "을 조합하여 절대 경로화 합니다.",
+    "layout 수정하기",
+    "기존에 사용중인 layout 이 있다 하더라도,",
+    "jekyll-potion",
+    "은 layout 을 강제로",
+    "default",
+    ",",
+    "error",
+    "만 사용하도록 변경합니다.",
+    "따라서 사용중인 다른 layout 이 있다면, 이를",
+    "default",
+    "로 변경합니다.",
+    "jekyll-potion",
+    "은",
+    ":site",
+    "의",
+    ":after_init",
+    "시점에 설정된",
+    "layouts_dir",
+    "을",
+    "jekyll-potion",
+    "theme 의",
+    "layout_dir",
+    "로게 변경합니다.",
+    "따라서 다른 layout 을 사용할 수 없습니다. 다만, 추후 다른 layout,",
+    "Jekyll",
+    "의 기본 theme 도 함께 사용할 수 있도록 보강할 예정입니다.",
+    "jekyll-potion",
+    "적용하기",
+    "GitHub 저장소 본문 우측 상단에 Code 버튼을 누르고 Download ZIP 을 선택하여 zip 파일을 다운로드 합니다.",
+    "아래의 작업을 진행합니다.\n    \n      \n_jekyll-potion 폴더 복사\n      \n_plugins/jekyll-potion.rb 복사 또는, 설정 를 참고하여, 설정파일을 변경합니다. jekyll-potion 내 설정이 아닌 경우 아래의 표를 참고합니다.",
+    "_jekyll-potion 폴더 복사",
+    "_plugins/jekyll-potion.rb 복사 또는, 설정 를 참고하여, 설정파일을 변경합니다. jekyll-potion 내 설정이 아닌 경우 아래의 표를 참고합니다.",
+    "collections | jekyll-potion 은 기본적으로 collection 을 사용하지 않습니다.",
+    "markdown | kramdown 을 사용하고 있으며, kramdown 을 이미 사용한다면, jekyll-potion 의 설정을 제거합니다.",
+    "sass | jekyll-potion 은 별도의 life-cycle 을 통해 scss 파일을 생성합니다. 이미 설정이 있다면 jekyll-potion 의 설정을 제거합니다.",
+    "plugins | jekyll-potion 은 종속성은 없지만, Jekyll Spaceship 사용을 간주하고 개발되었습니다.사용에 문제가 없다면 그대로 둡니다.",
+    "Site 구성하기",
+    "사이트 설정",
+    "를 통해 Site 의 기본 정보를 설정합니다.",
+    "이후, 서버를 구동하여 문서들이 정상적으로 노출되는 것을 확인합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/processor",
+  "order": 14,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "Processor",
+  "hash": "",
+  "sentences": [
+    "Processor",
+    "Processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config/site",
+  "order": 6,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "Site 설정",
+  "hash": "",
+  "sentences": [
+    "Site 설정",
+    "Site 설정"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/site",
+  "order": 12,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "Site ",
+  "hash": "",
+  "sentences": [
+    "Site ",
+    "Site"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start",
+  "order": 0,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "시작하기",
+  "hash": "",
+  "sentences": [
+    "시작하기",
+    "시작하기",
+    "사전 준비",
+    "참여 인원에 대한 준비",
+    "⁣1. 참여하는 인원은 사이트 관리자, 문서 작성자 로 구분되어 있음을 간주합니다.",
+    "사이트 관리자는 문서의 형상관리가 가능해야 하며, 이를 통해 문서의 배포 주기를 관리합니다.",
+    "문서 작성자는 markdown 문서를 제작하고, jekyll-potion 에서 제공하는 다양한 기능을 사용할 수 있습니다.",
+    "참여하는 모든 인원은 공동작업을 위해 GitHub 에 대한 기본 사용법을 숙지하고 있어야 합니다.",
+    "또한 로컬 PC 에서 문서 작성을 한다면, 서버 구동을 위해 최소한",
+    "Quickstart",
+    "정도는 숙지해야 합니다.",
+    "⁣2. 참여하는 인원은",
+    "Jekyll",
+    "이 가능하면 설치되어야 합니다.",
+    "설치 가이드",
+    "를 참고하여 시스템 환경에 맞게 설치합니다.",
+    "반드시 모든 인원이 반드시",
+    "Jekyll",
+    "이 설치되어야 하는 것은 아닙니다.",
+    "GitHub Pages",
+    "로 개발환경을 갖추었다면, 설치하지 않고 GitHub 를 통해 간단한 편집이 가능합니다.",
+    "하지만 어떤 이 경우도 최소한의 GitHub 의 사용법은 숙지하고 있어야 합니다.",
+    "⁣3. 사이트 운영자는 반드시",
+    "Jekyll",
+    "의 운영관리에 대한 사용법을 숙지해야 합니다.",
+    "jekyll-potion",
+    "은 개인 호스팅도 가능하지만, 기본 목표는",
+    "GitHub Pages",
+    "의 적용입니다. 따라서 반드시 구성원은 GitHub 저장소에 대한",
+    "commit",
+    ",",
+    "pull-request",
+    "방법을 익혀야 하며, 사이트 관리자는 이를 통해 코드 형상을 관리해야 하기 때문에 Git 을 통한 형상관리가 가능해야 합니다.",
+    "⁣4. Jekyll-Potion 은 기본적으로 세팅된 theme 를 통해 설치만으로도 충분히 사이트 요소를 표현할 수 있습니다. 하지만, 만일 사이트를 서비스에 맞도록 꾸미기 위해서는 반드시 마크업, 디자인이 필요하며",
+    "마크업 개발자",
+    ",",
+    "디자이너",
+    "인력에 대한 고려가 이뤄져야 합니다.",
+    "구성 환경 준비",
+    "jekyll-potion 은 아래의 버전을 기준으로 작업이 되었습니다. 이미 다른 버전을 사용한 경우라면 버전의 조정이나 호환성 검증이 필요합니다.",
+    "Jekyll | 4.2.2",
+    "Jekyll Spaceship | 0.10.2",
+    "Nokogiri | 1.13.6",
+    "설치",
+    "위와 같은 환경이 구성이 준비되었다면, 이제",
+    "jekyll-potion",
+    "을 설치할 수 있습니다. 설치 방법은 상황에 맞게 아래와 같이 구분합니다.",
+    "처음 사용자",
+    "이미 작성한 컨텐츠가 없으며,",
+    "Jekyll",
+    "을 통해 문서 사이트를 최초 구축하는데 적합합니다.",
+    "문서가 존재하는 경우",
+    "markdown 문서를 가지고 있고",
+    "Jekyll",
+    "을 통해 문서 사이트를 새로 구축하는데 적합합니다.",
+    "마이그레이션",
+    "Jekyll",
+    "로 작성한 사이트를 개인 호스팅,",
+    "GitHub Pages",
+    "를 통해 운영하고 있고,",
+    "jekyll-potion",
+    "을 전체 적용하고자 할 경우 적합합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/tag",
+  "order": 15,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "태그",
+  "hash": "",
+  "sentences": [
+    "태그",
+    "태그",
+    "jekyll-potion 이 기본적으로 제공하는 liquid 태그는 아래와 같습니다.",
+    "alerts | Bootstrap 의 Alerts 와 같은 역활을 합니다",
+    "api | API 명세를 상세히 기술합니다.",
+    "code | 코드 블럭에 제목을 입력할 수 있으며, `` 구문을 raw 하게 표현합니다. 또한 복사기능을 제공합니다.",
+    "empty | 컨텐츠가 비워진 화면의 하위 페이지가 존재한다면 목록화하여 보여줍니다.",
+    "file | 내부 파일 다운로드 기능을 제공합니다.",
+    "link | 내/외부 링크를 구분하여, 외부링크의 경우 제목, 설명을 보강하여 표현합니다.",
+    "logo | 사이트의 이미지, 타이틀을 표현합니다.",
+    "navigation | 사이트의 디렉토리 구조 를 통해 메뉴를 구성합니다.",
+    "pagination | 일정한 규칙에 의해 정의된 페이지의 순서를 통해, 이전, 다음 페이지를 표현합니다.",
+    "tabs | Bootstrap 의 Tabs 역활을 합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/components/theme",
+  "order": 13,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "theme",
+  "hash": "",
+  "sentences": [
+    "theme",
+    "theme"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config/theme",
+  "order": 8,
+  "indexes": [
+    {
+  "skip_keyword": "data-skip-search-index",
+  "title": "theme 설정",
+  "hash": "",
+  "sentences": [
+    "theme 설정",
+    "theme 설정"
   ]
 }
   ]

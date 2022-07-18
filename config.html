@@ -7,11 +7,11 @@
 <meta http-equiv="Pragma" content="no-cache">
 
 <meta http-equiv="Last-Modified" content="2022-07-18 04:51:48 +0000">
-<meta http-equiv="Title" content="Jekyll-Potion - jekyll-potion">
-<title>Jekyll-Potion - jekyll-potion</title>
-<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/">
+<meta http-equiv="Title" content="Jekyll-Potion - 설정">
+<title>Jekyll-Potion - 설정</title>
+<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/config">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jekyll-Potion - jekyll-potion">
+<meta property="og:title" content="Jekyll-Potion - 설정">
 <meta property="og:image" content="https://nugudevelopers.github.io/jekyll-potion/assets/icon/icon.png">
 <script type="text/javascript" src="/jekyll-potion/_assets/base/jquery-3.6.0.min.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/navigation.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/tabs.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/code.js"></script><link rel="stylesheet" href="/jekyll-potion/_assets/css/syntax.css">
 <link rel="stylesheet" href="/jekyll-potion/_assets/css/main.css">
@@ -256,102 +256,201 @@
 <main>
     <div id="container" class="main-container">
     <div class="header">
-        <h1>jekyll-potion</h1>
+        <h1>설정</h1>
         <div class="description"></div>
     </div>
     <div class="content">
-        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 오신 것을 환영합니다.</p>
+        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <a href="https://jekyllrb.com/">Jekyll</a> 의 기본 설정 파일인 <code class="language-plaintext highlighter-rouge">_config.yml</code> 을 override 하는 <code class="language-plaintext highlighter-rouge">_config.jekyll_potion.yml</code> 을 통해 설정값을 읽어들입니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <a href="https://jekyllrb.com/">Jekyll</a> 기반의 <a href="https://pages.github.com/">GitHub Pages</a> 를 컨텐츠의 훼손 없이 빠로게 적용하기 위한 도구입니다.</p>
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p><strong><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 이 설정 파일을 override 하는 이유</strong></p>
 
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 설치방법은 https://github.com/nugudevelopers/jekyll-potion 의 <code class="language-plaintext highlighter-rouge">README.md</code> 파일을 참고해주세요.</p>
-
-<p>본 페이지는 설치를 무사히 마쳤다는 가정하에, 아래의 내용을 통해 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 대한 보다 더 자세히 다룹니다.</p>
-
-<h2 id="시작하기">시작하기<a href="#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#시작하기"></div>
-</h2>
-
-<p>아래의 문서는 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치하는 방법을 다룹니다.</p>
-
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/start">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">시작하기</div>
-            <div class="small"></div>
-        </div>
-    </a>
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code>은 구동을 위해 다양한 기본 설정값을 구동시점(<code class="language-plaintext highlighter-rouge">:site</code>, <code class="language-plaintext highlighter-rouge">:after_init</code>) 에 변경합니다. 때문에 명시적으로 값을 override 한다는 의미로 기존 설정파일을 건드리지 않고, 추가하는 형태로 구현되었습니다.</p>
+</div>
 </div>
 
-<h2 id="config">config<a href="#config" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#config"></div>
-</h2>
+<p>좀 더 자세한 설정은 아래의 표를 참고해주세요.</p>
 
-<p>아래의 문서는 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 설정에 대해 다룹니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">항목</th>
+      <th style="text-align: center">필수여부</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion</code></td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: left">
+<code class="language-plaintext highlighter-rouge">jekyll_potion</code> 설정 Root</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site</code></td>
+      <td style="text-align: center">O</td>
+      <td style="text-align: left">
+<code class="language-plaintext highlighter-rouge">jekyll_potion</code> 설정 Site 설정 Root</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.index_page</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">기본 index page의 상대 경로<br><code class="language-plaintext highlighter-rouge">jekyll_potion</code>에서 이 값을 세팅할 경우 기존의 index page 를 정의된 페이지로 변경합니다.<br>만일 설정하지 않을 경우 이미 설정된 값을 따릅니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.permalink</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">기본 permalink<br><code class="language-plaintext highlighter-rouge">jekyll_potion</code>에서 이 값을 세팅할 경우 Site 내 모든 페이지의 <code class="language-plaintext highlighter-rouge">permalink</code> 를 변경합니다.<br>만일 설정하지 않을 경우 이미 설정된 값을 따릅니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.title</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">Site 의 기본 title<br>설정시 <code class="language-plaintext highlighter-rouge">{% code %}</code> 태그를 사용하면 내부 title 항목에 채워집니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.icon</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">Site 의 기본 icon<br>설정시 <code class="language-plaintext highlighter-rouge">{% code %}</code> 태그를 사용하면 내부 title 항목에 채워집니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.theme</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">
+<code class="language-plaintext highlighter-rouge">jekyll_potion</code> 의 기본 theme<br>이 theme 값은 <a href="https://jekyllrb.com/">Jekyll</a> 의 기본 theme와 다르며, <code class="language-plaintext highlighter-rouge">jekyll_potion</code> scope 내 모든 컨텐츠 파일이 해당 theme 로 적용됩니다.<br>만일 값이 없을 경우 <code class="language-plaintext highlighter-rouge">jekyll_potion</code> 의 기본 내장 theme 인 <code class="language-plaintext highlighter-rouge">proto</code> 로 동작합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.favicon</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">Site favicon 정보의 상대 경로<br>favicon 파일은 단순한 이미지 파일이 아닌 각 브라우저 환경별 favicon 목록을 포함한 html 파일로서 자세한 설명은 <a href="/jekyll-potion/config/site/favicon" class="a-internal">favicon 설정</a> 에서 다룹니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site.exclude</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">
+<code class="language-plaintext highlighter-rouge">jekyll_potion</code> 을 통해 생성한 Site 에서 특정한 컨텐츠 파일을 제외하고 싶은 경우 사용<br>예를 들어 <code class="language-plaintext highlighter-rouge">README.md</code> 파일을 GitHub 에서만 사용하고 GitHub Pages 에서는 제외하고 싶을 경우, 해당 파일의 상대 경로를 추가</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.theme</code></td>
+      <td style="text-align: center">-</td>
+      <td style="text-align: left">
+<code class="language-plaintext highlighter-rouge">jekyll_potion</code> 에 추가적인 theme 를 생성할 경우 사용<br>자세한 설명은 <a href="/jekyll-potion/config/theme" class="a-internal">Theme 설정</a> 에서 다룹니다.</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/config">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">설정</div>
-            <div class="small"></div>
-        </div>
-    </a>
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p><strong><code class="language-plaintext highlighter-rouge">jekyll-potion.site.index_page</code>, <code class="language-plaintext highlighter-rouge">jekyll-potion.site.permalink</code> 를 설정시 구동형태</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code>은 위 두 값을 세팅할 경우 기본 설정 파일의 <code class="language-plaintext highlighter-rouge">defaults</code> 항목을 아래의 값으로 대체합니다.</p>
+
+<p>만일 아래의 항목이 이미 존재하고 부가적인 속성이 부여됐다면, 그 항목은 건드리지 않습니다.</p>
+
+<div class="code">
+    <div class="header">
+        <div class="title">jekyll-potion.site.index_page</div>
+        <div class="copy" data-code-copy-target-id=""></div>
+        <div class="copy-text" data-skip-search-index="">복사성공!</div>
+    </div>
+    <div class="body">
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre><span class="na">defaults</span><span class="pi">:</span>
+  <span class="na">scope</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{jekyll-potion.site.index_page}}"</span>
+  <span class="na">values</span><span class="pi">:</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+</div>
 </div>
 
-<h2 id="라이브러리-구조">라이브러리 구조<a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B5%AC%EC%A1%B0" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#라이브러리-구조"></div>
-</h2>
-
-<p>아래의 문서는 <code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 내부 구조에 대해 다룹니다.</p>
-
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/anatomy-library">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">Library 구조</div>
-            <div class="small"></div>
-        </div>
-    </a>
+<div class="code">
+    <div class="header">
+        <div class="title">jekyll-potion.site.permalink</div>
+        <div class="copy" data-code-copy-target-id=""></div>
+        <div class="copy-text" data-skip-search-index="">복사성공!</div>
+    </div>
+    <div class="body">
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="rouge-code"><pre><span class="na">defaults</span><span class="pi">:</span>
+  <span class="na">scope</span><span class="pi">:</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+  <span class="na">values</span><span class="pi">:</span>
+    <span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{theme.default_layout}}"</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{jekyll-potion.site.permalink}}"</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+</div>
 </div>
 
-<h2 id="github-pages-적용">GitHub Pages 적용<a href="#github-pages-%EC%A0%81%EC%9A%A9" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#github-pages-적용"></div>
-</h2>
-
-<p>아래의 문서는 <a href="https://pages.github.com/">GitHub Pages</a> 로 적용시 설정하는 방법에 대해 다룹니다.</p>
-
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/apply-github">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">GitHub Pages 적용하기</div>
-            <div class="small"></div>
-        </div>
-    </a>
+</div>
 </div>
 
-<h2 id="구성요소">구성요소<a href="#%EA%B5%AC%EC%84%B1%EC%9A%94%EC%86%8C" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion#구성요소"></div>
-</h2>
+<p>보다 자세한 내용은 <a href="/jekyll-potion/components" class="a-internal">구성요소</a> 을 참고해 주세요.</p>
 
-<p>아래의 문서는 각 구성요소를 설명하고, <code class="language-plaintext highlighter-rouge">theme</code> 의 구조, 생성 및 <code class="language-plaintext highlighter-rouge">tag</code> template 에 대한 변경, 사용 가능한 <code class="language-plaintext highlighter-rouge">processor</code> 의 목록 및 설정을 다룹니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th>디렉토리</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.github</code></td>
+      <td>
+<a href="https://pages.github.com/">GitHub Pages</a> 포팅을 위해 준비된 workflow 들을 보관</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lib</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 구성하는 컴포넌트들이 보관</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lib.tags</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치함으로서 사용할 수 있는 liquid 태그를 보관</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lib.theme</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치함으로서 사용할 수 있는 기본 theme 정보를 보관</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="block">
-    <a class="block-body a-internal" href="/jekyll-potion/components">
-        <div class="thumb link"></div>
-        <div class="content">
-            <div class="large">구성요소</div>
-            <div class="small"></div>
-        </div>
-    </a>
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <code class="language-plaintext highlighter-rouge">_jekyll-potion</code> 내 요소를 구동하기 위해 반드시 <code class="language-plaintext highlighter-rouge">_plugins</code> 디렉토리에 <code class="language-plaintext highlighter-rouge">jekyll-potion.rb</code> 파일을 위치해야 합니다.</p>
+</div>
 </div>
 
         <div class="block-row pagination" data-skip-search-index>
     
         <div>
             <div class="block pagination">
-                <a class="block-body a-internal" href="/jekyll-potion/start/migration">
+                <a class="block-body a-internal" href="/jekyll-potion/">
                     <div class="thumb prev"></div>
                     <div class="content right">
                         <div class="x-small">이전</div>
-                        <div class="bold">마이그레이션</div>
+                        <div class="bold">jekyll-potion</div>
                         <div class="small"></div>
                     </div>
                 </a>
@@ -361,10 +460,10 @@
     
         <div>
             <div class="block pagination">
-                <a class="block-body a-internal" href="/jekyll-potion/config">
+                <a class="block-body a-internal" href="/jekyll-potion/config/site">
                     <div class="content">
                         <div class="x-small">다음</div>
-                        <div class="bold">설정</div>
+                        <div class="bold">Site 설정</div>
                         <div class="small"></div>
                     </div>
                     <div class="thumb next"></div>

@@ -7,11 +7,11 @@
 <meta http-equiv="Pragma" content="no-cache">
 
 <meta http-equiv="Last-Modified" content="2022-07-18 09:40:52 +0000">
-<meta http-equiv="Title" content="Jekyll-Potion - 설정">
-<title>Jekyll-Potion - 설정</title>
-<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/config">
+<meta http-equiv="Title" content="Jekyll-Potion - make_favicon_processor ">
+<title>Jekyll-Potion - make_favicon_processor </title>
+<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/components/processor/make-favicon-processor">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jekyll-Potion - 설정">
+<meta property="og:title" content="Jekyll-Potion - make_favicon_processor ">
 <meta property="og:image" content="https://nugudevelopers.github.io/jekyll-potion/assets/icon/icon.png">
 <script type="text/javascript" src="/jekyll-potion/_assets/base/jquery-3.6.0.min.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/navigation.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/tabs.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/code.js"></script><link rel="stylesheet" href="/jekyll-potion/_assets/css/syntax.css">
 <link rel="stylesheet" href="/jekyll-potion/_assets/css/main.css">
@@ -414,103 +414,23 @@
 <main>
     <div id="container" class="main-container">
     <div class="header">
-        <h1>설정</h1>
+        <h1>make_favicon_processor </h1>
         <div class="description"></div>
     </div>
     <div class="content">
-        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <a href="https://jekyllrb.com/">Jekyll</a> 의 기본 설정 파일인 <code class="language-plaintext highlighter-rouge">_config.yml</code> 을 override 하는 <code class="language-plaintext highlighter-rouge">_config.jekyll_potion.yml</code> 을 통해 설정값을 읽어들입니다.</p>
-
-<div class="alerts info">
-    <div class="style"></div>
-    <div class="body">
-<p><strong><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 이 설정 파일을 override 하는 이유</strong></p>
-
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code>은 구동을 위해 다양한 기본 설정값을 구동시점(<code class="language-plaintext highlighter-rouge">:site</code>, <code class="language-plaintext highlighter-rouge">:after_init</code>) 에 변경합니다. 때문에 명시적으로 값을 override 한다는 의미로 기존 설정파일을 건드리지 않고, 추가하는 형태로 구현되었습니다.</p>
-</div>
-</div>
-
-<p>세부 항목은 아래와 같습니다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">항목</th>
-      <th style="text-align: left">설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion</code></td>
-      <td style="text-align: left">
-<code class="language-plaintext highlighter-rouge">jekyll_potion</code> 설정 Root</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.site</code></td>
-      <td style="text-align: left">
-<code class="language-plaintext highlighter-rouge">jekyll_potion</code> Site 설정 Root<br>자세한 설명은 <a href="/jekyll-potion/config/site" class="a-internal">Site 설정</a> 에서 다룹니다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.theme</code></td>
-      <td style="text-align: left">
-<code class="language-plaintext highlighter-rouge">jekyll_potion</code> theme 설정 Root<br>자세한 설명은 <a href="/jekyll-potion/config/theme" class="a-internal">Theme 설정</a> 에서 다룹니다.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">jekyll_potion.processor</code></td>
-      <td style="text-align: left">
-<code class="language-plaintext highlighter-rouge">jekyll_potion</code> processor 설정 Root<br>자세한 설명은 <a href="/jekyll-potion/config/processor" class="a-internal">Processor 설정</a> 에서 다룹니다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>보다 자세한 내용은 <a href="/jekyll-potion/components" class="a-internal">구성요소</a> 을 참고해 주세요.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>디렉토리</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">.github</code></td>
-      <td>
-<a href="https://pages.github.com/">GitHub Pages</a> 포팅을 위해 준비된 workflow 들을 보관</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">lib</code></td>
-      <td>
-<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 구성하는 컴포넌트들이 보관</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">lib.tags</code></td>
-      <td>
-<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치함으로서 사용할 수 있는 liquid 태그를 보관</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">lib.theme</code></td>
-      <td>
-<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 을 설치함으로서 사용할 수 있는 기본 theme 정보를 보관</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="alerts info">
-    <div class="style"></div>
-    <div class="body">
-<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <code class="language-plaintext highlighter-rouge">_jekyll-potion</code> 내 요소를 구동하기 위해 반드시 <code class="language-plaintext highlighter-rouge">_plugins</code> 디렉토리에 <code class="language-plaintext highlighter-rouge">jekyll-potion.rb</code> 파일을 위치해야 합니다.</p>
-</div>
+        <div class="block-row" data-skip-search-index="">
+    
 </div>
 
         <div class="block-row pagination" data-skip-search-index>
     
         <div>
             <div class="block pagination">
-                <a class="block-body a-internal" href="/jekyll-potion/start/migration">
+                <a class="block-body a-internal" href="/jekyll-potion/components/processor/make-date-processor">
                     <div class="thumb prev"></div>
                     <div class="content right">
                         <div class="x-small">이전</div>
-                        <div class="bold">마이그레이션</div>
+                        <div class="bold">make_date_processor </div>
                         <div class="small"></div>
                     </div>
                 </a>
@@ -520,10 +440,10 @@
     
         <div>
             <div class="block pagination">
-                <a class="block-body a-internal" href="/jekyll-potion/config/site">
+                <a class="block-body a-internal" href="/jekyll-potion/components/processor/make-navigation-processor">
                     <div class="content">
                         <div class="x-small">다음</div>
-                        <div class="bold">Site 설정</div>
+                        <div class="bold">make_navigation_processor </div>
                         <div class="small"></div>
                     </div>
                     <div class="thumb next"></div>

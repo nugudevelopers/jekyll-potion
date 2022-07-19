@@ -104,7 +104,20 @@
   "sentences": [
     "code",
     "code",
+    "템플릿",
+    "javascript",
     "기본 CSS",
+    "<div class=\"{{ code_class }}\">\n    <div class=\"header\">\n        <div class=\"title\">{{ title }}</div>\n        <div class=\"copy\" data-code-copy-target-id></div>\n        <div class=\"{{ success_class }}\" data-skip-search-index>복사성공!</div>\n    </div>\n    <div class=\"body\">{{ body }}</div>\n</div>",
+    "code_class | - | code | code 태그로 인해 생성되는 HTML Root 태그에 부여할 class name",
+    "title | - |   | code block Title",
+    "success_class | - | copy-text | code 복사 성공시 노출될 main class name",
+    "success_show_class | - | show | code 복사 성공시 노출을 위한 class name",
+    "code.js",
+    "(($) => {\n  class Code {\n    constructor(options) {\n      this.options = options\n    }\n\n    init() {\n      let copy_codes = $('.{{ code_class }}').find('[data-code-copy-target-id]:not([data-potion-handled])')\n\n      copy_codes.attr('data-potion-handled', 'true')\n        .on('click', e => {\n          e.preventDefault()\n\n          let $clicked = $(e.currentTarget)\n\n          parent = $clicked.parents('.{{ code_class }}')\n          let code = parent.find('td.rouge-code').text().trim()\n\n          navigator.clipboard.writeText(code).then(() => {\n            let $success = parent.find('.{{ success_class }}')\n\n            if ($success[0]) {\n              $success.addClass('{{ success_show_class }}')\n              setTimeout(() => $success.removeClass('{{ success_show_class }}'), 1000)\n            }\n          })\n        })\n\n      return copy_codes\n    }\n  }\n\n  $.code = (options) => {\n    return new Code(options)\n  }\n})(jQuery)",
+    "init | HTML 요소 내 code_class 로 설정한 class 를 찾고, click 이벤트를 통해 tab content 를 변경합니다.event 를 추가한 다음 data-potion-handled attribute 를 추가하며, data-potion-handled attribute 가 추가된 HTML 요소에 대해서는 더 이상 event 를 추가하지 않습니다.",
+    "사용법",
+    "let tabs = $.tabs()\n\ntabs.init() // 문서의 load, 갱신 시 호출해줍니다.",
+    "현재 options 은 사용되고 있지 않습니다.",
     "기본 CSS",
     "div.tabs {\n  @extend %box;\n  @extend %item-width;\n\n  & > ul {\n    display: flex;\n    column-gap: 0.5em;\n    padding: 0;\n    margin: 0 0 -1px;\n\n    & > li.tab-title {\n      @extend %title-fixed;\n      display: block;\n      padding: 0 2em;\n      border-block-end: none;\n\n      &.active {\n        background-color: white;\n      }\n\n      &:hover {\n        cursor: pointer;\n      }\n    }\n  }\n\n  & > div.tab-content {\n    @include border(border);\n    @extend %shadow;\n\n    border-radius: 0 0.5em 0.5em 0.5em;\n    padding: 1em 0.5em;\n    display: none;\n\n    &.active {\n      display: block;\n    }\n\n    & > div.content {\n      @extend %gap-grid-row;\n\n      & > .code {\n        width: 100%;\n      }\n    }\n  }\n}"
   ]

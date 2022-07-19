@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Pragma" content="no-cache">
 
-<meta http-equiv="Last-Modified" content="2022-07-19 01:49:17 +0000">
+<meta http-equiv="Last-Modified" content="2022-07-19 05:28:53 +0000">
 <meta http-equiv="Title" content="Jekyll-Potion - make_base_javascript_processor ">
 <title>Jekyll-Potion - make_base_javascript_processor </title>
 <meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/components/processor/make-base-javascript-processor">
@@ -298,7 +298,7 @@
             
                 <li data-nav-link-id="/jekyll-potion/components/processor/make-date-processor">
     <div class="nav-link fold" data-fold-target-id="/jekyll-potion/components/processor/make-date-processor">
-        <a href="/jekyll-potion/components/processor/make-date-processor" class="nav-href a-internal" data-nav-link>make_date_processor </a>
+        <a href="/jekyll-potion/components/processor/make-date-processor" class="nav-href a-internal" data-nav-link>make_date_processor</a>
         <span class="nav-unfold" data-unfold-id="/jekyll-potion/components/processor/make-date-processor"> </span>
         <span class="nav-fold" data-fold-id="/jekyll-potion/components/processor/make-date-processor"> </span>
     </div>
@@ -522,9 +522,39 @@
         <div class="description"></div>
     </div>
     <div class="content">
-        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 필요한 정적 파일들을 <a href="/jekyll-potion/config/processor" class="a-internal">processor 설정</a>, <a href="/jekyll-potion/config/theme#%ED%83%9C%EA%B7%B8_%EC%84%A4%EC%A0%95" class="a-internal">태그 설정</a> 을 통해 로드된 설정을 통해 생성합니다.</p>
+        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 필요한 정적 파일들을 <a href="/jekyll-potion/config/processor" class="a-internal">processor 설정</a>, <a href="/jekyll-potion/config/theme#%ED%83%9C%EA%B7%B8-%EC%84%A4%EC%A0%95" class="a-internal">태그 설정</a> 을 통해 로드된 설정을 통해 생성합니다.</p>
 
-<p>생성되는 파일은 아래와 같습니다.</p>
+<h2 id="hook-event">Hook event<a href="#hook-event" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/components/processor/make-base-javascript-processor#hook-event"></div>
+</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>owner</th>
+      <th>event</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">site</td>
+      <td style="text-align: left">post_read</td>
+      <td>설치해야 할 javascript 파일을 설정에 맞게 생성합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">page</td>
+      <td style="text-align: left">post_render</td>
+      <td>설치 대상 javascript 를 각 페이지의 HTML 에 추가합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">site</td>
+      <td style="text-align: left">post_render</td>
+      <td>설치 대상 javascript 를 빌드 결과물에 추가합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 과정을 통해 생성되는 파일은 아래와 같습니다.</p>
 
 <table>
   <thead>
@@ -558,6 +588,36 @@
       <td><code class="language-plaintext highlighter-rouge">theme[].assets.target_root_path</code></td>
       <td>
 <code class="language-plaintext highlighter-rouge">tabs</code> 태그를 구동시키기 위한 javascript library</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="javascript-사용">javascript 사용<a href="#javascript-%EC%82%AC%EC%9A%A9" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/components/processor/make-base-javascript-processor#javascript-사용"></div>
+</h2>
+
+<p>생성된 javascript 중 태그의 동작을 위해 사용되는 javascript는 <code class="language-plaintext highlighter-rouge">code.js</code>, <code class="language-plaintext highlighter-rouge">navigation.js</code>, <code class="language-plaintext highlighter-rouge">tabs.js</code> 입니다.</p>
+
+<p>해당 javascript 의 소스 코드, 사용법 각각의 태그 설명 페이지에서 확인하실 수 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>파일명</th>
+      <th>사용 태그</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>code.js</td>
+      <td><a href="/jekyll-potion/components/tag/code" class="a-internal">code</a></td>
+    </tr>
+    <tr>
+      <td>navigation.js</td>
+      <td><a href="/jekyll-potion/components/tag/navigation" class="a-internal">code</a></td>
+    </tr>
+    <tr>
+      <td>tabs.js</td>
+      <td><a href="/jekyll-potion/components/tag/tabs" class="a-internal">code</a></td>
     </tr>
   </tbody>
 </table>

@@ -103,7 +103,10 @@
   "hash": "",
   "sentences": [
     "code",
-    "code"
+    "code",
+    "기본 CSS",
+    "기본 CSS",
+    "div.tabs {\n  @extend %box;\n  @extend %item-width;\n\n  & > ul {\n    display: flex;\n    column-gap: 0.5em;\n    padding: 0;\n    margin: 0 0 -1px;\n\n    & > li.tab-title {\n      @extend %title-fixed;\n      display: block;\n      padding: 0 2em;\n      border-block-end: none;\n\n      &.active {\n        background-color: white;\n      }\n\n      &:hover {\n        cursor: pointer;\n      }\n    }\n  }\n\n  & > div.tab-content {\n    @include border(border);\n    @extend %shadow;\n\n    border-radius: 0 0.5em 0.5em 0.5em;\n    padding: 1em 0.5em;\n    display: none;\n\n    &.active {\n      display: block;\n    }\n\n    & > div.content {\n      @extend %gap-grid-row;\n\n      & > .code {\n        width: 100%;\n      }\n    }\n  }\n}"
   ]
 }
   ]
@@ -404,11 +407,27 @@
     ",",
     "태그 설정",
     "을 통해 로드된 설정을 통해 생성합니다.",
-    "생성되는 파일은 아래와 같습니다.",
+    "Hook event",
+    "site | post_read | 설치해야 할 javascript 파일을 설정에 맞게 생성합니다.",
+    "page | post_render | 설치 대상 javascript 를 각 페이지의 HTML 에 추가합니다.",
+    "site | post_render | 설치 대상 javascript 를 빌드 결과물에 추가합니다.",
+    "위 과정을 통해 생성되는 파일은 아래와 같습니다.",
     "jquery-3.6.0.min.js | theme[].assets.target_root_path | jekyll-potion 에서 제공하는 태그를 구동시키기 위한 javascript library",
     "code.js | theme[].assets.target_root_path | code 태그를 구동시키기 위한 javascript library",
     "navigation.js | theme[].assets.target_root_path | navigation 태그를 구동시키기 위한 javascript library",
-    "tabs.js | theme[].assets.target_root_path | tabs 태그를 구동시키기 위한 javascript library"
+    "tabs.js | theme[].assets.target_root_path | tabs 태그를 구동시키기 위한 javascript library",
+    "javascript 사용",
+    "생성된 javascript 중 태그의 동작을 위해 사용되는 javascript는",
+    "code.js",
+    ",",
+    "navigation.js",
+    ",",
+    "tabs.js",
+    "입니다.",
+    "해당 javascript 의 소스 코드, 사용법 각각의 태그 설명 페이지에서 확인하실 수 있습니다.",
+    "code.js | code",
+    "navigation.js | code",
+    "tabs.js | code"
   ]
 }
   ]
@@ -419,11 +438,19 @@
   "indexes": [
     {
   "skip_keyword": "data-skip-search-index",
-  "title": "make_date_processor ",
+  "title": "make_date_processor",
   "hash": "",
   "sentences": [
-    "make_date_processor ",
-    "make_date_processor"
+    "make_date_processor",
+    "make_date_processor",
+    "각 페이지의 생성, 수정 시간을 확인하고 이를 HTML meta 태그로 추가합니다.",
+    "Hook event",
+    "page | post_render | 페이지의 생성, 수정 시간을 확인하여, HTML meta 태그로 추가합니다.단 생성, 수정 시간별로 확인할 수 없다면 추가하지 않습니다.",
+    "생성되는 meta 태그는 아래와 같습니다.",
+    "생성된 meta 태그",
+    "<head>\n    ...\n    <meta http-equiv=\"Date\" content=\"2022-07-19 01:49:17 +0000\">\n    <meta http-equiv=\"Last-Modified\" content=\"2022-07-19 01:49:17 +0000\">\n    ...\n</head>",
+    "GitHub Pages",
+    "에선 생성일을 확인할 수 없습니다."
   ]
 }
   ]
@@ -438,7 +465,13 @@
   "hash": "",
   "sentences": [
     "make_empty_content_processor ",
-    "make_empty_content_processor"
+    "make_empty_content_processor",
+    "컨텐츠가 없는 페이지의 본문에",
+    "{% empty %}",
+    "태그를 추가합니다.",
+    "Hook event",
+    "page | pre_render | 페이지의 내용이 없을 경우 {% empty %} 태그를 추가합니다.",
+    "주로 하위 페이지는 존재하나, 상위 페이지에 들어갈 내용이 없을 경우 유용하게 사용할 수 있습니다."
   ]
 }
   ]
@@ -453,7 +486,28 @@
   "hash": "",
   "sentences": [
     "make_favicon_processor ",
-    "make_favicon_processor"
+    "make_favicon_processor",
+    "설정된 favicon 정보를 통해 관련된 이미지 파일,",
+    "manifest.json",
+    "등을 찾고, HTML meta 태그를 추가합니다.",
+    "favicon 을 페이지에 추가하는 방법은",
+    "favicon 설정",
+    "을 참고해주세요.",
+    "Hook event",
+    "site | post_read | site.favicon 에 설정된 페이지의 내용을 분석하여, 추가되어야 하는 모든 파일을 검색합니다.",
+    "page | post_render | 분석된 내용을 바탕으로 페이지별 추가되어야 하는 요소를 HTML meta 태그로 추가합니다.",
+    "site | post_render | 추가되어야 하는 모든 파일을 빌드 결과물에 추가합니다.",
+    "생성되는 meta 태그는",
+    "site.favicon",
+    "에 작성된 모든 meta 태그입니다.",
+    "site.favicon",
+    "에 등록된 HTML 파일의 경로내 모든 파일이 추가되지 않습니다.",
+    "site.favicon",
+    "에 등록된 HTML 파일 안에 meta 태그,",
+    "manifest.json",
+    "내 src 등을 분석하여, 추가가 필요한 파일만을 추가하며, 그 외의",
+    "site.favicon",
+    "에 등록된 HTML 파일의 경로내 파일은 빌드 결과물에서 제외됩니다."
   ]
 }
   ]
@@ -468,7 +522,14 @@
   "hash": "",
   "sentences": [
     "make_front_matter_processor ",
-    "make_front_matter_processor"
+    "make_front_matter_processor",
+    "markdown 페이지중",
+    "Front Matter",
+    "가 없는 페이지를",
+    "Jekyll",
+    "에서 인식하도록 합니다.",
+    "Hook event",
+    "page | post_read | markdown 페이지중 Front Matter 가 없는 페이지를 Jekyll 에서 인식하도록 합니다."
   ]
 }
   ]
@@ -483,7 +544,25 @@
   "hash": "",
   "sentences": [
     "make_header_link_processor ",
-    "make_header_link_processor"
+    "make_header_link_processor",
+    "HTML",
+    "<h1>",
+    "~",
+    "<h6>",
+    "태그에 복사, 링크 기능을 추가합니다.",
+    "주로 markdown 의",
+    "#",
+    "~",
+    "######",
+    "으로 생성된 단락 제목의 링크 정보를 복사하거나 이동하기 위해 사용됩니다.",
+    "추가적으로 생성되는 HTML 태그들은 자동으로 생성되는",
+    "theme[].assets.target_root_path/header.js",
+    "에 의해 사용됩니다.",
+    "생성되는 결과물은 아래와 같습니다.",
+    "markdown 구문",
+    "## 제목",
+    "변환 예시",
+    "<h2 id=\"제목\">제목\n    <a href=\"#제목\" class=\"go-hash hash-internal a-internal\" data-handled=\"true\"></a>\n    <div class=\"copy-link\" data-header-link=\"#제목\" data-potion-handled=\"true\"></div>\n</h2>"
   ]
 }
   ]

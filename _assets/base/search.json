@@ -575,7 +575,19 @@
     "markdown 구문",
     "## 제목",
     "변환 예시",
-    "<h2 id=\"제목\">제목\n    <a href=\"#제목\" class=\"go-hash hash-internal a-internal\" data-handled=\"true\"></a>\n    <div class=\"copy-link\" data-header-link=\"#제목\" data-potion-handled=\"true\"></div>\n</h2>"
+    "<h2 id=\"제목\">제목\n    <a href=\"#제목\" class=\"go-hash hash-internal a-internal\" data-handled=\"true\"></a>\n    <div class=\"copy-link\" data-header-link=\"#제목\" data-potion-handled=\"true\"></div>\n</h2>",
+    "생성된 HTML 요소를 컨트롤하는 javascript 는 다음과 같습니다.",
+    "header.js",
+    "(($) => {\n  class Header {\n    constructor(options) {\n      this.options = options\n    }\n\n    init() {\n      let copy_links = $('h1, h2, h3, h4, h5, h6').find('[{{ selector }}]:not([data-potion-handled])')\n\n      copy_links.attr('data-potion-handled', 'true')\n        .on('click', e => {\n          e.preventDefault()\n\n          let $clicked = $(e.currentTarget)\n\n          let url = [$(location).attr('protocol'), $(location).attr('host'), $clicked.attr('{{ selector }}')].join('')\n\n          navigator.clipboard.writeText(url)\n        })\n\n      return copy_links\n    }\n  }\n\n  $.header = (options) => {\n    return new Header(options)\n  }\n})(jQuery)",
+    "해당 javascript 는 theme 의 설정에 의해",
+    "selector",
+    ",",
+    "hash_class",
+    ",",
+    "copy_class",
+    "값을 변경할 수 있으며, 자세한 내용은",
+    "processor 설정",
+    "를 참조하세요."
   ]
 }
   ]

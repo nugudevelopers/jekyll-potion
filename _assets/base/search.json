@@ -397,7 +397,18 @@
   "hash": "",
   "sentences": [
     "make_base_javascript_processor ",
-    "make_base_javascript_processor"
+    "make_base_javascript_processor",
+    "jekyll-potion",
+    "에 필요한 정적 파일들을",
+    "processor 설정",
+    ",",
+    "태그 설정",
+    "을 통해 로드된 설정을 통해 생성합니다.",
+    "생성되는 파일은 아래와 같습니다.",
+    "jquery-3.6.0.min.js | theme[].assets.target_root_path | jekyll-potion 에서 제공하는 태그를 구동시키기 위한 javascript library",
+    "code.js | theme[].assets.target_root_path | code 태그를 구동시키기 위한 javascript library",
+    "navigation.js | theme[].assets.target_root_path | navigation 태그를 구동시키기 위한 javascript library",
+    "tabs.js | theme[].assets.target_root_path | tabs 태그를 구동시키기 위한 javascript library"
   ]
 }
   ]

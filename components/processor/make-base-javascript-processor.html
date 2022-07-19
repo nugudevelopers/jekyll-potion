@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Pragma" content="no-cache">
 
-<meta http-equiv="Last-Modified" content="2022-07-18 10:29:30 +0000">
+<meta http-equiv="Last-Modified" content="2022-07-19 01:49:17 +0000">
 <meta http-equiv="Title" content="Jekyll-Potion - make_base_javascript_processor ">
 <title>Jekyll-Potion - make_base_javascript_processor </title>
 <meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/components/processor/make-base-javascript-processor">
@@ -522,9 +522,45 @@
         <div class="description"></div>
     </div>
     <div class="content">
-        <div class="block-row" data-skip-search-index="">
-    
-</div>
+        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에 필요한 정적 파일들을 <a href="/jekyll-potion/config/processor" class="a-internal">processor 설정</a>, <a href="/jekyll-potion/config/theme#%ED%83%9C%EA%B7%B8_%EC%84%A4%EC%A0%95" class="a-internal">태그 설정</a> 을 통해 로드된 설정을 통해 생성합니다.</p>
+
+<p>생성되는 파일은 아래와 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>파일명</th>
+      <th>생성 위치</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>jquery-3.6.0.min.js</td>
+      <td><code class="language-plaintext highlighter-rouge">theme[].assets.target_root_path</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서 제공하는 태그를 구동시키기 위한 javascript library</td>
+    </tr>
+    <tr>
+      <td>code.js</td>
+      <td><code class="language-plaintext highlighter-rouge">theme[].assets.target_root_path</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">code</code> 태그를 구동시키기 위한 javascript library</td>
+    </tr>
+    <tr>
+      <td>navigation.js</td>
+      <td><code class="language-plaintext highlighter-rouge">theme[].assets.target_root_path</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">navigation</code> 태그를 구동시키기 위한 javascript library</td>
+    </tr>
+    <tr>
+      <td>tabs.js</td>
+      <td><code class="language-plaintext highlighter-rouge">theme[].assets.target_root_path</code></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">tabs</code> 태그를 구동시키기 위한 javascript library</td>
+    </tr>
+  </tbody>
+</table>
 
         <div class="block-row pagination" data-skip-search-index>
     

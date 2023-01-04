@@ -1,0 +1,49 @@
+collections:
+  posts:
+    output: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+sass:
+  style: compressed
+
+########################################
+
+plugins:
+  - jekyll-spaceship
+
+jekyll-spaceship:
+  processors:
+    - table-processor
+    - media-processor
+    - mathjax-processor
+    - polyfill-processor
+  mathjax-processor:
+    config:
+      options:
+        enableMenu: false
+
+########################################
+jekyll_potion:
+  site:
+    index_page: "index.md"
+    permalink: "/:path/:basename"
+    title: "Jekyll-Potion"
+    icon: "assets/icon/icon.png"
+    favicon: "assets/favicon/favicon.html"
+    exclude:
+      - "readme_assets/"
+  processor:
+    - make_navigation_processor
+    - make_empty_content_processor
+    - make_header_link_processor
+    - rewrite_img_processor
+    - rewrite_a_href_processor
+    - make_search_index_processor
+    - make_og_tag_processor

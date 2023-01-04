@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |spec|
   spec.name                  = "jekyll-potion"
-  spec.version               = "1.0.0"
+  spec.version               = "1.0.1"
   spec.summary               = "Jekyll's Potion"
   spec.authors               = ["SK TELECOM CO., LTD"]
   spec.email                 = ["changgun.kim@sk.com"]
@@ -12,6 +12,6 @@ Gem::Specification.new do |spec|
   spec.files                 = Dir["LICENSE", "jekyll-potion.gemspec", "lib/**/*"]
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.add_dependency "jekyll", "~> 4.3.1"
+  spec.add_dependency "jekyll", ">= 4.2.2"
   spec.add_dependency "nokogiri", "~> 1.13.6"
 end

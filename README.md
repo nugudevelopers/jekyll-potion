@@ -23,7 +23,7 @@
 
 ## 시스템 요구사항
 
-* jekyll >= 4.3.1
+* jekyll >= 4.2.2
 
 ## 설치
 
@@ -31,7 +31,7 @@
 
 ```ruby
 group :jekyll_plugins do
-  gem "jekyll-potion", "1.0.0"
+  gem "jekyll-potion", "1.0.1"
 end
 ```
 

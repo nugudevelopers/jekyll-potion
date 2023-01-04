@@ -1,0 +1,1383 @@
+[
+  {
+  "url": "/jekyll-potion/use/tag/alerts",
+  "order": null,
+  "indexes": [
+    {
+  "title": "alerts",
+  "hash": "",
+  "sentences": [
+    "alerts",
+    "alerts 는 정해진 유형의 시각화를 통해 사용자에게 강조된 내용을 제공합니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% alerts style=\"{style}\" %}\n{content}\n{% endalerts %}",
+    "style | enum | Y | style 은 시각화의 유형을 결정합니다.각 유형은 proto theme 에서 우측 측면에 다음의 색상으로 표현됩니다.* info : #4169E1* warning : #FF8C00* danger : #8B0000* success : #008000style 은 필수값이나, theme 별로 강제화된 값은 없습니다. 필요한 style 이 있다면, 그에 맞는 스타일이 존재한다면, 사용 가능합니다.",
+    "content | markdown |   | content 는 시각화를 통해 표현할 본문에 해당됩니다. 모든 markdown 문법을 지원하기 때문에 일반 문서 내용을 작성하듯 작성하면 됩니다.",
+    "alerts 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "alerts.liquid",
+    "<div class=\"alerts {{ style }}\">\n    <div class=\"style\"></div>\n    <div class=\"body\">{{ body }}</div>\n</div>",
+    "template 작성 항목",
+    "style | Y | 선언시 사용한 style",
+    "body | Y | 선언시 사용한 content 로서 markdown 으로서 표현됩니다.",
+    "div.alerts {\n  @extend %bordered-box;\n  @extend %item-width;\n\n  display: flex;\n\n  & > div.style {\n    width: 0.4em;\n    border-radius: 0.5em 0 0 0.5em;\n  }\n\n  &.info > div.style {\n    background-color: royalblue;\n  }\n\n  &.warning > div.style {\n    background-color: darkorange;\n  }\n\n  &.danger > div.style {\n    background-color: darkred;\n  }\n\n  &.success > div.style {\n    background-color: green;\n  }\n\n  & > div.body {\n    @extend %gap-grid-row;\n    width: calc(100% - 0.4em);\n    height: fit-content;\n    margin: 0.5em 1em;\n\n    img {\n      width: auto;\n      max-height: 6em;\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/api",
+  "order": null,
+  "indexes": [
+    {
+  "title": "api",
+  "hash": "",
+  "sentences": [
+    "api",
+    "api 는 영역을 구분하여, API 에 대해 효과적으로 사용자에게 제공합니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% api base_url=\"https://api.host.domain\" path=\"/path\" method=\"get\" summary=\"some api\" %}\n\n{% api::description %}\n{description_content}\n{% endapi::description %}\n\n{% api::parameter name=\"parameter #n\" type=\"string\" category=\"query\" %}\n{parameter_content}\n{% endapi::parameter %}\n\n{% api::response status=\"200\" description=\"description\" %}\n{response_content}\n{% endapi::response %}\n\n{% endapi %}",
+    "base_url | string |   | api 의 기본 URL 정보",
+    "path | string | Y | api 의 path 정보",
+    "method | string | Y | api 의 method 정보",
+    "summary | string | Y | api 의 제목에 해당되는 요약 정보",
+    "api::description | tag |   | api 에 대한 기본적인 설명을 기술합니다.api tag 내 api::로 시작하는 tag 이외의 내용은 무시됩니다.",
+    "description_content | markdown |   | api 에 대한 기본적인 설명을 markdown 으로 작성합니다.",
+    "api::parameter | tag |   | api 에 필요한 parameter 를 기술로서 복수 개가 허용됩니다.api tag 내다른 api::로 시작하는 tag 이외의 내용은 무시됩니다.",
+    "name | string |   | parameter 의 이름",
+    "type | string |   | parameter 의 타입",
+    "category | enum |   | parameter 의 유형으로 query, body 중 하나를 선택",
+    "parameter_content | markdown |   | parameter 에 대한 설명을 markdown 으로 작성합니다.",
+    "api::response | tag |   | api 의 응답으로 복수 개가 허용됩니다.api tag 내다른 api::로 시작하는 tag 이외의 내용은 무시됩니다.",
+    "status | string |   | api 응답의 HTTP status",
+    "description | string |   | api 응답의 설명",
+    "response_content | markdown |   | api 응답에 대한 설명을 markdown 으로 작성합니다.",
+    "api tag 내 api:: 로 시작하는 tag 이외의 다른 내용이 있을 경우 해당 내용은 무시됩니다.",
+    "api 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "api.liquid",
+    "<div class=\"api\">\n    <div class=\"header\">\n        <div class=\"title\">{{ summary }}</div>\n    </div>\n    <div class=\"description\">\n        <div class=\"description-area\">\n            <div class=\"api-description\">\n                <div class=\"method\"><label class=\"bold\">{{ method | upcase }}</label></div>\n                <div class=\"url\">\n                    <label>{{ base_url }}</label>\n                    <label class=\"gray\">{{ path }}</label>\n                </div>\n            </div>\n            {{ description }}\n        </div>\n    </div>\n    <div class=\"content\">\n        <div class=\"request-categories\">\n            <div class=\"large\">Parameters</div>\n            <div class=\"content\">\n                {% if query_parameters %}\n                    <div class=\"category\">\n                        <div class=\"title\">Query</div>\n                        <div class=\"parameters\">\n                            {{ query_parameters }}\n                        </div>\n                    </div>\n                {% endif %}\n                {% if body_parameters %}\n                    <div class=\"category\">\n                        <div class=\"title\">Body</div>\n                        <div class=\"parameters\">\n                            {{ body_parameters }}\n                        </div>\n                    </div>\n                {% endif %}\n            </div>\n        </div>\n        <div class=\"responses\">\n            <div class=\"large\">Responses</div>\n            <div class=\"content\">\n                {{ responses }}\n            </div>\n        </div>\n    </div>\n</div>",
+    "template 작성 항목",
+    "summary | Y | API 의 제목",
+    "method | Y | API 의 HTTP method",
+    "base_url |   | API 의 기본 url",
+    "path | Y | API 의 path",
+    "description |   | API 에 대한 설명 영역으로 api==description.liquid 로 별도 템플릿으로 구성",
+    "query_parameters |   | API 요청시 사용되는 query parameter 로 api==parameter.liquid 로 별도 템플릿으로 구성",
+    "body_parameters |   | API 요청시 사용되는 body parameter  로 api==parameter.liquid 로 별도 템플릿으로 구성",
+    "responses |   | 결과 영역으로  로 api==response.liquid 로 별도 템플릿으로 구성",
+    "api==description.liquid",
+    "<div class=\"content gray\">\n    {{ description }}\n</div>",
+    "template 작성 항목",
+    "description | Y | API 설명으로 markdown 으로 구성",
+    "api==parameter.liquid",
+    "<div class=\"parameter\">\n    <div class=\"name\">{{ name }}</div>\n    <div class=\"type\">{{ type }}</div>\n    <div class=\"description\">{{ description }}</div>\n</div>",
+    "template 작성 항목",
+    "name | Y | parameter 명",
+    "type | Y | parameter 유형",
+    "description | Y | parameter 의 설명",
+    "api==response.liquid",
+    "<div class=\"response\">\n    <div class=\"header\">\n        <div class=\"status\"><label>{{ status }}</label></div>\n        <div class=\"description gray\">{{ description }}</div>\n    </div>\n    <div class=\"content\">{{ body }}</div>\n</div>",
+    "template 작성 항목",
+    "status |   | 응답에 대한 HTTP Status",
+    "description |   | 응답에 대한 설명",
+    "body |   | 응답 결과에 대한 기술로서 markdown 이 허용됩니다.",
+    "div.api {\n  @extend %box;\n  @extend %grid-row;\n  margin-block-start: 1em;\n\n  & > div.header {\n    & > div.title {\n      @extend %title-fixed;\n      border-radius: 0;\n    }\n  }\n\n  & > div.description {\n    @extend %gap-grid-row;\n    @include border(border-inline);\n\n    & > div.description-area {\n      @extend %gap-grid-row;\n      @extend %item-width;\n      margin: 1em auto;\n\n      & > div.api-description {\n        display: flex;\n\n        & > div.method {\n          @extend %center-middle;\n          width: 10%;\n\n          & > label {\n            @include label(white, royalblue, 0.5em);\n            padding-inline: 1em;\n          }\n        }\n\n        & > div.url {\n          @extend %left-middle;\n          @include border(border-left);\n          display: flex;\n          padding-inline-start: 1em;\n        }\n      }\n\n      & > div.content {\n        @include border(border-top);\n      }\n    }\n  }\n\n  & > div.content {\n    @extend %gap-grid-row;\n    @include border(border-inline);\n    @include border(border-bottom);\n    @extend %shadow;\n    border-radius: 0;\n    padding-block-end: 1em;\n\n    & > div.request-categories {\n      @extend %item-width;\n      @extend %gap-grid-row;\n      margin-inline: auto;\n\n      & > div.content {\n        @extend %gap-grid-row;\n\n        & > div.category {\n          @extend %grid-row;\n\n          & > div.title {\n            @extend %center-middle;\n            @extend %title-s-fixed;\n            width: 150px;\n          }\n\n          & > div.parameters {\n            @extend %content-fixed;\n\n            border-radius: 0 0.5em 0.5em 0.5em;\n\n            & > div.parameter {\n              @include border(border-bottom);\n              display: flex;\n              padding: 0.5em;\n              margin-inline: 1em;\n\n              &:last-child {\n                border-bottom: none;\n              }\n\n              & > div.name {\n                flex: auto;\n                width: 15%;\n              }\n\n              & > div.type {\n                flex: auto;\n                width: 15%;\n              }\n\n              & > div.description {\n                flex: auto;\n                width: 70%;\n              }\n            }\n          }\n        }\n      }\n    }\n\n    & > div.responses {\n      @extend %item-width;\n      @extend %gap-grid-row;\n      margin-inline: auto;\n\n      & > div.content {\n        @extend %gap-grid-row;\n\n        & > div.response {\n          @extend %grid-row;\n\n          & > div.header {\n            @extend %title-fixed;\n            border-block-end: none;\n            background-color: white;\n            display: flex;\n\n            & > div.status {\n              width: 10%;\n\n              & > label {\n                @include label(white, slategray, 0.5em);\n                padding-inline: 1em;\n              }\n            }\n\n            & > div.description {\n              @include border(border-left);\n              padding-inline-start: 1em;\n            }\n          }\n\n          & > div.content {\n            @extend %gap-grid-row;\n            @extend %content-fixed;\n            padding-block: 1em;\n          }\n        }\n      }\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start/apply-github-pages",
+  "order": 4,
+  "indexes": [
+    {
+  "title": "GitHub Pages 적용",
+  "hash": "",
+  "sentences": [
+    "GitHub Pages 적용",
+    "jekyll-potion 은 Using workflows 를 통해 GitHub Pages 적용이 가능하며 아래의 과정을 진행하세요.",
+    "GitHub 저장소의 생성, workflows 사용을 위한 Personal Access Token 등록 과정은 생략합니다.",
+    "workflow 는 GitHub 에서 지원하는 특정 상황(push, pull-request 등)을 체크하여, 사후작업을 수행하는 기능이며, 이 기능을 통해 GitHub 에서 제공하는 라이브러리 이외에 라이브러리를 사용하는 Jekyll 빌드할 수 있습니다.",
+    "GitHub 저장소 최상단에 .github/workflows 디렉토리를 생성하고, 아래 내용의 yml 파일을 생성하고 push 합니다.",
+    "name: Jekyll site CI\n\non:\n  push:\n    branches: [ main ]\n\njobs:\n  build:\n\n    runs-on: ubuntu-latest\n\n    steps:\n    - uses: actions/checkout@v2\n\n    # Use GitHub Actions' cache to shorten build times and decrease load on servers\n    - uses: actions/cache@v2\n      with:\n        path: vendor/bundle\n        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}\n        restore-keys: |\n          ${{ runner.os }}-gems-\n\n    # Standard usage\n    - uses:  helaili/jekyll-action@v2.3\n      with:\n        keep_history: true\n        target_branch: \"gh-pages\"\n        token: ${{ secrets.GITHUB_TOKEN }}",
+    "위 문서는 helaili/jekyll-action 에서 제공되는 기능을 이용했습니다.",
+    "지원되는 다른 GitHub Action 이 있다면, 그를 사용해도 무방합니다.",
+    "또한 기본 브랜치의 변경이나, push 이외에 예를 들어 pull-request 등을 통한 문서 빌드를 수행할 경우 아래와 같이 정의함으로서 동작할 수 있습니다.",
+    "on:\n  push:\n    branches: [ doc ]\n  pull_request:\n    branches: [ doc ]",
+    "빌드 과정에 대한 자세한 설정은 helaili/jekyll-action 를 참고해주세요.",
+    "GitHub Pages 를 참조하여, 기본 URL, 도메인 설정에 맞게 프로젝트를 수정합니다.",
+    "만일 context path 기반의 호스팅을 원한다면, Jekyll 의 설정파일을 아래와 같이 변경하세요.",
+    "url: \"https://nugudevelopers.github.io\"\nbaseurl: \"/jekyll-potion\"",
+    "만일 도메인 기반의 호스팅을 원한다면 Jekyll 의 설정파일을 아래와 같이 변경하세요.",
+    "url: \"your domain\"\nbaseurl: \"\"",
+    "또한 workflow 를 통한 빌드, 배포임으로 CNAME 파일을 GitHub 저장소에 추가합니다.",
+    "your domain",
+    "workflow 파일을 저장소에 push 했다면 GitHub Action 을 통해 문서 사이트의 대상 브랜치인 gh-pages 가 생성되었을 겁니다.",
+    "이후 GitHub 저장소의 Settings > GitHub Pages 메뉴에 접근하여 아래의 그림과 같이 설정합니다."
+  ]
+},
+    {
+  "title": "GitHub Pages 적용 > GitHub Pages 적용",
+  "hash": null,
+  "sentences": [
+    "GitHub Pages 적용"
+  ]
+},
+    {
+  "title": "GitHub Pages 적용 > workflow 생성",
+  "hash": "#workflow-생성",
+  "sentences": [
+    "workflow 생성"
+  ]
+},
+    {
+  "title": "GitHub Pages 적용 > 배포시 domain 구성",
+  "hash": "#배포시-domain-구성",
+  "sentences": [
+    "배포시 domain 구성"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/code",
+  "order": null,
+  "indexes": [
+    {
+  "title": "code",
+  "hash": "",
+  "sentences": [
+    "code",
+    "code 는 markdown 에서 작성된 코드 블럭을 확장하여, 코드 제목, 복사기능과 더불어 블럭 내 {{ ~ }} 등의 liquid tag 문법 사용이 가능하도록 합니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% code title=\"test.java\" %}\n```\n{content}\n```\n{% endcode %}",
+    "code tag 내 {content} 는 반드시 하나의 코드블럭 ```{content}``` 와 같이 구성되어야만 정확히 표현됩니다. 만일 코드블럭 바깥쪽에 컨텐츠가 존재할 경우 문법 오류가 발생하고, 빌드되지 않습니다.",
+    "code 의 proto theme 의 기본 template, javascript, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "javascript",
+    "stylesheet",
+    "code.liquid",
+    "<div class=\"{{ code_class }}\">\n    <div class=\"header\">\n        <div class=\"title\">{{ title }}</div>\n        <div class=\"copy\" data-code-copy-target-id></div>\n        <div class=\"{{ success_class }}\" data-skip-search-index>복사성공!</div>\n    </div>\n    <div class=\"body\">{{ body }}</div>\n</div>",
+    "template 작성 항목",
+    "code_class | Y | code 태그로 인해 생성되는 HTML Root 태그에 부여할 class name",
+    "title |   | code 블럭 Title",
+    "data-code-copy-target-id |   | code 블럭 복사 기능을 위한 key만일 복사 기능을 사용하지 않을 경우 필요하지 않음",
+    "success_class |   | code 복사 성공시 노출될 main class name",
+    "data-skip-search-index |   | data-skip-search-index 은 make_search_index_processor를 통해 검색 index 생성을 피하기 위한 keyword 입니다.복사 성공시 노출되는 키워드이기 때문에 검색 index 를 만들 필요 없음",
+    "body | Y | code 본문",
+    "code.js",
+    "(($) => {\n  class Code {\n    constructor(options) {\n      this.options = options\n    }\n\n    init() {\n      let copy_codes = $('.{{ code_class }}').find('[data-code-copy-target-id]:not([data-potion-handled])')\n\n      copy_codes.attr('data-potion-handled', 'true')\n        .on('click', e => {\n          e.preventDefault()\n\n          let $clicked = $(e.currentTarget)\n\n          parent = $clicked.parents('.{{ code_class }}')\n          let code = parent.find('td.rouge-code').text().trim()\n\n          navigator.clipboard.writeText(code).then(() => {\n            let $success = parent.find('.{{ success_class }}')\n\n            if ($success[0]) {\n              $success.addClass('{{ success_show_class }}')\n              setTimeout(() => $success.removeClass('{{ success_show_class }}'), 1000)\n            }\n          })\n        })\n\n      return copy_codes\n    }\n  }\n\n  $.code = (options) => {\n    return new Code(options)\n  }\n})(jQuery)",
+    "jekyll-potion 은 jquery 를 사용합니다.",
+    "javascript 는 {{ ~ }} 을 포함한 template 이며, 설정에서 결정한 값을 매핑하여 javascript 파일을 생성합니다.",
+    "{{ ~ }} 구문은 태그 설정 의 theme[].tags.code 항목을 참고해 주세요.",
+    "함수 설명",
+    "init | HTML 요소 내 code_class 로 설정한 class 를 찾고, 코드 블럭 복사 기능을 click 이벤트에 추가합니다.event 를 추가한 다음 data-potion-handled attribute 를 추가하며, data-potion-handled attribute 가 추가된 HTML 요소에 대해서는 더 이상 event 를 추가하지 않습니다.",
+    "사용법",
+    "let code = $.code()\n\ncode.init() // 문서의 load, 갱신 시 호출해줍니다.",
+    "div.tabs {\n  @extend %box;\n  @extend %item-width;\n\n  & > ul {\n    display: flex;\n    column-gap: 0.5em;\n    padding: 0;\n    margin: 0 0 -1px;\n\n    & > li.tab-title {\n      @extend %title-fixed;\n      display: block;\n      padding: 0 2em;\n      border-block-end: none;\n\n      &.active {\n        background-color: white;\n      }\n\n      &:hover {\n        cursor: pointer;\n      }\n    }\n  }\n\n  & > div.tab-content {\n    @include border(border);\n    @extend %shadow;\n\n    border-radius: 0 0.5em 0.5em 0.5em;\n    padding: 1em 0.5em;\n    display: none;\n\n    &.active {\n      display: block;\n    }\n\n    & > div.content {\n      @extend %gap-grid-row;\n\n      & > .code {\n        width: 100%;\n      }\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config",
+  "order": 5,
+  "indexes": [
+    {
+  "title": "설정",
+  "hash": "",
+  "sentences": [
+    "설정",
+    "jekyll-potion 의 기본적으로 설정을 추가하지 않아도 동작합니다. 하지만 설정을 통해 사이트, 부가적인 기능을 활성화 할 수 있으며 아래의 내용은 모든 설정 항목입니다.",
+    "jekyll_potion:\n  site:\n    index_page: \"\"\n    permalink: \"\"\n    title: \"\"\n    icon: \"\"\n    theme: \"proto\"\n    favicon: \"\"\n    exclude:\n      -\n  theme:\n    - theme_name:  \n        path: \"\"\n        layouts_dir: \"_layouts\"\n        includes_dir: \"_includes\"\n        default_layout: \"default\"\n        assets:\n          target_root_path: \"_assets\"\n          source_dir: \"assets\"\n          priority_files:\n            -\n          scss_source_dir: \"_scss\"\n          scss_files:\n            -\n        templates_dir: \"_templates\"\n        content_x_path: \"main\"\n        tags:\n          alerts:\n            info: \"info\"\n            warning: \"warning\"\n            danger: \"danger\"\n            success: \"success\"\n          code:\n            code_class: \"code\"\n            success_class: \"copy-text\"\n            success_show_class: \"show\"\n          tabs:\n            tabs_class: \"tabs\"\n            active_class: \"active\"\n          navigation:\n            active_class: \"active\"\n            fold_class: \"fold\"\n        processors:\n          make_header_link_processor:\n            selector: \"data-header-link\"\n            hash_class: \"go-hash\"\n            copy_class: \"copy-link\"\n          rewrite_img_processor:\n            skip_keyword: \"data-skip-src-to-absolute\"\n            inline_image_class: \"img-inline\"\n            internal_image_class: \"img-internal\"\n          rewrite_a_href_processor:\n            skip_keyword: \"data-skip-href-to-absolute\"\n            index_page_keyword: \"data-to-index-page\"\n            hash_link_class: \"hash-internal\"\n            internal_link_class: \"a-internal\"\n          make_search_index_processor:\n            skip_keyword: \"data-skip-search-index\"\n            search_file_name: \"search.json\"\n  processors:\n    - make_navigation_processor\n    - make_empty_content_processor\n    - make_header_link_processor\n    - rewrite_img_processor\n    - rewrite_a_href_processor\n    - make_search_index_processor\n    - make_og_tag_processor",
+    "jekyll_potion | jekyll_potion 설정 Root",
+    "jekyll_potion.site | jekyll_potion Site 설정 Root자세한 설명은 Site 설정 에서 다룹니다.",
+    "jekyll_potion.theme | jekyll_potion theme 설정 Root자세한 설명은 Theme 설정 에서 다룹니다.",
+    "jekyll_potion.processor | jekyll_potion processor 설정 Root자세한 설명은 Processor 설정 에서 다룹니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/empty",
+  "order": null,
+  "indexes": [
+    {
+  "title": "empty",
+  "hash": "",
+  "sentences": [
+    "empty",
+    "empty 는 본문이 없는 markdown 페이지 중 하위 페이지가 있을 경우, 하위 페이지의 목록을 보여주는 tag 로서 make_empty_content_processor 를 통해 자동으로 생성되며, 별도로 선언할 필요는 없습니다.",
+    "empty 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "empty.liquid",
+    "<div class=\"block-row\" data-skip-search-index>\n    {% for child in potion.children %}\n        <div>\n            <div class=\"block\">\n                <a class=\"block-body\" href=\"{{ child.url }}\">\n                    <div class=\"thumb document\"></div>\n                    <div class=\"content\">\n                        <div class=\"bold\">{{ child.title }}</div>\n                        <div class=\"small\">{{ child.description }}</div>\n                    </div>\n                </a>\n            </div>\n        </div>\n    {% endfor %}\n</div>",
+    "template 작성 항목",
+    "data-skip-search-index | Y | data-skip-search-index 은 make_search_index_processor를 통해 검색 index 생성을 피하기 위한 keyword 입니다.모든 markdown 페이지의 본문, 제목, 설명은 검색 index 로 생성되기 때문에 empty tag 로 인해 생성되는 내용의 경우 검색 index 로 생성되면 안됩니다.때문에 data-skip-search-index 를 통해 중복된 index 생성을 피해야 합니다.",
+    "potion.children | Y | 하위 페이지 목록을 가르킵니다. for iteration 을 통해 하위 페이지를 rendering 함으로 반드시 사용되어야 합니다.",
+    "child | Y | 하위 페이지의 속성을 가르킵니다.",
+    "child.url | Y | 하위 페이지의 url 속성을 가르킵니다.",
+    "child.title |   | 하위 페이지의 제목을 가르킵니다.",
+    "child.description |   | 하위 페이지의 설명을 가르킵니다.",
+    "div.block-row {\n  @extend %box;\n  display: flex;\n  flex-wrap: wrap;\n  margin-block-start: 1em;\n\n  &.pagination {\n    padding-block-start: 2em;\n    @include border(border-top);\n  }\n\n  & > div {\n    @extend %center-middle;\n  }\n}\n\ndiv.block {\n  @extend %clicked-box;\n\n  height: fit-content;\n\n  &.pagination {\n    height: 6rem;\n  }\n\n  & > .block-body {\n    @extend %left-middle;\n    width: 100%;\n    height: 100%;\n    color: black;\n    text-decoration: none;\n\n    & > div.thumb {\n      width: 4em;\n      height: 4em;\n\n      &.prev {\n        @include left(\"darkgray\", 80%);\n      }\n\n      &.next {\n        @include right(\"darkgray\", 80%);\n      }\n\n      &.document {\n        @include document(\"darkgray\", 70%);\n      }\n\n      &.file {\n        @include file(\"darkgray\", 70%);\n      }\n\n      &.link {\n        @include link(\"darkgray\", 60%);\n      }\n    }\n\n    & > div.content {\n      @extend %grid-row;\n      width: calc(100% - 4em);\n      height: fit-content;\n      margin-inline: 1em;\n      padding-block: 1em;\n\n      & > * {\n        @extend %left-middle;\n        align-items: center;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        white-space: nowrap;\n        min-height: 1em;\n      }\n\n      &.right > * {\n        @extend %right-middle;\n      }\n    }\n  }\n}\n\ndiv.block-row {\n  row-gap: 0.5em;\n  column-gap: 1em;\n\n  & > div {\n    flex: 0 0 calc(50% - 0.5em);\n  }\n\n  & > div:first-child:nth-last-child(1) {\n    flex: 0 0 100%;\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start/favicon",
+  "order": 2,
+  "indexes": [
+    {
+  "title": "favicon 적용",
+  "hash": "",
+  "sentences": [
+    "favicon 적용",
+    "jekyll-potion 에서 설정하는 jekyll_potion.site.favicon 은 online favicon 생성 사이트를 통해 생성된 브라우저 환경에 맞는 HTML 정보가 있는 파일입니다.",
+    "아래의 가이드를 통해 favicon 을 적용하세요.",
+    "Favicon & App Icon Generator 을 통해 favicon 을 생성합니다.",
+    "다른 online favicon 생성 사이트를 통해서 생성해도 무방합니다.",
+    "생성을 마치면 아래와 같은 HTML 요소와 다운로드 링크가 생성됩니다.",
+    "문서사이트의 임의의 디렉토리를 생성한 후 HTML 요소를 복사하여 html 페이지(ex> favicon.html)를 만듭니다.",
+    "만들어진 문서의 href 속성의 경로를 절대경로(/) 에서 상대경로(./) 로 변경합니다.",
+    "다운로드 링크를 통해 나머지 요소를 다운로드 받은 후 압축을 풀고 위에서 생성한 임의의 디렉토리에 복사합니다.",
+    "생성한 html 페이지의 경로를 아래와 같이 jekyll_potion.site.favicon 에 설정합니다.",
+    "jekyll_potion:\n  site:\n    favicon: your_path/favicon.html"
+  ]
+},
+    {
+  "title": "favicon 적용 > favicon 적용",
+  "hash": null,
+  "sentences": [
+    "favicon 적용"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/file",
+  "order": null,
+  "indexes": [
+    {
+  "title": "file",
+  "hash": "",
+  "sentences": [
+    "file",
+    "file 은 다운로드가 필요한 정적 파일의 링크를 제공합니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% file src=\"assets/files/assets_error-message.zip\" caption=\"Error Message\" %}",
+    "src | string | Y | src 는 프로젝트 내 다운로드 대상 파일의 경로입니다.",
+    "caption | string |   | caption 은 링크의 제목에 해당되며, 없을 경우 src 값으로 대체됩니다.",
+    "file 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "file.liquid",
+    "<div class=\"block\">\n    <a class=\"block-body\" href=\"{{ src }}\" target=\"_blank\" data-skip-href-to-absolute>\n        <div class=\"thumb file\"></div>\n        <div class=\"content\">\n            <div class=\"large\">{{ caption }}</div>\n        </div>\n    </a>\n</div>",
+    "template 작성 항목",
+    "src | Y | 선언시 사용한 src 반드시 프로젝트 내 다운로드가 가능한 파일이여야 합니다.",
+    "data-skip-href-to-absolute | Y | data-skip-href-to-absolute 는 rewrite_a_href_processor를 통해 <a> tag 의 모든 상대 경로를 절대 경로화 할 때 이를 제외하기 위해 사용합니다.",
+    "caption |   | 선언시 사용한 caption 으로 선언하지 않은 경우 src 로 표현됩니다.",
+    "div.block {\n  @extend %clicked-box;\n\n  height: fit-content;\n\n  &.pagination {\n    height: 6rem;\n  }\n\n  & > .block-body {\n    @extend %left-middle;\n    width: 100%;\n    height: 100%;\n    color: black;\n    text-decoration: none;\n\n    & > div.thumb {\n      width: 4em;\n      height: 4em;\n\n      &.prev {\n        @include left(\"darkgray\", 80%);\n      }\n\n      &.next {\n        @include right(\"darkgray\", 80%);\n      }\n\n      &.document {\n        @include document(\"darkgray\", 70%);\n      }\n\n      &.file {\n        @include file(\"darkgray\", 70%);\n      }\n\n      &.link {\n        @include link(\"darkgray\", 60%);\n      }\n    }\n\n    & > div.content {\n      @extend %grid-row;\n      width: calc(100% - 4em);\n      height: fit-content;\n      margin-inline: 1em;\n      padding-block: 1em;\n\n      & > * {\n        @extend %left-middle;\n        align-items: center;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        white-space: nowrap;\n        min-height: 1em;\n      }\n\n      &.right > * {\n        @extend %right-middle;\n      }\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/",
+  "order": 0,
+  "indexes": [
+    {
+  "title": "jekyll-potion",
+  "hash": "",
+  "sentences": [
+    "jekyll-potion",
+    "jekyll-potion 에 오신 것을 환영합니다.",
+    "jekyll-potion 은 Jekyll 기반의 플러그인으로서 문서 사이트 구성을 도와주고, 문서 작성시 내용을 좀 더 풍부하게 꾸릴 수 있도록 도와주는 도구입니다.",
+    "아래의 내용을 통해 jekyll-potion 에 대한 보다 더 자세히 다룹니다.",
+    "아래의 문서는 jekyll-potion 을 설치하는 방법을 다룹니다.",
+    "시작하기",
+    "아래의 문서는 jekyll-potion 의 설정에 대해 다룹니다.",
+    "설정",
+    "아래의 문서는 jekyll-potion 이 Jekyll 내부에서 동작하는 life-cycle 에 대해 다룹니다.",
+    "life-cycle"
+  ]
+},
+    {
+  "title": "jekyll-potion > jekyll-potion",
+  "hash": null,
+  "sentences": [
+    "jekyll-potion"
+  ]
+},
+    {
+  "title": "jekyll-potion > 시작하기",
+  "hash": "#시작하기",
+  "sentences": [
+    "시작하기"
+  ]
+},
+    {
+  "title": "jekyll-potion > config",
+  "hash": "#config",
+  "sentences": [
+    "config"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/life-cycle",
+  "order": 9,
+  "indexes": [
+    {
+  "title": "life-cycle",
+  "hash": "",
+  "sentences": [
+    "life-cycle",
+    "jekyll-potion 은 Jekyll 에서 제공하는 Life-Cycle 에 맞춰 Hook 을 통해 수신된 event 를 통해 구동됩니다. Jekyll 이 제공하는 Hook 은 아래의 링크를 참고하세요.",
+    "Jekyll Hook",
+    "Using hooks, your plugin can exercise fine-grained control over various aspects of the build process. If your plugin defines any hooks, Jekyll will call them at pre-defined points.",
+    "주요 event 에 대한 처리는 다음과 같습니다.",
+    "site | after_init | jekyll-potion 이 구동되며, 각종 설정을 통해 processor 를 로드합니다.이 때 theme 에 대한 설정을 로드합니다.",
+    "site | post_read | jekyll-potion 에 필요한 정적 파일, theme 에서 필요한 정적 파일을 detect 하거나, navigation 등에서 필요한 기초 데이터를 생성합니다.",
+    "page | pre_render | jekyll-potion 에서 다룰 페이지 내용이 없는 경우 {% empty %} 태그를 생성합니다.",
+    "page | post_render | rendering 이 마친 페이지의 본문을 분석하여, 경로를 조정하거나, 검색 index 를 생성합니다.또한 이 시점에 HTML <head> 에 포함되어야 하는 meta 정보를 추가합니다.",
+    "site | post_render | (:site, :post_read) 에서 detect 된 정적 파일, jekyll-potion 에 필요한 정적 파일들을 Site 에 포함시킵니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/link",
+  "order": null,
+  "indexes": [
+    {
+  "title": "link",
+  "hash": "",
+  "sentences": [
+    "link",
+    "link 는 내부/외부 페이지의 링크를 제공합니다.",
+    "내부 페이지인 경우 front-matter (또는 분석한 결과) 의 제목, 설명으로 노출되며, 외부 페이지인 경우 빌드 시점에 해당 페이지를 로딩하고, 로딩된 페이지의 HTML 요소중 <title> tag, <meta[description]> 를 획득하여 노출됩니다.",
+    "만일 페이지가 없거나, 불특정한 이유로 페이지를 분석 할 수 없는 경우엔 url 일 기준으로 노출되며, 링크에 대한 접근을 제한하지 않습니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% link url=\"/use/processor\" caption=\"processor\" %}",
+    "url | string | Y | url 는 해당 링크의 접근 경로입니다.상대 경로를 입력할 경우, 프로젝트 내 파일로 인지하고 파일 정보를 기준으로 노출됩니다.",
+    "caption | string |   | caption 은 링크의 제목에 해당되며, 없을 경우 외부 페이지인 경우 HTML 의 title, 내부 페이지인 경우 분석한 title 이 노출됩니다.",
+    "link 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "link.liquid",
+    "<div class=\"block\">\n    <a class=\"block-body\" href=\"{{ url }}\">\n        <div class=\"thumb link\"></div>\n        <div class=\"content\">\n            <div class=\"large\">{{ title }}</div>\n            <div class=\"small\">{{ description }}</div>\n        </div>\n    </a>\n</div>",
+    "template 작성 항목",
+    "url | Y | 선언시 사용한 url",
+    "title |   | 선언시 사용한 caption 으로 선언하지 않은 경우 분석된 제목이 노출됩니다.",
+    "description |   | 분석된 문서의 설명이 노출됩니다.",
+    "div.block {\n  @extend %clicked-box;\n\n  height: fit-content;\n\n  &.pagination {\n    height: 6rem;\n  }\n\n  & > .block-body {\n    @extend %left-middle;\n    width: 100%;\n    height: 100%;\n    color: black;\n    text-decoration: none;\n\n    & > div.thumb {\n      width: 4em;\n      height: 4em;\n\n      &.prev {\n        @include left(\"darkgray\", 80%);\n      }\n\n      &.next {\n        @include right(\"darkgray\", 80%);\n      }\n\n      &.document {\n        @include document(\"darkgray\", 70%);\n      }\n\n      &.file {\n        @include file(\"darkgray\", 70%);\n      }\n\n      &.link {\n        @include link(\"darkgray\", 60%);\n      }\n    }\n\n    & > div.content {\n      @extend %grid-row;\n      width: calc(100% - 4em);\n      height: fit-content;\n      margin-inline: 1em;\n      padding-block: 1em;\n\n      & > * {\n        @extend %left-middle;\n        align-items: center;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        white-space: nowrap;\n        min-height: 1em;\n      }\n\n      &.right > * {\n        @extend %right-middle;\n      }\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/logo",
+  "order": null,
+  "indexes": [
+    {
+  "title": "logo",
+  "hash": "",
+  "sentences": [
+    "logo",
+    "logo 는 site 의 제목, logo 를 표현하는 tag 로서 layout 에서 사용됩니다.",
+    "물론 layout 파일에 직접 site 의 제목, logo 를 꾸밀 수 있지만, logo 를 사용할 경우 별도의 수고를 들이지 않아도 됩니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% logo %}",
+    "logo 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "logo.liquid",
+    "<div>\n    <a href=\"{{ index_url }}\" class=\"link\">\n        {% if site_icon %}\n            <img src=\"{{ site_icon }}\">\n        {% endif %}\n        {{ site_title }}\n    </a>\n</div>",
+    "template 작성 항목",
+    "index_url | Y | 설정의 site.index_page",
+    "site_icon | Y | 설정의 site.icon",
+    "site_title | Y | 설정의 site.title",
+    "& .header.title {\n  & > div > a.link {\n    @extend %center-middle;\n\n    font-size: large;\n    font-weight: bold;\n    color: black;\n    text-decoration: none;\n\n    & > img {\n      max-height: 2em;\n      margin-inline-end: 0.5em;\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-base-javascript-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_base_javascript_processor ",
+  "hash": "",
+  "sentences": [
+    "make_base_javascript_processor ",
+    "jekyll-potion 에 필요한 정적 파일들을 processor 설정, 태그 설정 을 통해 로드된 설정을 통해 생성합니다.",
+    "site | post_read | 설치해야 할 javascript 파일을 설정에 맞게 생성합니다.",
+    "page | post_render | 설치 대상 javascript 를 각 페이지의 HTML 에 추가합니다.",
+    "site | post_render | 설치 대상 javascript 를 빌드 결과물에 추가합니다.",
+    "위 과정을 통해 생성되는 파일은 아래와 같습니다.",
+    "jquery-3.6.0.min.js | theme[].assets.target_root_path | jekyll-potion 에서 제공하는 태그를 구동시키기 위한 javascript library",
+    "code.js | theme[].assets.target_root_path | code 태그를 구동시키기 위한 javascript library",
+    "navigation.js | theme[].assets.target_root_path | navigation 태그를 구동시키기 위한 javascript library",
+    "tabs.js | theme[].assets.target_root_path | tabs 태그를 구동시키기 위한 javascript library",
+    "생성된 javascript 중 태그의 동작을 위해 사용되는 javascript는 code.js, navigation.js, tabs.js 입니다.",
+    "해당 javascript 의 소스 코드, 사용법 각각의 태그 설명 페이지에서 확인하실 수 있습니다.",
+    "code.js | code",
+    "navigation.js | code",
+    "tabs.js | code"
+  ]
+},
+    {
+  "title": "make_base_javascript_processor > make_base_javascript_processor",
+  "hash": null,
+  "sentences": [
+    "make_base_javascript_processor"
+  ]
+},
+    {
+  "title": "make_base_javascript_processor > Hook event",
+  "hash": "#hook-event",
+  "sentences": [
+    "Hook event"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-date-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_date_processor",
+  "hash": "",
+  "sentences": [
+    "make_date_processor",
+    "각 페이지의 생성, 수정 시간을 확인하고 이를 HTML meta 태그로 추가합니다.",
+    "page | post_render | 페이지의 생성, 수정 시간을 확인하여, HTML meta 태그로 추가합니다.단 생성, 수정 시간별로 확인할 수 없다면 추가하지 않습니다.",
+    "생성되는 meta 태그는 아래와 같습니다.",
+    "생성된 meta 태그",
+    "<head>\n    ...\n    <meta http-equiv=\"Date\" content=\"2022-07-19 01:49:17 +0000\">\n    <meta http-equiv=\"Last-Modified\" content=\"2022-07-19 01:49:17 +0000\">\n    ...\n</head>",
+    "GitHub Pages 에선 생성일을 확인할 수 없습니다."
+  ]
+},
+    {
+  "title": "make_date_processor > make_date_processor",
+  "hash": null,
+  "sentences": [
+    "make_date_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-empty-content-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_empty_content_processor ",
+  "hash": "",
+  "sentences": [
+    "make_empty_content_processor ",
+    "컨텐츠가 없는 페이지의 본문에 {% empty %} 태그를 추가합니다.",
+    "page | pre_render | 페이지의 내용이 없을 경우 {% empty %} 태그를 추가합니다.",
+    "주로 하위 페이지는 존재하나, 상위 페이지에 들어갈 내용이 없을 경우 유용하게 사용할 수 있습니다."
+  ]
+},
+    {
+  "title": "make_empty_content_processor > make_empty_content_processor",
+  "hash": null,
+  "sentences": [
+    "make_empty_content_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-favicon-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_favicon_processor ",
+  "hash": "",
+  "sentences": [
+    "make_favicon_processor ",
+    "설정된 favicon 정보를 통해 관련된 이미지 파일, manifest.json 등을 찾고, HTML meta 태그를 추가합니다.",
+    "favicon 을 페이지에 추가하는 방법은 favicon 적용 을 참고해주세요.",
+    "site | post_read | site.favicon 에 설정된 페이지의 내용을 분석하여, 추가되어야 하는 모든 파일을 검색합니다.",
+    "page | post_render | 분석된 내용을 바탕으로 페이지별 추가되어야 하는 요소를 HTML meta 태그로 추가합니다.",
+    "site | post_render | 추가되어야 하는 모든 파일을 빌드 결과물에 추가합니다.",
+    "생성되는 meta 태그는 site.favicon 에 작성된 모든 meta 태그입니다.",
+    "site.favicon 에 등록된 HTML 파일의 경로내 모든 파일이 추가되지 않습니다.",
+    "site.favicon 에 등록된 HTML 파일 안에 meta 태그, manifest.json 내 src 등을 분석하여, 추가가 필요한 파일만을 추가하며, 그 외의 site.favicon 에 등록된 HTML 파일의 경로내 파일은 빌드 결과물에서 제외됩니다."
+  ]
+},
+    {
+  "title": "make_favicon_processor > make_favicon_processor",
+  "hash": null,
+  "sentences": [
+    "make_favicon_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-front-matter-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_front_matter_processor ",
+  "hash": "",
+  "sentences": [
+    "make_front_matter_processor ",
+    "markdown 페이지중 Front Matter 가 없는 페이지를 Jekyll 에서 인식하도록 합니다.",
+    "page | post_read | markdown 페이지중 Front Matter 가 없는 페이지를 Jekyll 에서 인식하도록 합니다."
+  ]
+},
+    {
+  "title": "make_front_matter_processor > make_front_matter_processor",
+  "hash": null,
+  "sentences": [
+    "make_front_matter_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-header-link-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_header_link_processor ",
+  "hash": "",
+  "sentences": [
+    "make_header_link_processor ",
+    "HTML <h1> ~ <h6> 태그에 복사, 링크 기능을 추가합니다.",
+    "주로 markdown 의 # ~ ###### 으로 생성된 단락 제목의 링크 정보를 복사하거나 이동하기 위해 사용됩니다.",
+    "추가적으로 생성되는 HTML 태그들은 자동으로 생성되는 theme[].assets.target_root_path/header.js 에 의해 사용됩니다.",
+    "생성되는 결과물은 아래와 같습니다.",
+    "markdown 구문",
+    "## 제목",
+    "변환 예시",
+    "<h2 id=\"제목\">제목\n    <a href=\"#제목\" class=\"go-hash hash-internal a-internal\" data-handled=\"true\"></a>\n    <div class=\"copy-link\" data-header-link=\"#제목\" data-potion-handled=\"true\"></div>\n</h2>",
+    "생성된 HTML 요소를 컨트롤하는 javascript 는 다음과 같습니다.",
+    "header.js",
+    "(($) => {\n  class Header {\n    constructor(options) {\n      this.options = options\n    }\n\n    init() {\n      let copy_links = $('h1, h2, h3, h4, h5, h6').find('[{{ selector }}]:not([data-potion-handled])')\n\n      copy_links.attr('data-potion-handled', 'true')\n        .on('click', e => {\n          e.preventDefault()\n\n          let $clicked = $(e.currentTarget)\n\n          let url = [$(location).attr('protocol'), $(location).attr('host'), $clicked.attr('{{ selector }}')].join('')\n\n          navigator.clipboard.writeText(url)\n        })\n\n      return copy_links\n    }\n  }\n\n  $.header = (options) => {\n    return new Header(options)\n  }\n})(jQuery)",
+    "해당 javascript 는 theme 의 설정에 의해 selector, hash_class, copy_class 값을 변경할 수 있으며, 자세한 내용은 processor 설정 를 참조하세요."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-navigation-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_navigation_processor ",
+  "hash": "",
+  "sentences": [
+    "make_navigation_processor ",
+    "전체 문서를 분석하여 네비게이션 구조 생성을 생성합니다.",
+    "문서의 구조를 생성하지만 실제 사용은 link 를 통해서만 표현됩니다.",
+    "site | post_read | 문서의 디렉토리 구조, depth_order 를 기준으로 문서를 계층화합다."
+  ]
+},
+    {
+  "title": "make_navigation_processor > make_navigation_processor",
+  "hash": null,
+  "sentences": [
+    "make_navigation_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-og-tag-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_og_tag_processor ",
+  "hash": "",
+  "sentences": [
+    "make_og_tag_processor ",
+    "문서내 정보를 분석해 og tag 를 생성합니다.",
+    "생성되는 태그는 아래와 같습니다.",
+    "og:url | 페이지의 절대 경로",
+    "og:type | website",
+    "og:title | Front Matter에 정의된, 또는 make_title_processor 에 의해 분석된 문서의 title",
+    "og:description | Front Matter에 정의된 description",
+    "og:image | Site 설정 에 설정중 site.icon",
+    "page | post_render | 문서를 분석하여 og tag 를 생성하고 문서에 추가합니다."
+  ]
+},
+    {
+  "title": "make_og_tag_processor > make_og_tag_processor",
+  "hash": null,
+  "sentences": [
+    "make_og_tag_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-search-index-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_search_index_processor ",
+  "hash": "",
+  "sentences": [
+    "make_search_index_processor ",
+    "대상이 되는 모든 문서를 HTML 요소를 분석하고 HTML tag 내 텍스트를 추출하여 검색에 활용할 수 있도록 합니다.",
+    "또한 문서 내 H# tag 가 존재할 경우 depth 를 분석하고, 분석된 depth 를 통해 검색된 결과의 navigation(링크 정보) 을 구성할 수 있도록 합니다.",
+    "추출 대상 HTML tag 는 아래와 같습니다.",
+    "h# | 문서내 depth를 분석하여, 문서 내 영역의 위치, 링크를 생성합니다.",
+    "ul, ol | 요소 내 li 내 텍스트를 추출",
+    "table | thread, tbody 내 td 내 텍스트를 추출",
+    "pre | code 요소 일 경우의 코드 본문을 추출",
+    "그 밖의 HTML tag | tag 내 텍스트를 추출",
+    "추출된 텍스트는 {선택한 theme.assets.target_root_path}/base/search.json 에 다음과 같은 구조로 저장됩니다.",
+    "[\n  {\n    \"url\": \"/use/tag/alerts\",\n    \"order\": 30,\n    \"indexes\": [\n      {\n        \"title\": \"alerts\",\n        \"hash\": \"\",\n        \"sentences\": [\n          \"alerts\",\n          \"alerts 는 정해진 유형의 시각화를 통해 사용자에게 강조된 내용을 제공합니다.\",\n          \"기본적인 선언은 다음과 같습니다.\",\n          \"{% alerts style=\\\"{style}\\\" %}\\n{content}\\n{% endalerts %}\",\n          \"style | enum | Y | style 은 시각화의 유형을 결정합니다.각 유형은 proto theme 에서 우측 측면에 다음의 색상으로 표현됩니다.* info : #4169E1* warning : #FF8C00* danger : #8B0000* success : #008000style 은 필수값이나, theme 별로 강제화된 값은 없습니다. 필요한 style 이 있다면, 그에 맞는 스타일이 존재한다면, 사용 가능합니다.\",\n          \"content | markdown |   | content 는 시각화를 통해 표현할 본문에 해당됩니다. 모든 markdown 문법을 지원하기 때문에 일반 문서 내용을 작성하듯 작성하면 됩니다.\",\n          \"alerts 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.\",\n          \"이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.\",\n          \"template\",\n          \"stylesheet\",\n          \"alerts.liquid\",\n          \"<div class=\\\"alerts {{ style }}\\\">\\n    <div class=\\\"style\\\"></div>\\n    <div class=\\\"body\\\">{{ body }}</div>\\n</div>\",\n          \"template 작성 항목\",\n          \"style | Y | 선언시 사용한 style\",\n          \"body | Y | 선언시 사용한 content 로서 markdown 으로서 표현됩니다.\",\n          \"div.alerts {\\n  @extend %bordered-box;\\n  @extend %item-width;\\n\\n  display: flex;\\n\\n  & > div.style {\\n    width: 0.4em;\\n    border-radius: 0.5em 0 0 0.5em;\\n  }\\n\\n  &.info > div.style {\\n    background-color: royalblue;\\n  }\\n\\n  &.warning > div.style {\\n    background-color: darkorange;\\n  }\\n\\n  &.danger > div.style {\\n    background-color: darkred;\\n  }\\n\\n  &.success > div.style {\\n    background-color: green;\\n  }\\n\\n  & > div.body {\\n    @extend %gap-grid-row;\\n    width: calc(100% - 0.4em);\\n    height: fit-content;\\n    margin: 0.5em 1em;\\n\\n    img {\\n      width: auto;\\n      max-height: 6em;\\n    }\\n  }\\n}\",\n          \"자세한 stylesheet 는 _jekyll-potion/lib/theme/proto/assets/main.scss 파일을 참고하세요.\"\n        ]\n      }\n    ]\n  }\n]",
+    "[] | array of object | 페이지 검색 index",
+    "[].url | string | 페이지 URL",
+    "[].order | int | 페이지의 순서",
+    "[].indexes | array of object | 페이지 내 목차별 검색 index",
+    "[].indexes[].title | string | 페이지 내 목차별 제목",
+    "[].indexes[].hash | string | 페이지 내 목차별 hash link",
+    "[].indexes[].sentences | array of string | 목차내 문장 목록",
+    "생성된 검색 index 파일을 컨트롤하는 javascript 는 다음과 같습니다.",
+    "header.js",
+    "(($) => {\n  class SearchResults {\n    constructor(keyword, per_size) {\n      this.page_index_line_numbers_map = new Map()\n      this.keyword = keyword\n      this.per_size = per_size\n      this.search_results = []\n    }\n\n    contains(page, index, line_number) {\n      if (!this.page_index_line_numbers_map.has(page.url)) {\n        this.page_index_line_numbers_map.set(page.url, new Map())\n      }\n\n      if (!this.page_index_line_numbers_map.get(page.url).has(index.hash)) {\n        this.page_index_line_numbers_map.get(page.url).set(index.hash, [])\n      }\n\n      return this.page_index_line_numbers_map.get(page.url).get(index.hash).find(line_numbers => line_numbers.includes(line_number))\n    }\n\n    static create_line_numbers(line_number, total_size, per_size) {\n      let start = Math.max(0, line_number - (Math.floor(per_size / 2) - (1 - (per_size % 2))))\n      let end = Math.min(total_size, start + per_size)\n\n      let n = []\n\n      for (start; start < end; start++) {\n        n.push(start)\n      }\n\n      return n\n    }\n\n    add_line_number(page, index, index_order, line_number) {\n      if (!this.contains(page, index, line_number)) {\n        let line_numbers = SearchResults.create_line_numbers(line_number, index.sentences.length, this.per_size)\n        this.page_index_line_numbers_map.get(page.url).get(index.hash).push(line_numbers)\n\n        this.search_results.push(new SearchResult(page, index, index_order, this.keyword, line_number, line_numbers))\n      }\n    }\n\n    result() {\n      this.search_results.sort((r1, r2) => {\n        if (r1.page_order === r2.page_order) {\n          if (r1.index_order === r2.index_order) {\n            return r1.line_number - r2.line_number\n          }\n\n          return r1.index_order - r2.index_order\n        }\n\n        return r1.page_order - r2.page_order\n      })\n\n      return this.search_results\n    }\n  }\n\n  class SearchResult {\n    constructor(page, index, index_order, keyword, line_number, line_numbers) {\n      this.url = page.url + index.hash\n      this.title = index.title\n      this.page_order = page.order\n      this.index_order = index_order\n      this.line_number = line_number\n      this.sentences = line_numbers.map(n => index.sentences[n].replace(new RegExp('(' + keyword + ')', 'gi'), '<code>$1</code>'))\n    }\n  }\n\n  class Search {\n    constructor(options) {\n      this.options = options\n      this.loaded = false\n      this.page_indexes = []\n    }\n\n    init() {\n    }\n\n    load_search_file(callback) {\n      $.getJSON('{{ search_file }}', data => {\n        this.loaded = true\n        this.page_indexes = data\n        if (callback) {\n          callback.call(this)\n        }\n      })\n    }\n\n    search(keyword, context, callback) {\n      if (this.loaded) {\n        let search_results = new SearchResults(keyword, 3)\n\n        this.page_indexes.forEach((page) => {\n          page.indexes.forEach((index, index_order) => {\n            index.sentences.forEach((sentence, line_number) => {\n              if (new RegExp(keyword, 'i').test(sentence)) {\n                search_results.add_line_number(page, index, index_order, line_number)\n              }\n            })\n          })\n        })\n\n        if (callback && callback instanceof Function) {\n          callback.call(context, search_results.result())\n        }\n      } else {\n        this.load_search_file(() => {\n          this.search(keyword, context, callback)\n        })\n      }\n    }\n  }\n\n  $.search = (options) => {\n    return new Search(options)\n  }\n})(jQuery)",
+    "해당 javascript는 다음과 같이 사용될 수 있습니다.",
+    "this.search = $.search()\nthis.search.search(this.search_input.val(), this, results => {\n    this.search_contents.html($.templates('#search_contents_tmpl').render(results))\n})",
+    "검색 결과는 위에서 언급된 json 내용이 결과에 맞게 javascript object 형태로 전환되어 리턴되며, template 이나 HTML 요소로 전환할 수 있습니다.",
+    "해당 javascript 는 theme 의 설정에 의해 skip_keyword, search_file_name 값을 변경할 수 있으며, 자세한 내용은 processor 설정 를 참조하세요.",
+    "site | after_init | 검색 파일을 경로에 맞게 생성합니다.",
+    "page | post_render | 문서를 분석하여 검색 index 를 생성하고 페이지별 검색 문서, javascript 를 문서에 추가합니다.",
+    "site | post_render | 문서를 분석하여 og tag 를 생성하고 문서에 추가합니다."
+  ]
+},
+    {
+  "title": "make_search_index_processor > make_search_index_processor",
+  "hash": null,
+  "sentences": [
+    "make_search_index_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-theme-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_theme_processor",
+  "hash": "",
+  "sentences": [
+    "make_theme_processor",
+    "_config.jekyll_potion.yml 을 통해 설정된 정보를 바탕으로 theme 를 생성하고 필요한 정적 파일을 빌드 결과물로 포함시킵니다.",
+    "site | after_init | theme 정보를 기준으로 Jekyll 의 설정을 overwrite 합니다.",
+    "site | post_read | theme 정보를 기준으로 필요한 정적 파일을 생성합니다.",
+    "page | post_render | theme 정보를 기준으로 필요한 정적 파일을 HTML meta 태그로 추가합니다.",
+    "site | post_render | Jekyll 이 reload 된 경우 기존의 파일이 중복생성되지 않도록 정리합니다."
+  ]
+},
+    {
+  "title": "make_theme_processor > make_theme_processor",
+  "hash": null,
+  "sentences": [
+    "make_theme_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start/make-theme",
+  "order": 3,
+  "indexes": [
+    {
+  "title": "theme 만들기",
+  "hash": "",
+  "sentences": [
+    "theme 만들기",
+    "jekyll-potion 의 새로운 theme 를 생성하기 위한 요소는 아래와 같습니다.",
+    "jekyll-potion 에서의 theme 는 특정 path 를 기준으로 하위에 여러 요소를 배치함으로서 구성됩니다.",
+    "path 는 그 기본이 되는 디렉토리로서 theme 내 모든 디렉토리 요소는 path 를 기준으로 하는 상대 경로입니다.",
+    "Jekyll 의 Includes 은 markdown 으로 작성된 문서를 HTML 페이지로 전환하기 위한 template 입니다.",
+    "template 은 표현할 유형별로 구성이 되며, Jekyll 의 설정에 의해 지정된 디렉토리내 파일명을 key 값으로 유형을 구분합니다.",
+    "각 template 파일은 필요에 따라 조각으로 나눌 수 있으며, 조각 파일들은 include_dir 을 통해 설정이 가능합니다.",
+    "jekyll-potion 에서의 layouts_dir 는 theme path 를 기준으로 한 상대 경로를 입력할 수 있으며, 입력하지 않을 경우 기본값이 세팅됩니다.",
+    "jekyll-potion 은 기본적으로 default, error 를 사용하며, default, error 와 동일한 이름을 갖는 layout 을 사용중이라면 변경이 필요합니다.",
+    "만일 새로운 theme 생성시 기존의 layout 을 사용해야 한다면, 해당 layout 파일은 theme 에서 지정한 layouts_dir 로 이동해야 합니다.",
+    "jekyll-potion 은 다른 정적 파일의 위치 경로를 임의로 바꾸지 않기 때문에 파일의 이동(복사)만으로도 기존의 layout 을 사용할 수 있습니다.",
+    "Jekyll 의 Layouts 은 layout 의 구성에 따라 나뉘어진 조각 파일을 보관하는 경로입니다.",
+    "jekyll-potion 에서의 includes_dir 는 theme path 를 기준으로 한 상대 경로를 입력할 수 있으며, 입력하지 않을 경우 기본값이 세팅됩니다.",
+    "jekyll-potion 에서의 assets 는 theme 를 구성하는 정적 파일로서 javascript, css, image 등을 보관하는 경로입니다.",
+    "jekyll-potion 은 이 곳에 등록된 javascript, css 파일을 분석하여 layout 템플릿을 통해 생성된 HTML 페이지의 <head> 에 자동으로 추가합니다.",
+    "jekyll-potion 이 HTML 페이지에 추가한 javascript, css 파일은 자동으로 동작하기 때문에 별도로 layout 에 추가할 필요가 없습니다.",
+    "assets 의 기본이 되는 root 디렉토리입니다. theme path 를 기준으로 한 상대 경로이며, 하위 디렉토리가 있을시 하위 디렉토리 내 파일도 함께 분석합니다.",
+    "assets.source_dir 에 지정한 디렉토리 내 분석한 파일을 실제 site 에서 제공할 경로이며 기본값은 _assets 입니다.",
+    "만일 assets.source_dir 내 하위 디렉토리가 있다면, assets.target_root_path 이하에 동일한 하위 디렉토리를 생성합니다.",
+    "만일 assets.source_dir 에 지정한 경로와 동일한 최상위 디렉토리명이 존재한다면, 중복파일이 생길 수 있으며, 변경이 필요합니다. Jekyll 은 중복된 경로를 가진 여러 개의 파일이 있을 경우 덮어씁니다.",
+    "assets.source_dir 내 파일 중 경우에 따라 우선순위가 필요한 파일들이 있을 수 있습니다.",
+    "이럴 경우, 해당 파일명을 순서대로 지정하게 되면 해당 파일부터 HTML 페이지의 <head> 에 추가합니다.",
+    "Jekyll 이 지원하는 SASS, SCSS 의 include 대상 파일을 보관하는 경로입니다.",
+    "Jekyll 의 sass.sass_dir 에 해당되며, 만일 해당 경로를 사용중이였다면, theme path 내로 이동이 필요합니다.",
+    "jekyll-potion 은 assets.source_dir 내 SCSS 파일을 자동으로 생성합니다.",
+    "이 때 Jekyll 의 기본 정책과는 다르게 여러 파일을 생성할 수 있으며, assets.scss_files 에 지정한 파일을 순서대로 생성하여 HTML 페이지의 <head> 에 추가합니다.",
+    "jekyll-potion 은 processor, tag 등의 동작으로 인해 생성되는 HTML 요소를 theme 별로 다르게 지정할 수 있도록 template 기능을 지원합니다.",
+    "이러한 template 을 보관하는 경로로서 다른 요소들과 마찬가지로 theme path 를 기준으로 한 상대 경로입니다.",
+    "template 파일들은 liquid template 으로서 각 processor, tag 에 지정된 규칙을 맞춘다면, 자유롭게 편집할 수 있습니다. 현재 지원하고 있는 template 은 아래와 같습니다.",
+    "alerts.liquid | alerts",
+    "api.liquid | api",
+    "api=description.liquid | api",
+    "api=parameter.liquid | api",
+    "api=response.liquid | api",
+    "code.liquid | code",
+    "empty.liquid | empty",
+    "file.liquid | file",
+    "link.liquid | link",
+    "logo.liquid | logo",
+    "navigation.liquid | navigation",
+    "navigation-page.liquid | navigation",
+    "pagination.liquid | pagination",
+    "tabs.liquid | tabs",
+    "tabs=content.liquid | tabs",
+    "processor 는 liquid template 을 가지고 있지 않습니다. processor 는 지정된 기능을 수행하여, tag 로서 표현합니다.",
+    "만일 이러한 template 작업이 필요하지 않다면(동일한 HTML 구성을 가져간다면) 굳이 생성하지 않아도 됩니다.",
+    "만일 theme 내 template 파일들이 존재하지 않다면, 내장 theme 인 proto 의 기본 template 을 사용합니다.",
+    "Jekyll 은 layout, 조각 파일을 활용하여, markdown 문서를 템플릿을 이용해 HTML 문서로 생성합니다.",
+    "content_x_path는 markdown 문서의 본문에 해당되는 HTML 영역을 Nokogiri Node 에서 접근 가능한 css selector 값을 가르킵니다.",
+    "해당 값은 make-search-index-processor 에서 사용하거나, 본문 내 특정 HTML 요소를 handling 하기 위한 용도로 사용됩니다.",
+    "기본값은 main 이며, 이는 HTML <main> 에 해당됩니다.",
+    "반드시 <main> 태그를 사용할 필요는 없습니다.",
+    "마크업 내 본문에 해당되는 Nokogiri css selector 이기만 하면 됩니다.",
+    "theme 를 만드는 과정속에 layout 이나, template 요소를 수정하고 기본 설정된 css class, attribute 들을 변경했다면 이를 명시해야 합니다. theme 설정 을 참조하여, theme[].processors, theme[].tags 내 class name, attribute 가 변경되었다면, 아래와 같이 변경된 값에 맞도록 설정을 추가합니다.",
+    "변경 예시",
+    "theme:\n    - developers:\n        processors:\n        make_header_link_processor:\n          selector: \"a-data-header-link\"\n          hash_class: \"a-hash\"\n          copy_class: \"a-copy-link\"\n        tags:\n          alerts:\n            info: \"alerts--noti\"\n            warning: \"alerts--warning\"\n            danger: \"alerts--error\"\n            success: \"alerts--confirm\""
+  ]
+},
+    {
+  "title": "theme 만들기 > theme 만들기",
+  "hash": null,
+  "sentences": [
+    "theme 만들기"
+  ]
+},
+    {
+  "title": "theme 만들기 > path",
+  "hash": "#path",
+  "sentences": [
+    "path"
+  ]
+},
+    {
+  "title": "theme 만들기 > layouts_dir",
+  "hash": "#layouts_dir",
+  "sentences": [
+    "layouts_dir"
+  ]
+},
+    {
+  "title": "theme 만들기 > includes_dir",
+  "hash": "#includes_dir",
+  "sentences": [
+    "includes_dir"
+  ]
+},
+    {
+  "title": "theme 만들기 > assets",
+  "hash": "#assets",
+  "sentences": [
+    "assets"
+  ]
+},
+    {
+  "title": "theme 만들기 > source_dir",
+  "hash": "#source_dir",
+  "sentences": [
+    "source_dir"
+  ]
+},
+    {
+  "title": "theme 만들기 > target_root_path",
+  "hash": "#target_root_path",
+  "sentences": [
+    "target_root_path"
+  ]
+},
+    {
+  "title": "theme 만들기 > priority_files",
+  "hash": "#priority_files",
+  "sentences": [
+    "priority_files"
+  ]
+},
+    {
+  "title": "theme 만들기 > scss_source_dir",
+  "hash": "#scss_source_dir",
+  "sentences": [
+    "scss_source_dir"
+  ]
+},
+    {
+  "title": "theme 만들기 > scss_files",
+  "hash": "#scss_files",
+  "sentences": [
+    "scss_files"
+  ]
+},
+    {
+  "title": "theme 만들기 > templates_dir",
+  "hash": "#templates_dir",
+  "sentences": [
+    "templates_dir"
+  ]
+},
+    {
+  "title": "theme 만들기 > content_x_path",
+  "hash": "#content_x_path",
+  "sentences": [
+    "content_x_path"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/make-title-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "make_title_processor ",
+  "hash": "",
+  "sentences": [
+    "make_title_processor ",
+    "문서의 제목이 없을 경우 제목을 추출하고 문서의 제목, 설명을 HTML 에 포함시킵니다.",
+    "site | post_read | 문서의 제목이 없을 경우 제목을 추출합니다. 정의된 제목이 없을 경우 문서에 가장 먼저 기술된 # ~ ### 의 내용을 제목으로 간주합니다.",
+    "page | post_render | 추출한 제목, 설명을 HTML meta 태그로 추가합니다."
+  ]
+},
+    {
+  "title": "make_title_processor > make_title_processor",
+  "hash": null,
+  "sentences": [
+    "make_title_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/navigation",
+  "order": null,
+  "indexes": [
+    {
+  "title": "navigation",
+  "hash": "",
+  "sentences": [
+    "navigation",
+    "navigation 는 디렉토리로 구조화된 메뉴 트리를 표현하는 tag 로서 layout 에서 사용됩니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% navigation %}",
+    "navigation 의 proto theme 의 기본 template, javascript, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "javascript",
+    "stylesheet",
+    "navigation.liquid",
+    "<ul class=\"nav-menu\">\n    {% for potion in navigation %}\n        {% navigation-page %}\n    {% endfor %}\n</ul>",
+    "template 작성 항목",
+    "navigation | Y | markdown 페이지 목록",
+    "navigation-page | Y | markdown 페이지 링크 tag",
+    "navigation-page.liquid",
+    "<li data-nav-link-id=\"{{ potion.url }}\">\n    <div class=\"nav-link fold{% if potion.has_child? %} has-child {% endif %}\" data-fold-target-id=\"{{ potion.url }}\">\n        <a href=\"{{ potion.url }}\" class=\"nav-href\" data-nav-link>{{ potion.title }}</a>\n        <span class=\"nav-unfold\" data-unfold-id=\"{{ potion.url }}\"> </span>\n        <span class=\"nav-fold\" data-fold-id=\"{{ potion.url }}\"> </span>\n    </div>\n    {% if potion.has_child? %}\n        <ul class=\"nav-menu\">\n            {% for potion in potion.children %}\n                {% navigation-page %}\n            {% endfor %}\n        </ul>\n    {% endif %}\n</li>",
+    "template 작성 항목",
+    "potion.url | Y | 분석된 페이지의 url",
+    "potion.has_child? | Y | 페이지의 하위 페이지 유무",
+    "data-fold-target-id |   | 하위 페이지가 있을 경우 접고 펼치는 기능에 대한 target id만일 접고 펼치는 기능이 필요하지 않을 경우 제외 가능",
+    "data-nav-link | Y | javascript 를 통한 제어를 위한 key",
+    "potion.title | Y | 분석된 페이지의 title",
+    "data-unfold-id | Y | 하위 페이지 목록을 접기 위한 key만일 접고 펼치는 기능이 필요하지 않을 경우 제외 가능",
+    "data-fold-id | Y | 하위 페이지 목록을 펼치기 위한 key만일 접고 펼치는 기능이 필요하지 않을 경우 제외 가능",
+    "potion.children | Y | 하위 페이지 목록",
+    "navigation-page | Y | 하위 페이지 markdown 페이지 링크 tag",
+    "navigation.js",
+    "(($) => {\n  class Navigation {\n    constructor(options) {\n      this.options = options\n    }\n\n    static matchPath(path, requestPath) {\n      return new RegExp(path + '(/|/?#([^/]*))?$').test(requestPath)\n    }\n\n    init(pathname) {\n      $('[data-unfold-id]:not([data-potion-handled])')\n        .attr('data-potion-handled', 'true')\n        .on('click', e => {\n          $('[data-fold-target-id=\\'' + $(e.currentTarget).attr('data-unfold-id') + '\\']').removeClass('{{ fold_class }}')\n        })\n\n      $('[data-fold-id]:not([data-potion-handled])')\n        .attr('data-potion-handled', 'true')\n        .on('click', e => {\n          $('[data-fold-target-id=\\'' + $(e.currentTarget).attr('data-fold-id') + '\\']').addClass('{{ fold_class }}')\n        })\n\n      let all_links = $('[data-nav-link-id]')\n      all_links.removeClass('{{ active_class }}')\n\n      let $selected = all_links.filter((_, nav_link) => Navigation.matchPath($(nav_link).attr('data-nav-link-id'), pathname))\n\n      $selected.addClass('{{ active_class }}')\n      $('[data-fold-target-id=\\'' + pathname + '\\']').removeClass('{{ fold_class }}')\n\n      $selected.parents('[data-nav-link-id]').filter((_, p) => $(p).has($selected).length)\n        .each((_, nav_link) => $('[data-fold-target-id=\\'' + $(nav_link).attr('data-nav-link-id') + '\\']').removeClass('{{ fold_class }}'))\n    }\n  }\n\n  $.navigation = (options) => {\n    return new Navigation(options)\n  }\n})(jQuery)",
+    "jekyll-potion 은 jquery 를 사용합니다.",
+    "javascript 는 {{ ~ }} 을 포함한 template 이며, 설정에서 결정한 값을 매핑하여 javascript 파일을 생성합니다.",
+    "{{ ~ }} 구문은 태그 설정 의 theme[].tags.navigation 항목을 참고해 주세요.",
+    "함수 설명",
+    "init | HTML 요소 내 data-unfold-id, data-fold-id, data-nav-link-id 로 설정한 attribute 를 찾고, data-nav-link-id 로 설정된 메뉴 링크에 대한 동작, 하위 메뉴에 대한 접기, 펼치기에 대한 event 처리를 초기화 합니다. event 를 추가한 다음 data-potion-handled attribute 를 추가하며, data-potion-handled attribute 가 추가된 HTML 요소에 대해서는 더 이상 event 를 추가하지 않습니다.",
+    "사용법",
+    "let navigation = $.navigation()\n\nnavigation.init() // 문서의 load, 갱신 시 호출해줍니다.",
+    "& > nav {\n  flex: 0 0 300px;\n  \n  height: calc(100% - 5em);\n  overflow-y: scroll;\n  overflow-x: hidden;\n  padding-block-start: 1em;\n  @include border(border-right);\n  \n  & > div.nav-container {\n    width: 100%;\n    height: 100%;\n    margin-inline-end: 0.8em;\n  \n    ul {\n      display: block;\n      list-style-type: none;\n      margin-block: 0;\n      margin-inline: 0;\n      padding-inline-start: 0;\n    }\n  \n    li {\n      display: block;\n      padding-inline-start: 1em;\n  \n      & > div.nav-link {\n        display: flex;\n        padding-block-start: 0.2em;\n        padding-block-end: 0.5em;\n        padding-inline-start: 0.3em;\n        color: black;\n  \n        &:hover {\n          background-color: gray;\n          color: white;\n        }\n  \n        & > a.nav-href {\n          flex: auto;\n          width: 90%;\n          color: inherit;\n          text-decoration: none;\n        }\n  \n        %span-nav {\n          width: 1em;\n          flex: auto;\n          display: none;\n          color: inherit;\n  \n          &:hover {\n            cursor: pointer;\n          }\n        }\n  \n        & > span.nav-unfold {\n          @include unfold(\"black\", 50%);\n          @extend %span-nav;\n        }\n  \n        & > span.nav-fold {\n          @include fold(\"black\", 50%);\n          @extend %span-nav;\n        }\n  \n        &.has-child {\n          & > span.nav-unfold {\n            display: none;\n          }\n  \n          & > span.nav-fold {\n            display: block;\n          }\n  \n          & + ul.nav-menu {\n            display: block;\n          }\n  \n          &.fold {\n            & > span.nav-unfold {\n              display: block;\n            }\n  \n            & > span.nav-fold {\n              display: none;\n            }\n  \n            + ul.nav-menu {\n              display: none;\n            }\n          }\n        }\n      }\n  \n      &.active {\n        & > div.nav-link {\n          background-color: lightgray;\n          @include border(border);\n          border-inline: none;\n          color: blue;\n        }\n      }\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/pagination",
+  "order": null,
+  "indexes": [
+    {
+  "title": "pagination",
+  "hash": "",
+  "sentences": [
+    "pagination",
+    "pagination 는 현재 페이지를 기준으로 이전, 다음 페이지를 표현하는 tag 로서 layout 에서 사용됩니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% pagination %}",
+    "pagination 의 proto theme 의 기본 template, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "stylesheet",
+    "pagination.liquid",
+    "<div class=\"block-row pagination\" data-skip-search-index>\n    {% if potion.has_before? %}\n        <div>\n            <div class=\"block pagination\">\n                <a class=\"block-body\" href=\"{{ potion.before.url }}\">\n                    <div class=\"thumb prev\"></div>\n                    <div class=\"content right\">\n                        <div class=\"x-small\">이전</div>\n                        <div class=\"bold\">{{ potion.before.title }}</div>\n                        <div class=\"small\">{{ potion.before.description }}</div>\n                    </div>\n                </a>\n            </div>\n        </div>\n    {% endif %}\n    {% if potion.has_after? %}\n        <div>\n            <div class=\"block pagination\">\n                <a class=\"block-body\" href=\"{{ potion.after.url }}\">\n                    <div class=\"content\">\n                        <div class=\"x-small\">다음</div>\n                        <div class=\"bold\">{{ potion.after.title }}</div>\n                        <div class=\"small\">{{ potion.after.description }}</div>\n                    </div>\n                    <div class=\"thumb next\"></div>\n                </a>\n            </div>\n        </div>\n    {% endif %}\n</div>",
+    "template 작성 항목",
+    "data-skip-search-index | Y | data-skip-search-index 은 make_search_index_processor를 통해 검색 index 생성을 피하기 위한 keyword 입니다.모든 markdown 페이지의 본문, 제목, 설명은 검색 index 로 생성되기 때문에 pagination tag 로 인해 생성되는 내용의 경우 검색 index 로 생성되면 안됩니다.때문에 data-skip-search-index 를 통해 중복된 index 생성을 피해야 합니다.",
+    "potion.has_before? | Y | 현재 페이지의 이전 페이지 존재 유무",
+    "potion.before.url | Y | 현재 페이지의 이전 페이지 url",
+    "potion.before.title |   | 현재 페이지의 이전 페이지 제목만일 제목을 대체할 다른 표현이 가능하다면 생략 가능",
+    "potion.before.description |   | 현재 페이지의 이전 페이지 설명만일 설명을 대체할 다른 표현이 가능하다면 생략 가능",
+    "potion.has_after? | Y | 현재 페이지의 다음 페이지 존재 유무",
+    "potion.after.url | Y | 현재 페이지의 다음 페이지 url",
+    "potion.after.title |   | 현재 페이지의 다음 페이지 제목만일 제목을 대체할 다른 표현이 가능하다면 생략 가능",
+    "potion.after.description |   | 현재 페이지의 다음 페이지 설명만일 설명을 대체할 다른 표현이 가능하다면 생략 가능",
+    "div.block-row {\n  @extend %box;\n  display: flex;\n  flex-wrap: wrap;\n  margin-block-start: 1em;\n\n  &.pagination {\n    padding-block-start: 2em;\n    @include border(border-top);\n  }\n\n  & > div {\n    @extend %center-middle;\n  }\n}\n\ndiv.block {\n  @extend %clicked-box;\n\n  height: fit-content;\n\n  &.pagination {\n    height: 6rem;\n  }\n\n  & > .block-body {\n    @extend %left-middle;\n    width: 100%;\n    height: 100%;\n    color: black;\n    text-decoration: none;\n\n    & > div.thumb {\n      width: 4em;\n      height: 4em;\n\n      &.prev {\n        @include left(\"darkgray\", 80%);\n      }\n\n      &.next {\n        @include right(\"darkgray\", 80%);\n      }\n\n      &.document {\n        @include document(\"darkgray\", 70%);\n      }\n\n      &.file {\n        @include file(\"darkgray\", 70%);\n      }\n\n      &.link {\n        @include link(\"darkgray\", 60%);\n      }\n    }\n\n    & > div.content {\n      @extend %grid-row;\n      width: calc(100% - 4em);\n      height: fit-content;\n      margin-inline: 1em;\n      padding-block: 1em;\n\n      & > * {\n        @extend %left-middle;\n        align-items: center;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        white-space: nowrap;\n        min-height: 1em;\n      }\n\n      &.right > * {\n        @extend %right-middle;\n      }\n    }\n  }\n}\n\ndiv.block-row {\n  row-gap: 0.5em;\n  column-gap: 1em;\n\n  & > div {\n    flex: 0 0 calc(50% - 0.5em);\n  }\n\n  & > div:first-child:nth-last-child(1) {\n    flex: 0 0 100%;\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "processor ",
+  "hash": "",
+  "sentences": [
+    "processor ",
+    "processor 는 Jekyll 이 구동되는 시점에 문서를 구조화하거나, 검색 인덱스를 만드는 등의 부가적인 기능을 부여합니다.",
+    "기본적으로 설정없이 동작되는 processor 와 설정을 해야만 동작하는 processor 로 구분되며, 정의된 processor 는 아래와 같습니다.",
+    "make_base_javascript_processor | Y | 내장된 Tag 를 동작시키는 javascript 를 문서에 추가하는 processor",
+    "make-theme-processor | Y | 정의된 theme 를 구동시키는 processor",
+    "make-front-matter-processor | Y | Front Matter 가 없는 문서의 경우 자동으로 생성해주는 processor",
+    "make-title-processor | Y | 문서 제목이 없는 경우 생성해주는 processor",
+    "make-date-processor | Y | 문서 생성, 수정일을 추출하는 processor",
+    "make-favicon-processor | Y | favicon 이 존재할 경우 사이트의 favicon 을 생성하는 processor",
+    "make-navigation-processor | N | 디렉토리 구조를 기반으로 navigation menu, 문서 간의 순서를 생성하는 processor",
+    "make-empty-content-processor | N | 본문이 없는 상위 문서에 하위 문서의 링크를 추가하는 processor",
+    "make-header-link-processor | N | 문서 내 heading 영역의 링크, 링크 복사 기능을 제공하는 processor",
+    "rewrite-img-processor | N | 문서 내 이미지 링크를 분석하여, 상대 경로의 이미지 링크를 문서 context path 에 맞게 변경하는 processor",
+    "rewrite-a-href-processor | N | 문서 내 링크를 분석하여, 상대 경로의 링크를 문서 context path 에 맞게 변경하는 processor",
+    "make-search-index-processor | N | 문서 내 모든 내용을 분석하여, 검색 index 를 생성하는 processor",
+    "make-og-tag-processor | N | 문서를 분석하여, og tag 를 생성하는 processor",
+    "설정을 해야만 동작하는 processor 의 경우 jekyll_potion.processors 에 array 로서 추가한 경우 동작합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config/processor",
+  "order": 8,
+  "indexes": [
+    {
+  "title": "processor 설정",
+  "hash": "",
+  "sentences": [
+    "processor 설정",
+    "jekyll-potion 이 구동될 때 사용할 processor 목록을 설정합니다. 각 processor 에 대한 설명은 processor 를 통해 확인할 수 있습니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/rewrite-a-href-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "rewrite_a_href_processor ",
+  "hash": "",
+  "sentences": [
+    "rewrite_a_href_processor ",
+    "문서 내 모든 링크 요소를 조회하고, 상대 경로로 구성된 경우 절대 경로로 변경하고 이를 마킹(css class)합니다.",
+    "또한 만일 index 페이지로의 링크, 해시 링크(#) 내부 링크로 판단될 경우 이를 마킹(css class)합니다.",
+    "생성되는 결과물은 아래와 같습니다.",
+    "markdown 구문",
+    "[favicon 설정](../../config/site/favicon)",
+    "변환 예시",
+    "<a href=\"/jekyll-potion/config/site/favicon\" class=\"a-internal\" data-handled=\"true\">favicon 설정</a>",
+    "부여되는 css class 는 theme 의 설정에 의해 skip_keyword, index_page_keyword, hash_link_class, internal_link_class 값을 변경할 수 있으며, 자세한 내용은 processor 설정 를 참조하세요.",
+    "page | post_render | 링크 태그를 검색하고, index 페이지로의 링크, 해시 링크(#) 내부 링크 여부를 파악하고 이에 맞도록 링크 태그에 class 를 추가합니다."
+  ]
+},
+    {
+  "title": "rewrite_a_href_processor > rewrite_a_href_processor",
+  "hash": null,
+  "sentences": [
+    "rewrite_a_href_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/processor/rewrite-img-processor",
+  "order": null,
+  "indexes": [
+    {
+  "title": "rewrite_img_processor ",
+  "hash": "",
+  "sentences": [
+    "rewrite_img_processor ",
+    "문서 내 모든 이미지 요소를 조회하고, 상대 경로로 구성된 경우 절대 경로로 변경하고 이를 마킹(css class)합니다.",
+    "또한 만일 inline 으로 작성된 이미지로 판단될 경우 이를 마킹(css class)합니다.",
+    "생성되는 결과물은 아래와 같습니다.",
+    "markdown 구문",
+    "![Download ZIP](../assets/images/download_zip.png)",
+    "변환 예시",
+    "<img src=\"/jekyll-potion/assets/images/download_zip.png\" alt=\"Download ZIP\" class=\"img-internal\" data-handled=\"true\">",
+    "부여되는 css class 는 theme 의 설정에 의해 skip_keyword, inline_image_class, internal_image_class 값을 변경할 수 있으며, 자세한 내용은 processor 설정 를 참조하세요.",
+    "page | post_render | 이미지 태그를 검색하고, 상대 경로인지, inline인지 를 파악하고 이에 맞도록 이미지 태그에 class 를 추가합니다."
+  ]
+},
+    {
+  "title": "rewrite_img_processor > rewrite_img_processor",
+  "hash": null,
+  "sentences": [
+    "rewrite_img_processor"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config/site",
+  "order": 6,
+  "indexes": [
+    {
+  "title": "Site 설정",
+  "hash": "",
+  "sentences": [
+    "Site 설정",
+    "jekyll_potion 의 기본 Site 구성",
+    "site | - | jekyll_potion Site 설정 Root",
+    "site.index_page | string | 기본 index page의 상대 경로jekyll_potion에서 이 값을 세팅할 경우 기존의 index page 를 정의된 페이지로 변경합니다.만일 설정하지 않을 경우 이미 설정된 값을 따릅니다.",
+    "site.permalink | string | 기본 permalinkjekyll_potion에서 이 값을 세팅할 경우 Site 내 모든 페이지의 permalink 를 변경합니다.만일 설정하지 않을 경우 이미 설정된 값을 따릅니다.",
+    "site.title | string | Site 의 기본 title설정시 {% code %} 태그를 사용하면 내부 title 항목에 채워집니다.",
+    "site.icon | string | Site 의 기본 icon설정시 {% code %} 태그를 사용하면 내부 title 항목에 채워집니다.",
+    "site.theme | string | jekyll_potion 에서 사용할 theme이 theme 값은 Jekyll 의 기본 theme 와 다르며, jekyll_potion scope 내 모든 컨텐츠 파일이 해당 theme 로 적용됩니다.만일 값이 없을 경우 jekyll_potion 의 기본 내장 theme 인 proto 로 동작합니다.",
+    "site.favicon | string | Site favicon 정보의 상대 경로favicon 파일은 단순한 이미지 파일이 아닌 각 브라우저 환경별 favicon 목록을 포함한 html 파일로서 자세한 설명은 favicon 적용 에서 다룹니다.",
+    "site.exclude | array of string | jekyll_potion 을 통해 생성한 Site 에서 특정한 컨텐츠 파일을 제외하고 싶은 경우 사용예를 들어 README.md 파일을 GitHub 에서만 사용하고 GitHub Pages 에서는 제외하고 싶을 경우, 해당 파일의 상대 경로를 추가",
+    "jekyll-potion.site.index_page, jekyll-potion.site.permalink 를 설정시 구동형태",
+    "jekyll-potion은 위 두 값을 세팅할 경우 기본 설정 파일의 defaults 항목을 아래의 값으로 대체합니다.",
+    "만일 아래의 항목이 이미 존재하고 부가적인 속성이 부여됐다면, 그 항목은 건드리지 않습니다.",
+    "jekyll-potion.site.index_page",
+    "defaults:\n  scope:\n    path: \"{{jekyll-potion.site.index_page}}\"\n  values:\n    permalink: \"\"",
+    "jekyll-potion.site.permalink",
+    "defaults:\n  scope:\n    path: \"\"\n  values:\n    layout: \"{{theme.default_layout}}\"\n    permalink: \"{{jekyll-potion.site.permalink}}\"",
+    "site.exclude 설정시 구동형태",
+    "jekyll-potion은 site.exclude 내 항목을 :site 의 :after_init 시점에 config[\"exclude\"] 에 추가하며, 이렇게 등록된 리소스는 빌드에서 제외됩니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/start",
+  "order": 1,
+  "indexes": [
+    {
+  "title": "시작하기",
+  "hash": "",
+  "sentences": [
+    "시작하기",
+    "⁣1. 참여하는 인원은 사이트 관리자, 문서 작성자 로 구분되어 있음을 간주합니다.",
+    "사이트 관리자는 문서의 형상관리가 가능해야 하며, 이를 통해 문서의 배포 주기를 관리합니다.",
+    "문서 작성자는 markdown 문서를 제작하고, jekyll-potion 에서 제공하는 다양한 기능을 사용할 수 있습니다.",
+    "참여하는 모든 인원은 공동작업을 위해 GitHub 에 대한 기본 사용법을 숙지하고 있어야 합니다.",
+    "또한 로컬 PC 에서 문서 작성을 한다면, 서버 구동을 위해 최소한 Quickstart 정도는 숙지해야 합니다.",
+    "⁣2. 참여하는 인원은 Jekyll 이 가능하면 설치되어야 합니다. 설치 가이드 를 참고하여 시스템 환경에 맞게 설치합니다.",
+    "반드시 모든 인원이 반드시 Jekyll 이 설치되어야 하는 것은 아닙니다. GitHub Pages 로 개발환경을 갖추었다면, 설치하지 않고 GitHub 를 통해 간단한 편집이 가능합니다.",
+    "하지만 어떤 이 경우도 최소한의 GitHub 의 사용법은 숙지하고 있어야 합니다.",
+    "⁣3. 사이트 운영자는 반드시 Jekyll 의 운영관리에 대한 사용법을 숙지해야 합니다.",
+    "jekyll-potion 은 개인 호스팅도 가능하지만, GitHub Pages 의 적용을 염두하고 제작되었습니다. 따라서 반드시 구성원은 GitHub 저장소에 대한 commit, pull-request 방법을 익혀야 하며, 사이트 관리자는 이를 통해 코드 형상을 관리해야 하기 때문에 Git 을 통한 형상관리가 가능해야 합니다.",
+    "⁣4. jekyll-potion 은 기본적으로 세팅된 theme 를 통해 설치만으로도 충분히 사이트 요소를 표현할 수 있습니다. 하지만, 만일 사이트를 서비스에 맞도록 꾸미기 위해서는 반드시 마크업, 디자인이 필요하며 마크업 개발자, 디자이너 인력에 대한 고려가 이뤄져야 합니다.",
+    "jekyll-potion 은 아래의 버전을 기준으로 작업이 되었습니다. 이미 다른 버전을 사용한 경우라면 버전의 조정이나 호환성 검증이 필요합니다.",
+    "Jekyll | = 4.3.1",
+    "Nokogiri | 1.13.6",
+    "jekyll-potion 은 사이트의 설치할 사이트의 Gemfile, config 파일(ex> _config.yml) 에 아래의 내용을 추가함으로서 사용이 가능합니다.",
+    "group :jekyll_plugins do\n  gem \"jekyll-potion\", \"1.0.1\"\nend",
+    "plugins:\n  - jekyll-potion",
+    "jekyll-potion 은 위 설치과정을 마친 경우 설정을 추가하지 않아도 기본적으로 동작하나 세부적인 설정이 필요한 경우 설정 를 참고해주세요.",
+    "jekyll-potion 에서 계층구조를 갖는 문서를 만드려면 하위 문서들이 있는 디렉토리, 디렉토리와 동일한 파일명을 갖는 상위 페이지가 필요합니다.",
+    "예를 들면 아래와 같이 작성할 경우",
+    "아래와 같이 표현됩니다.",
+    "위 구조를 바탕으로 사이트 구성에 도움을 주는 Processor, 문서 내 기본적인 markdown 이외에 템플릿 요소를 사용할 수 있는 Tag 를 참조하여 jekyll-potion 을 이용해 문서 작성을 할 수 있습니다.",
+    "jekyll-potion 을 이용할 경우, Jekyll 의 Themes 를 사용할 수 없습니다. jekyll-potion 은 구동시점에 설정파일의 theme 를 jekyll-potion 의 theme 를 사용할 수 있도록 변경합니다.",
+    "사이트에 favicon 을 적용하려면 favicon 적용 문서를 참고하세요.",
+    "jekyll-potion 에 별도의 설정을 하지 않은 경우 기본 theme 인 proto 를 사용합니다. 만일 자체적인 theme 를 사용하려면 theme 생성 문서를 참고하세요.",
+    "구성한 사이트를 GitHub Pages 에 적용하려면 GitHub Pages 적용 문서를 참고하세요."
+  ]
+},
+    {
+  "title": "시작하기 > 시작하기",
+  "hash": null,
+  "sentences": [
+    "시작하기"
+  ]
+},
+    {
+  "title": "시작하기 > 사전 준비",
+  "hash": "#사전-준비",
+  "sentences": [
+    "사전 준비"
+  ]
+},
+    {
+  "title": "시작하기 > 참여 인원에 대한 준비",
+  "hash": "#참여-인원에-대한-준비",
+  "sentences": [
+    "참여 인원에 대한 준비"
+  ]
+},
+    {
+  "title": "시작하기 > 구성 환경 준비",
+  "hash": "#구성-환경-준비",
+  "sentences": [
+    "구성 환경 준비"
+  ]
+},
+    {
+  "title": "시작하기 > 설치",
+  "hash": "#설치",
+  "sentences": [
+    "설치"
+  ]
+},
+    {
+  "title": "시작하기 > jekyll-potion 설치",
+  "hash": "#jekyll-potion-설치",
+  "sentences": [
+    "jekyll-potion 설치"
+  ]
+},
+    {
+  "title": "시작하기 > 기본 설정",
+  "hash": "#기본-설정",
+  "sentences": [
+    "기본 설정"
+  ]
+},
+    {
+  "title": "시작하기 > 사용",
+  "hash": "#사용",
+  "sentences": [
+    "사용"
+  ]
+},
+    {
+  "title": "시작하기 > favicon 적용",
+  "hash": "#favicon-적용",
+  "sentences": [
+    "favicon 적용"
+  ]
+},
+    {
+  "title": "시작하기 > Custom Theme 생성",
+  "hash": "#custom-theme-생성",
+  "sentences": [
+    "Custom Theme 생성"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag/tabs",
+  "order": null,
+  "indexes": [
+    {
+  "title": "tabs",
+  "hash": "",
+  "sentences": [
+    "tabs",
+    "tabs 는 탭 interface 를 활용하여 구분된 내용을 정해진 유형의 시각화를 통해 사용자에게 강조된 내용을 제공합니다.",
+    "기본적인 선언은 다음과 같습니다.",
+    "{% tabs %}\n\n{% tabs::content title=\"title #n\" %}\n{content #n}\n{% endtabs::content %}\n\n{% endtabs %}",
+    "title | string | Y | title 은 탭을 구분할 수 있는 제목입니다.",
+    "tabs::content | tag |   | 탭의 본문을 표시하기 위한 tag 입니다. tabs tag 에서 이 영역 이외의 내용은 무시됩니다.",
+    "content #n | markdown |   | content 는 markdown 으로 작성된 탭의 본문입니다. 모든 markdown 문법을 사용할 수 있으나, 탭 내 탭을 구성할 수는 없습니다.",
+    "tabs tag 내 tabs::content 이외의 다른 내용이 있을 경우 해당 내용은 무시됩니다.",
+    "tabs 의 proto theme 의 기본 template, javascript, stylesheet 는 다음과 같습니다.",
+    "이 값은 새로운 theme 작성시 용도에 맞게 변경이 가능합니다.",
+    "template",
+    "javascript",
+    "stylesheet",
+    "tabs.liquid",
+    "<div id=\"{{ id }}\" class=\"{{ tabs_class }}\">\n    <ul class=\"tabs_title\">\n        {% for tab in tabs %}\n            <li data-tabs-content-id=\"{{ tab.id }}\" class=\"tab-title {% if tab.first %}{{ active_class }}{% endif %}\">{{ tab.title }}</li>\n        {% endfor %}\n    </ul>\n    {{ contents }}\n</div>",
+    "template 작성 항목",
+    "| 변수명                    | 필수여부 | 설명                                                                 |\n|————————|——|——————————————————————–|\n| id                   | Y    | 문서내 tabs 를 식별하기 위한 idtabs-{lineNumber} 와 같은 형태로 생성          |\n| tabs_class           | Y    | tabs 태그로 인해 생성되는 HTML Root 태그에 부여할 class name                    |\n| tabs                 | Y    | 각 tab 을 구성하는 tab 목록                                                |\n| tab                  | Y    | tab 정보                                                             |\n| data-tabs-content-id | Y    | 각 tab 을 선택할 수 있는 식별자 idtabs-content-{lineNumber} 와 같은 형태로 생성 |\n| tab.id               | Y    | 각 tab 을 선택하기 위한 id<br/>tab-content-{lineNumber} 와 같은 형태로 생성      |\n| tab.first            | Y    | tabs 내 첫번째 tab 여부                                                |\n| active_class         | Y    | tab 이 활성화 되었을 때 부여할 class name                                     |\n| tab.title            | Y    | tab 제목                                                             |\n| contents`             | Y    | tab content 표현을 위한 변수                                              |",
+    "tabs==content.liquid",
+    "<div id=\"{{ id }}\" class=\"tab-content{% if first %} {{ active_class }}{% endif %}\">\n    <div class=\"content\">\n        {{ body }}\n    </div>\n</div>",
+    "template 작성 항목",
+    "id | Y | 각 tab 을 선택하기 위한 idtab-content-{lineNumber} 와 같은 형태로 생성",
+    "first | Y | 첫번째 tab 여부",
+    "active\\_class | Y | tab 이 활성화 되었을 때 부여할 class name",
+    "body | Y | tab 본문",
+    "navigation.js",
+    "(($) => {\n  class Tabs {\n    constructor(options) {\n      this.options = options\n    }\n\n    init() {\n      let tabNavs = $('.{{ tabs_class }}').find('[data-tabs-content-id]:not([data-potion-handled])')\n\n      tabNavs.attr('data-potion-handled', 'true')\n        .on('click', e => {\n          e.preventDefault()\n\n          let $clicked = $(e.currentTarget)\n\n          parent = $clicked.parents('.tabs')\n          parent.find('[data-tabs-content-id]')\n            .removeClass('{{ active_class}}')\n            .each((_, nav) => {\n              parent.find('[id=\\'' + $(nav).attr('data-tabs-content-id') + '\\']').removeClass('{{ active_class }}')\n            })\n\n          $clicked.addClass('{{ active_class }}')\n          $('#' + $clicked.attr('data-tabs-content-id')).addClass('{{ active_class }}')\n        })\n\n      return tabNavs\n    }\n  }\n\n  $.tabs = (options) => {\n    return new Tabs(options)\n  }\n})(jQuery)",
+    "jekyll-potion 은 jquery 를 사용합니다.",
+    "javascript 는 {{ ~ }} 을 포함한 template 이며, 설정에서 결정한 값을 매핑하여 javascript 파일을 생성합니다.",
+    "{{ ~ }} 구문은 태그 설정 의 theme\\[].tags.tabs 항목을 참고해 주세요.",
+    "함수 설명",
+    "init | HTML 요소 내 tabs\\_class, data-tabs-content-id 로 설정한 attribute 를 찾고, data-tabs-content-id 로 설정된 tab 의 링크에 event 처리를 초기화 합니다. event 를 추가한 다음 data-potion-handled attribute 를 추가하며, data-potion-handled attribute 가 추가된 HTML 요소에 대해서는 더 이상 event 를 추가하지 않습니다.",
+    "사용법",
+    "let tabs = $.tabs()\n\ntabs.init() // 문서의 load, 갱신 시 호출해줍니다.",
+    "div.tabs {\n  @extend %box;\n  @extend %item-width;\n\n  & > ul {\n    display: flex;\n    column-gap: 0.5em;\n    padding: 0;\n    margin: 0 0 -1px;\n\n    & > li.tab-title {\n      @extend %title-fixed;\n      display: block;\n      padding: 0 2em;\n      border-block-end: none;\n\n      &.active {\n        background-color: white;\n      }\n\n      &:hover {\n        cursor: pointer;\n      }\n    }\n  }\n\n  & > div.tab-content {\n    @include border(border);\n    @extend %shadow;\n\n    border-radius: 0 0.5em 0.5em 0.5em;\n    padding: 1em 0.5em;\n    display: none;\n\n    &.active {\n      display: block;\n    }\n\n    & > div.content {\n      @extend %gap-grid-row;\n\n      & > .code {\n        width: 100%;\n      }\n    }\n  }\n}"
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/use/tag",
+  "order": null,
+  "indexes": [
+    {
+  "title": "tag",
+  "hash": "",
+  "sentences": [
+    "tag",
+    "jekyll-potion 은 jekyll tag 을 확장한 다양한 tag 를 통해 일반적인 markdown 문서를 보다 더 풍부한 문서를 꾸밀 수 있습니다.",
+    "jekyll tag 을 확장한 구조이기 때문에 기본적인 tag 사용법은 대부분 같습니다.",
+    "하지만 jekyll-potion 은 지정한 theme 의 templates_dir 내 template 파일을 통해 rendering 을 하여 같은 tag 여도 다른 유형의 HTML 요소로 표현이 가능합니다.",
+    "문서 내 기본적인 tag 의 사용법은 다음과 같습니다.",
+    "jekyll-potion tag",
+    "{% {tagname}-{template_name}::{child_tagname} {variables} %}",
+    "{tagname} | liquid tag 와 같은 tagname",
+    "{template_name} | 동일한 tag 이름을 가지고 있어도 여러 template 을 활용할 수 있습니다.{tagname}-{template_name} 는 그대로 template 파일명으로 치환되며, 이 파일명에 해당되는 template 을 찾습니다.예를 들어 {% logo %} 의 template 파일은 logo.liquid 이지만 {% logo-test %} 의 template 파일명은 logo-test.liquid 이며 다른 template 으로서 표현이 가능합니다.",
+    "{child_tagname} | jekyll-potion 은 liquid block 을 확장하여 parent-child 구조의 tag 를 선언할 수 있습니다.예를 들어 tabs 의 구성요소로서 tab 내 본문을 표현할 경우 {% tabs %} 내 {% tabs::content %} 와 같이 선언하여 사용합니다. 이 때 template 파일명은 tabs::content.liquid 입니다.",
+    "{variables} | jekyll-potion 은 key=\"value\"의 연속된 형태를 통해 template 으로 변수를 전달할 수 있습니다. 각 tag 별로 정의된 변수값을 제외한 추가적인 변수를 선언한 경우, template 에서 동일한 값으로 표현한다면, HTML 요소로서 표현할 수 있습니다.",
+    "자세한 jekyll-potion 의 tag 사용법은 다음과 같습니다.",
+    "alerts | block | Bootstrap 의 Alerts 와 같은 역활을 합니다",
+    "api | block | API 명세를 상세히 기술합니다.",
+    "code | block | 코드 블럭에 제목을 입력할 수 있으며, {{}} 구문을 raw 하게 표현합니다. 또한 복사기능을 제공합니다.",
+    "empty | tag | 컨텐츠가 비워진 화면의 하위 페이지가 존재한다면 목록화하여 보여줍니다.",
+    "file | tag | 내부 파일 다운로드 기능을 제공합니다.",
+    "link | tag | 내/외부 링크를 구분하여, 외부링크의 경우 제목, 설명을 보강하여 표현합니다.",
+    "logo | tag | 사이트의 이미지, 타이틀을 표현합니다.",
+    "navigation | tag | 사이트의 디렉토리 구조 를 통해 메뉴를 구성합니다.",
+    "pagination | tag | 일정한 규칙에 의해 정의된 페이지의 순서를 통해, 이전, 다음 페이지를 표현합니다.",
+    "tabs | block | Bootstrap 의 Tabs 역활을 합니다."
+  ]
+}
+  ]
+},
+  {
+  "url": "/jekyll-potion/config/theme",
+  "order": 7,
+  "indexes": [
+    {
+  "title": "theme 설정",
+  "hash": "",
+  "sentences": [
+    "theme 설정",
+    "theme 는 jekyll-potion 을 구성하는 가장 중요한 요소로서 아래와 같은 특징을 갖습니다.",
+    "Jekyll 의 includes_dir, layouts_dir sass.sass_dir 을 변경하여 jekyll-potion theme 구성요소를 로드",
+    "tag, processor 를 통해 생성된 HTML 요소를 템플릿화하여, 다른 형태의 look & feel 로 전환할 수 있도록 함",
+    "사용자가 새롭게 theme 를 정의하여, 사이트 성격에 맞게 layout, javascript, css 를 구현할 수 있도록 함",
+    "내장 theme 를 통해, 사이트 디자인을 고려하지 않고 바로 문서를 제작할 수 있도록 하고, 그동안 사이트 디자인 작업을 하여, 병행 개발을 가능토록 함",
+    "theme 는 크게 내장 theme, 사용자들이 직접 개발하여 추가할 수 있는 custom theme 로 구분됩니다.",
+    "내장 theme 는 현재 proto 로 불리며, 별도의 설정이 없을 경우 이 theme 로 구동됩니다.",
+    "custom theme 는 사용자가 직접 마크업 작업을 하여, 정해진 규칙에 맞게 설정하면, 이를 구동 시킬 수 있도록 합니다. 자세한 내용은 theme 만들기 를 참고하세요.",
+    "theme 의 설정은 아래와 같이 설정되며, 크게, theme 자체에 대한 설정인 기본 설정, processor 들의 설정인 processor 설정, 태그들의 설정인 태그 설정으로 구분됩니다.",
+    "각각에 대한 세부적인 설정은 아래와 같습니다.",
+    "theme 의 위치, 세부 속성들의 정보를 다룹니다. 세부 항목은 아래와 같습니다.",
+    "기본 설정",
+    "theme:\n    - developers:\n        path: \"your theme path\"\n        layouts_dir: \"_layouts\"\n        includes_dir: \"_includes\"\n        assets:\n          source_dir: \"assets\"\n          target_root_path: \"_assets\"\n          priority_files: []\n          scss_source_dir: \"_scss\"\n          scss_files: []\n        templates_dir: \"_templates\"\n        content_x_path: \"main\"\n        processors: ...\n        tags: ...",
+    "theme | array of Hash | - | - | theme 설정 Root",
+    "theme[].hash keyname | string | O | - | theme 이름",
+    "theme[].path | string | O | - | 프로젝트의 Root path최상단 기준의 상대 경로",
+    "theme[].layouts_dir | string | - | _layouts | layout 파일을 보관하는 theme path 기준의 상대 경로",
+    "theme[].includes_dir | string | - | _includes | include 파일을 보관하는 theme path 기준의 상대 경로",
+    "theme[].default_layout | string | - | default | default layout 명",
+    "theme[].assets | Hash | - | - | theme 내 asset 들의 정보",
+    "theme[].assets.source_dir | string | - | assets | theme 내 asset 들의 기본 경로로서 theme path 기준의 상대 경로",
+    "theme[].assets.target_root_path | string | - | _assets | theme 내 asset 들의 사이트 접근 URL paththeme[].assets.source_dir 이하의 경로들의 Root에 해당된다.",
+    "theme[].assets.priority_files | array of string | - | - | theme 내 asset 들 중 우선순위가 높은 파일(ex> jquery…) 들을 명시하여, 다른 asset 보다 먼저 선언될 수 있도록 한다.",
+    "theme[].assets.scss_source_dir | string | - | _scss | jekyll-potion은 theme 의 stylesheet 중 공식적으로 css, scss 만을 지원한다. scss 사용시 @import 대상을 경로로서 이 경로에 a.scss 파일을 include 할 경우 @import \"a\" 와 같이 사용한다.",
+    "theme[].assets.scss_files | array of string | - | - | scss 컴파일 대상 파일의 theme path 기준의 상대 경로 목록Jekyll 은 기본적으로 1개의 scss 파일만을 사용할 수 있으나, jekyll-potion은 theme 내 asset 들 중 일치하는 path를 갖는 scss 일 경우 컴파일을 수행한다.",
+    "theme[].templates_dir | string | - | _templates | 태그 등의 HTML 템플릿 파일(liquid 파일 지원)을 보관하는 theme path 기준의 상대 경로",
+    "theme[].content_x_path | string | - | main | rendering 된 HTML 중 본문 영역에 해당되는 Nokogiri Node 에서 접근 가능한 css selector 값검색 및 자체 내장 javascript에서 사용",
+    "processor 로 인해 생성되는 마크업 요소의 설정값을 다룹니다. processor 별 자세한 설명은 processor 를 통해 확인할 수 있으며 세부 항목은 아래와 같습니다.",
+    "processor 설정",
+    "theme:\n    - developers:\n        ...\n        processors:\n          make_header_link_processor:\n            selector: \"data-header-link\"\n            hash_class: \"go-hash\"\n            copy_class: \"copy-link\"\n          rewrite_img_processor:\n            skip_keyword: \"data-skip-src-to-absolute\"\n            inline_image_class: \"img-inline\"\n            internal_image_class: \"img-internal\"\n          rewrite_a_href_processor:\n            skip_keyword: \"data-skip-href-to-absolute\"\n            index_page_keyword: \"data-to-index-page\"\n            hash_link_class: \"hash-internal\"\n            internal_link_class: \"a-internal\"\n          make_search_index_processor:\n            skip_keyword: \"data-skip-search-index\"\n            search_file_name: \"search.json\"\n        tags: ...",
+    "theme[].processors | - | processor 설정 Root",
+    "theme[].processors.make_header_link_processor | - | make_header_link_processor 설정 Root",
+    "theme[].processors.make_header_link_processor.selector | data-header-link | heading 태그(<h1> ~ <h6>) 의 링크 정보를 담고 있는 attribute name",
+    "theme[].processors.make_header_link_processor.hash_class | go-hash | heading 태그 내 hash 태그를 표현하는 class name",
+    "theme[].processors.make_header_link_processor.copy_class | copy-link | heading 태그 내 복사를 표현하는 class name",
+    "theme[].processors.rewrite_img_processor | - | rewrite_img_processor 설정 Root",
+    "theme[].processors.rewrite_img_processor.skip_keyword | data-skip-src-to-absolute | <img> 태그의 src attribute 변경을 제외하는 attribute name",
+    "theme[].processors.rewrite_img_processor.inline_image_class | img-inline | inline image(글자 내 이미지)로 판단될 경우 추가되는 class name",
+    "theme[].processors.rewrite_img_processor.internal_image_class | img-internal | 내부 이미지로 판단될 경우 추가되는 class name",
+    "theme[].processors.rewrite_a_href_processor | - | rewrite_a_href_processor 설정 Root",
+    "theme[].processors.rewrite_a_href_processor.skip_keyword | data-skip-href-to-absolute | <a> 태그의 href attribute 변경을 제외하는 attribute name",
+    "theme[].processors.rewrite_a_href_processor.index_page_keyword | data-to-index-page | index 페이지로의 링크로 판단될 경우 추가되는 class name",
+    "theme[].processors.rewrite_a_href_processor.hash_link_class | hash-internal | hash 링크로 판단될 경우 추가되는 class name",
+    "theme[].processors.rewrite_a_href_processor.internal_link_class | a-internal | 내부 링크로 단단될 경우 추가되는 class name",
+    "theme[].processors.make_search_index_processor | - | make_search_index_processor 설정 Root",
+    "theme[].processors.make_search_index_processor.skip_keyword | data-skip-search-index | 검색 index 생성시 제외하는 attribute name",
+    "theme[].processors.make_search_index_processor.search_file_name | search.json | 검색 index 파일명",
+    "태그로 인해 생성되는 마크업 요소에 대한 설정값입니다. 태그에 대한 자세한 설명은 태그 에서 다루며, 상세한 내용은 아래와 같습니다.",
+    "태그 설정",
+    "theme:\n    - developers:\n        ...\n        tags:\n          alerts:\n            info: \"info\"\n            warning: \"warning\"\n            danger: \"danger\"\n            success: \"success\"\n          code:\n            code_class: \"code\"\n            success_class: \"copy-text\"\n            success_show_class: \"show\"\n          tabs:\n            tabs_class: \"tabs\"\n            active_class: \"active\"\n          navigation:\n            active_class: \"active\"\n            fold_class: \"fold\"",
+    "theme[].tags | - | tag 설정 Root",
+    "theme[].tags.alerts | - | alerts 설정 Root",
+    "theme[].tags.alerts.info | info | style 값이 info 일 때 class name",
+    "theme[].tags.alerts.warning | warning | style 값이 warning 일 때 class name",
+    "theme[].tags.alerts.danger | danger | style 값이 danger 일 때 class name",
+    "theme[].tags.alerts.success | success | style 값이 success 일 때 class name",
+    "theme[].tags.code | - | code 설정 Root",
+    "theme[].tags.code.code_class | code | code 태그 class name",
+    "theme[].tags.code.success_class | copy-text | code 복사 성공시 노출될 class name",
+    "theme[].tags.code.success_show_class | show | code 복사 성송시 노출에 사용할 class name",
+    "theme[].tags.tabs | - | tabs 설정 Root",
+    "theme[].tags.tabs.tabs_class | tabs | tabs 의 class name",
+    "theme[].tags.tabs.active_class | active | tab 의 active 시 class name",
+    "theme[].tags.navigation | - | navigation 설정 Root",
+    "theme[].tags.navigation.active_class | active | navigation menu 가 선택될 경우 class name",
+    "theme[].tags.navigation.fold_class | fold | 하위 menu 가 접혀 있을 때 class name"
+  ]
+},
+    {
+  "title": "theme 설정 > theme 설정",
+  "hash": null,
+  "sentences": [
+    "theme 설정"
+  ]
+},
+    {
+  "title": "theme 설정 > 기본 설정",
+  "hash": "#기본-설정",
+  "sentences": [
+    "기본 설정"
+  ]
+},
+    {
+  "title": "theme 설정 > processor 설정",
+  "hash": "#processor-설정",
+  "sentences": [
+    "processor 설정"
+  ]
+}
+  ]
+}
+]

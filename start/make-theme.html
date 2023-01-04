@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+
+<meta http-equiv="Last-Modified" content="2023-01-04 07:15:49 +0000">
+<meta http-equiv="Title" content="Jekyll-Potion - theme 만들기">
+<title>Jekyll-Potion - theme 만들기</title>
+<meta property="og:url" content="https://nugudevelopers.github.io/jekyll-potion/start/make-theme">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jekyll-Potion - theme 만들기">
+<meta property="og:image" content="https://nugudevelopers.github.io/jekyll-potion/assets/icon/icon.png">
+<script type="text/javascript" src="/jekyll-potion/_assets/base/jquery-3.6.0.min.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/code.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/tabs.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/navigation.js"></script><link rel="stylesheet" href="/jekyll-potion/_assets/css/main.css">
+<link rel="stylesheet" href="/jekyll-potion/_assets/css/syntax.css">
+<script type="text/javascript" src="/jekyll-potion/_assets/js/main.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/js/jsrender.min.js"></script><script type="text/javascript" src="/jekyll-potion/_assets/base/header.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/jekyll-potion/_assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/jekyll-potion/_assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/jekyll-potion/_assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/jekyll-potion/_assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/jekyll-potion/_assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/jekyll-potion/_assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/jekyll-potion/_assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/jekyll-potion/_assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/jekyll-potion/_assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/jekyll-potion/_assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/jekyll-potion/_assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/jekyll-potion/_assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/jekyll-potion/_assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/jekyll-potion/_assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/jekyll-potion/_assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+<script type="text/javascript" src="/jekyll-potion/_assets/base/search.js"></script>
+</head>
+<body>
+<header>
+    <div class="header menu">
+    <div>
+        <div id="menu" class="menu-icon show_menu"></div>
+    </div>
+</div>
+<div class="header title">
+    <div>
+    <a href="/jekyll-potion/" class="link a-internal">
+        
+            <img src="/jekyll-potion/assets/icon/icon.png" class="img-inline">
+        
+        Jekyll-Potion
+    </a>
+</div>
+
+</div>
+<div class="header search">
+    <div>
+        <div class="search-bar show_search">
+            <div class="search-icon"></div>
+            <div class="search_text">| 검색</div>
+        </div>
+    </div>
+</div>
+<div class="header search-s">
+    <div>
+        <div class="search-icon show_search"></div>
+    </div>
+</div>
+
+</header>
+<nav>
+    <div class="nav-container">
+    <ul class="nav-menu">
+    
+        <li data-nav-link-id="/jekyll-potion/">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/">
+        <a href="/jekyll-potion/" class="nav-href a-internal" data-nav-link>jekyll-potion</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/"> </span>
+    </div>
+    
+</li>
+
+    
+        <li data-nav-link-id="/jekyll-potion/start">
+    <div class="nav-link fold has-child " data-fold-target-id="/jekyll-potion/start">
+        <a href="/jekyll-potion/start" class="nav-href a-internal" data-nav-link>시작하기</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/start"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/start"> </span>
+    </div>
+    
+        <ul class="nav-menu">
+            
+                <li data-nav-link-id="/jekyll-potion/start/favicon">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/start/favicon">
+        <a href="/jekyll-potion/start/favicon" class="nav-href a-internal" data-nav-link>favicon 적용</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/start/favicon"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/start/favicon"> </span>
+    </div>
+    
+</li>
+
+            
+                <li data-nav-link-id="/jekyll-potion/start/make-theme">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/start/make-theme">
+        <a href="/jekyll-potion/start/make-theme" class="nav-href a-internal" data-nav-link>theme 만들기</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/start/make-theme"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/start/make-theme"> </span>
+    </div>
+    
+</li>
+
+            
+                <li data-nav-link-id="/jekyll-potion/start/apply-github-pages">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/start/apply-github-pages">
+        <a href="/jekyll-potion/start/apply-github-pages" class="nav-href a-internal" data-nav-link>GitHub Pages 적용</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/start/apply-github-pages"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/start/apply-github-pages"> </span>
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+    
+        <li data-nav-link-id="/jekyll-potion/config">
+    <div class="nav-link fold has-child " data-fold-target-id="/jekyll-potion/config">
+        <a href="/jekyll-potion/config" class="nav-href a-internal" data-nav-link>설정</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/config"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/config"> </span>
+    </div>
+    
+        <ul class="nav-menu">
+            
+                <li data-nav-link-id="/jekyll-potion/config/site">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/config/site">
+        <a href="/jekyll-potion/config/site" class="nav-href a-internal" data-nav-link>Site 설정</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/config/site"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/config/site"> </span>
+    </div>
+    
+</li>
+
+            
+                <li data-nav-link-id="/jekyll-potion/config/theme">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/config/theme">
+        <a href="/jekyll-potion/config/theme" class="nav-href a-internal" data-nav-link>theme 설정</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/config/theme"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/config/theme"> </span>
+    </div>
+    
+</li>
+
+            
+                <li data-nav-link-id="/jekyll-potion/config/processor">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/config/processor">
+        <a href="/jekyll-potion/config/processor" class="nav-href a-internal" data-nav-link>processor 설정</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/config/processor"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/config/processor"> </span>
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+    
+        <li data-nav-link-id="/jekyll-potion/life-cycle">
+    <div class="nav-link fold" data-fold-target-id="/jekyll-potion/life-cycle">
+        <a href="/jekyll-potion/life-cycle" class="nav-href a-internal" data-nav-link>life-cycle</a>
+        <span class="nav-unfold" data-unfold-id="/jekyll-potion/life-cycle"> </span>
+        <span class="nav-fold" data-fold-id="/jekyll-potion/life-cycle"> </span>
+    </div>
+    
+</li>
+
+    
+</ul>
+
+</div>
+
+</nav>
+<main>
+    <div id="container" class="main-container">
+    <div class="header">
+        <h1>theme 만들기</h1>
+        <div class="description"></div>
+    </div>
+    <div class="content">
+        <p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 의 새로운 theme 를 생성하기 위한 요소는 아래와 같습니다.</p>
+
+<h2 id="path">path<a href="#path" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#path"></div>
+</h2>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서의 theme 는 특정 path 를 기준으로 하위에 여러 요소를 배치함으로서 구성됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">path</code> 는 그 기본이 되는 디렉토리로서 theme 내 모든 디렉토리 요소는 <code class="language-plaintext highlighter-rouge">path</code> 를 기준으로 하는 상대 경로입니다.</p>
+
+<h2 id="layouts_dir">layouts_dir<a href="#layouts_dir" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#layouts_dir"></div>
+</h2>
+
+<p><a href="https://jekyllrb.com/">Jekyll</a> 의 <a href="https://jekyllrb.com/docs/includes/">Includes</a> 은 markdown 으로 작성된 문서를 HTML 페이지로 전환하기 위한 template 입니다.</p>
+
+<p>template 은 표현할 유형별로 구성이 되며, <a href="https://jekyllrb.com/">Jekyll</a> 의 설정에 의해 지정된 디렉토리내 파일명을 key 값으로 유형을 구분합니다.</p>
+
+<p>각 template 파일은 필요에 따라 조각으로 나눌 수 있으며, 조각 파일들은 <code class="language-plaintext highlighter-rouge">include_dir</code> 을 통해 설정이 가능합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서의 <code class="language-plaintext highlighter-rouge">layouts_dir</code> 는 theme <code class="language-plaintext highlighter-rouge">path</code> 를 기준으로 한 상대 경로를 입력할 수 있으며, 입력하지 않을 경우 기본값이 세팅됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 기본적으로 <code class="language-plaintext highlighter-rouge">default</code>, <code class="language-plaintext highlighter-rouge">error</code> 를 사용하며, <code class="language-plaintext highlighter-rouge">default</code>, <code class="language-plaintext highlighter-rouge">error</code> 와 동일한 이름을 갖는 layout 을 사용중이라면 변경이 필요합니다.</p>
+
+<div class="alerts warning">
+    <div class="style"></div>
+    <div class="body">
+<p>만일 새로운 theme 생성시 기존의 layout 을 사용해야 한다면, 해당 layout 파일은 theme 에서 지정한 <code class="language-plaintext highlighter-rouge">layouts_dir</code> 로 이동해야 합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 다른 정적 파일의 위치 경로를 임의로 바꾸지 않기 때문에 파일의 이동(복사)만으로도 기존의 layout 을 사용할 수 있습니다.</p>
+</div>
+</div>
+
+<h2 id="includes_dir">includes_dir<a href="#includes_dir" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#includes_dir"></div>
+</h2>
+
+<p><a href="https://jekyllrb.com/">Jekyll</a> 의 <a href="https://jekyllrb.com/docs/layouts/">Layouts</a> 은 layout 의 구성에 따라 나뉘어진 조각 파일을 보관하는 경로입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서의 <code class="language-plaintext highlighter-rouge">includes_dir</code> 는 theme <code class="language-plaintext highlighter-rouge">path</code> 를 기준으로 한 상대 경로를 입력할 수 있으며, 입력하지 않을 경우 기본값이 세팅됩니다.</p>
+
+<h2 id="assets">assets<a href="#assets" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#assets"></div>
+</h2>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 에서의 <code class="language-plaintext highlighter-rouge">assets</code> 는 theme 를 구성하는 정적 파일로서 javascript, css, image 등을 보관하는 경로입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 이 곳에 등록된 javascript, css 파일을 분석하여 layout 템플릿을 통해 생성된 HTML 페이지의 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 에 자동으로 추가합니다.</p>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 이 HTML 페이지에 추가한 javascript, css 파일은 자동으로 동작하기 때문에 별도로 layout 에 추가할 필요가 없습니다.</p>
+</div>
+</div>
+
+<h3 id="source_dir">source_dir<a href="#source_dir" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#source_dir"></div>
+</h3>
+
+<p><code class="language-plaintext highlighter-rouge">assets</code> 의 기본이 되는 root 디렉토리입니다. theme <code class="language-plaintext highlighter-rouge">path</code> 를 기준으로 한 상대 경로이며, 하위 디렉토리가 있을시 하위 디렉토리 내 파일도 함께 분석합니다.</p>
+
+<h3 id="target_root_path">target_root_path<a href="#target_root_path" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#target_root_path"></div>
+</h3>
+
+<p><code class="language-plaintext highlighter-rouge">assets.source_dir</code> 에 지정한 디렉토리 내 분석한 파일을 실제 site 에서 제공할 경로이며 기본값은 <code class="language-plaintext highlighter-rouge">_assets</code> 입니다.</p>
+
+<p>만일 <code class="language-plaintext highlighter-rouge">assets.source_dir</code> 내 하위 디렉토리가 있다면, <code class="language-plaintext highlighter-rouge">assets.target_root_path</code> 이하에 동일한 하위 디렉토리를 생성합니다.</p>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p>만일 <code class="language-plaintext highlighter-rouge">assets.source_dir</code> 에 지정한 경로와 동일한 최상위 디렉토리명이 존재한다면, 중복파일이 생길 수 있으며, 변경이 필요합니다. <a href="https://jekyllrb.com/">Jekyll</a> 은 중복된 경로를 가진 여러 개의 파일이 있을 경우 덮어씁니다.</p>
+</div>
+</div>
+
+<h3 id="priority_files">priority_files<a href="#priority_files" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#priority_files"></div>
+</h3>
+
+<p><code class="language-plaintext highlighter-rouge">assets.source_dir</code> 내 파일 중 경우에 따라 우선순위가 필요한 파일들이 있을 수 있습니다.</p>
+
+<p>이럴 경우, 해당 파일명을 순서대로 지정하게 되면 해당 파일부터 HTML 페이지의 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 에 추가합니다.</p>
+
+<h3 id="scss_source_dir">scss_source_dir<a href="#scss_source_dir" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#scss_source_dir"></div>
+</h3>
+
+<p><a href="https://jekyllrb.com/">Jekyll</a> 이 지원하는 SASS, SCSS 의 include 대상 파일을 보관하는 경로입니다.</p>
+
+<p><a href="https://jekyllrb.com/">Jekyll</a> 의 <code class="language-plaintext highlighter-rouge">sass.sass_dir</code> 에 해당되며, 만일 해당 경로를 사용중이였다면, theme <code class="language-plaintext highlighter-rouge">path</code> 내로 이동이 필요합니다.</p>
+
+<h3 id="scss_files">scss_files<a href="#scss_files" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#scss_files"></div>
+</h3>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 <code class="language-plaintext highlighter-rouge">assets.source_dir</code> 내 SCSS 파일을 자동으로 생성합니다.</p>
+
+<p>이 때 <a href="https://jekyllrb.com/">Jekyll</a> 의 기본 정책과는 다르게 여러 파일을 생성할 수 있으며, <code class="language-plaintext highlighter-rouge">assets.scss_files</code> 에 지정한 파일을 순서대로 생성하여 HTML 페이지의 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 에 추가합니다.</p>
+
+<h2 id="templates_dir">templates_dir<a href="#templates_dir" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#templates_dir"></div>
+</h2>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-potion</code> 은 processor, tag 등의 동작으로 인해 생성되는 HTML 요소를 theme 별로 다르게 지정할 수 있도록 template 기능을 지원합니다.</p>
+
+<p>이러한 template 을 보관하는 경로로서 다른 요소들과 마찬가지로 theme <code class="language-plaintext highlighter-rouge">path</code> 를 기준으로 한 상대 경로입니다.</p>
+
+<p>template 파일들은 liquid template 으로서 각 processor, tag 에 지정된 규칙을 맞춘다면, 자유롭게 편집할 수 있습니다. 현재 지원하고 있는 template 은 아래와 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>파일명</th>
+      <th>사용 tag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alerts.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/alerts" class="a-internal">alerts</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">api.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/api" class="a-internal">api</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">api=description.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/api" class="a-internal">api</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">api=parameter.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/api" class="a-internal">api</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">api=response.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/api" class="a-internal">api</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">code.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/code" class="a-internal">code</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">empty.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/empty" class="a-internal">empty</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">file.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/file" class="a-internal">file</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">link.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/link" class="a-internal">link</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">logo.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/logo" class="a-internal">logo</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">navigation.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/navigation" class="a-internal">navigation</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">navigation-page.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/navigation" class="a-internal">navigation</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pagination.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/pagination" class="a-internal">pagination</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">tabs.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/tabs" class="a-internal">tabs</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">tabs=content.liquid</code></td>
+      <td><a href="/jekyll-potion/use/tag/tabs" class="a-internal">tabs</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p>processor 는 liquid template 을 가지고 있지 않습니다. processor 는 지정된 기능을 수행하여, tag 로서 표현합니다.</p>
+</div>
+</div>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p>만일 이러한 template 작업이 필요하지 않다면(동일한 HTML 구성을 가져간다면) 굳이 생성하지 않아도 됩니다.</p>
+
+<p>만일 theme 내 template 파일들이 존재하지 않다면, 내장 theme 인 proto 의 기본 template 을 사용합니다.</p>
+</div>
+</div>
+
+<h2 id="content_x_path">content_x_path<a href="#content_x_path" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#content_x_path"></div>
+</h2>
+
+<p><a href="https://jekyllrb.com/">Jekyll</a> 은 layout, 조각 파일을 활용하여, markdown 문서를 템플릿을 이용해 HTML 문서로 생성합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">content_x_path</code>는 markdown 문서의 본문에 해당되는 HTML 영역을 <a href="https://github.com/sparklemotion/nokogiri">Nokogiri</a> Node 에서 접근 가능한 css selector 값을 가르킵니다.</p>
+
+<p>해당 값은 <a href="/jekyll-potion/use/processor/make-search-index-processor" class="a-internal">make-search-index-processor</a> 에서 사용하거나, 본문 내 특정 HTML 요소를 handling 하기 위한 용도로 사용됩니다.</p>
+
+<p>기본값은 <code class="language-plaintext highlighter-rouge">main</code> 이며, 이는 HTML <code class="language-plaintext highlighter-rouge">&lt;main&gt;</code> 에 해당됩니다.</p>
+
+<div class="alerts info">
+    <div class="style"></div>
+    <div class="body">
+<p>반드시 <code class="language-plaintext highlighter-rouge">&lt;main&gt;</code> 태그를 사용할 필요는 없습니다.</p>
+
+<p>마크업 내 본문에 해당되는 <a href="https://github.com/sparklemotion/nokogiri">Nokogiri</a> css selector 이기만 하면 됩니다.</p>
+</div>
+</div>
+
+<h2 id="tags--processor">tags &amp; processor<a href="#tags--processor" class="go-hash hash-internal a-internal"></a><div class="copy-link" data-header-link="/jekyll-potion/start/make-theme#tags--processor"></div>
+</h2>
+
+<p>theme 를 만드는 과정속에 layout 이나, template 요소를 수정하고 기본 설정된 css class, attribute 들을 변경했다면 이를 명시해야 합니다. <a href="/jekyll-potion/config/theme" class="a-internal">theme 설정</a> 을 참조하여, <code class="language-plaintext highlighter-rouge">theme[].processors</code>, <code class="language-plaintext highlighter-rouge">theme[].tags</code> 내 class name, attribute 가 변경되었다면, 아래와 같이 변경된 값에 맞도록 설정을 추가합니다.</p>
+
+<div class="code">
+    <div class="header">
+        <div class="title">변경 예시</div>
+        <div class="copy" data-code-copy-target-id=""></div>
+        <div class="copy-text" data-skip-search-index="">복사성공!</div>
+    </div>
+    <div class="body">
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="rouge-code"><pre>  <span class="na">theme</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">developers</span><span class="pi">:</span>
+        <span class="na">processors</span><span class="pi">:</span>
+        <span class="na">make_header_link_processor</span><span class="pi">:</span>
+          <span class="na">selector</span><span class="pi">:</span> <span class="s2">"</span><span class="s">a-data-header-link"</span>
+          <span class="na">hash_class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">a-hash"</span>
+          <span class="na">copy_class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">a-copy-link"</span>
+        <span class="na">tags</span><span class="pi">:</span>
+          <span class="na">alerts</span><span class="pi">:</span>
+            <span class="na">info</span><span class="pi">:</span> <span class="s2">"</span><span class="s">alerts--noti"</span>
+            <span class="na">warning</span><span class="pi">:</span> <span class="s2">"</span><span class="s">alerts--warning"</span>
+            <span class="na">danger</span><span class="pi">:</span> <span class="s2">"</span><span class="s">alerts--error"</span>
+            <span class="na">success</span><span class="pi">:</span> <span class="s2">"</span><span class="s">alerts--confirm"</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+</div>
+</div>
+
+        <div class="block-row pagination" data-skip-search-index>
+    
+        <div>
+            <div class="block pagination">
+                <a class="block-body a-internal" href="/jekyll-potion/start/favicon">
+                    <div class="thumb prev"></div>
+                    <div class="content right">
+                        <div class="x-small">이전</div>
+                        <div class="bold">favicon 적용</div>
+                        <div class="small"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+    
+        <div>
+            <div class="block pagination">
+                <a class="block-body a-internal" href="/jekyll-potion/start/apply-github-pages">
+                    <div class="content">
+                        <div class="x-small">다음</div>
+                        <div class="bold">GitHub Pages 적용</div>
+                        <div class="small"></div>
+                    </div>
+                    <div class="thumb next"></div>
+                </a>
+            </div>
+        </div>
+    
+</div>
+
+    </div>
+</div>
+
+</main>
+<div id="modal_image_area" class="modal hide">
+    <div class="modal-wrapper">
+        <img id="modal_image" class="modal-image" src="" data-skip-src-to-absolute>
+    </div>
+</div>
+
+<script type="text/x-jsrender" id="search_contents_tmpl">
+
+<div class="search-content">
+    <a href="{{:url}}">
+        <div class="bold">{{:title}}</div>
+        <div class="content">
+            {{for sentences}}
+            <p>{{:}}</p>
+            {{/for}}
+        </div>
+    </a>
+</div>
+
+</script>
+<div id="modal_search_area" class="modal hide">
+    <div class="modal-wrapper">
+        <div class="modal-search">
+            <div class="search-area">
+                <input id="search_keyword" type="text" placeholder="최소 2자 이상의 검색어를 입력하신 후 Enter를 입력하세요.">
+            </div>
+            <div class="search-result-area">
+                <div class="search-container">
+                    <div id="search_contents" class="search-contents">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

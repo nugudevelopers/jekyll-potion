@@ -39,10 +39,10 @@ depth_order: 2
 
 `jekyll-potion` 은 아래의 버전을 기준으로 작업이 되었습니다. 이미 다른 버전을 사용한 경우라면 버전의 조정이나 호환성 검증이 필요합니다.
 
-| 라이브러리                                                 |     버전      |
-|-------------------------------------------------------|:-----------:|
-| [Jekyll](https://jekyllrb.com/)                       | &gt;= 4.3.1 |
-| [Nokogiri](https://github.com/sparklemotion/nokogiri) |   1.13.6    |
+| 라이브러리                                                 |     버전     |
+|-------------------------------------------------------|:----------:|
+| [Jekyll](https://jekyllrb.com/)                       | `>=` 4.2.2 |
+| [Nokogiri](https://github.com/sparklemotion/nokogiri) |   1.13.6   |
 
 ## 설치
 

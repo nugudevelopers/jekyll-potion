@@ -1112,7 +1112,7 @@
     "jekyll-potion 은 개인 호스팅도 가능하지만, GitHub Pages 의 적용을 염두하고 제작되었습니다. 따라서 반드시 구성원은 GitHub 저장소에 대한 commit, pull-request 방법을 익혀야 하며, 사이트 관리자는 이를 통해 코드 형상을 관리해야 하기 때문에 Git 을 통한 형상관리가 가능해야 합니다.",
     "⁣4. jekyll-potion 은 기본적으로 세팅된 theme 를 통해 설치만으로도 충분히 사이트 요소를 표현할 수 있습니다. 하지만, 만일 사이트를 서비스에 맞도록 꾸미기 위해서는 반드시 마크업, 디자인이 필요하며 마크업 개발자, 디자이너 인력에 대한 고려가 이뤄져야 합니다.",
     "jekyll-potion 은 아래의 버전을 기준으로 작업이 되었습니다. 이미 다른 버전을 사용한 경우라면 버전의 조정이나 호환성 검증이 필요합니다.",
-    "Jekyll | = 4.3.1",
+    "Jekyll | >= 4.2.2",
     "Nokogiri | 1.13.6",
     "jekyll-potion 은 사이트의 설치할 사이트의 Gemfile, config 파일(ex> _config.yml) 에 아래의 내용을 추가함으로서 사용이 가능합니다.",
     "group :jekyll_plugins do\n  gem \"jekyll-potion\", \"1.0.1\"\nend",

@@ -39,3 +39,7 @@ end
 plugins:
   - jekyll-potion
 ```
+
+## 사용하기
+
+`jekyll-potion` 이 적용된 데모 사이트이자, 설명 사이트인 [jekyll-potion](https://nugudevelopers.github.io/jekyll-potion) 을 통해 자세한 사용법을 확인하실 수 있습니다.

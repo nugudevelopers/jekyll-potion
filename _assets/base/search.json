@@ -305,6 +305,8 @@
     "아래의 내용을 통해 jekyll-potion 에 대한 보다 더 자세히 다룹니다.",
     "아래의 문서는 jekyll-potion 을 설치하는 방법을 다룹니다.",
     "시작하기",
+    "아래의 문서는 jekyll-potion 을 이용해 Processor, Tag 등을 이용하는 방법을 다룹니다.",
+    "사용하기",
     "아래의 문서는 jekyll-potion 의 설정에 대해 다룹니다.",
     "설정",
     "아래의 문서는 jekyll-potion 이 Jekyll 내부에서 동작하는 life-cycle 에 대해 다룹니다.",
@@ -323,6 +325,13 @@
   "hash": "#시작하기",
   "sentences": [
     "시작하기"
+  ]
+},
+    {
+  "title": "jekyll-potion > 사용하기",
+  "hash": "#사용하기",
+  "sentences": [
+    "사용하기"
   ]
 },
     {

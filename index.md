@@ -16,6 +16,12 @@ depth_order: 1
 
 {% link url="/start" %}
 
+## 사용하기
+
+아래의 문서는 `jekyll-potion` 을 이용해 Processor, Tag 등을 이용하는 방법을 다룹니다.
+
+{% link url="/use" %}
+
 ## config
 
 아래의 문서는 `jekyll-potion` 의 설정에 대해 다룹니다.
